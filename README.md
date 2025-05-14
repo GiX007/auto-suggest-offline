@@ -10,9 +10,8 @@ Offline component of the Auto-Suggest system for learning pandas operator pipeli
     - `prepare_replay_notebooks.py` – Creates replay folders (one notebook + dataset(s))
     - `replay_notebooks.py` – Executes notebooks and extracts operator metadata
     - `github_data_collection.py` – Runs the full **data manipulation pipeline**: crawl → filter → prepare → replay
-
-- `tutorials/` – Notebook-based walkthroughs and tests
-  - `download_and_replay_notebooks.ipynb` – Demonstrates downloading, filtering, and replaying a few example notebooks step by step (cell by cell)
+  - `tutorials/` – Notebook-based walkthroughs and tests
+    - `download_and_replay_notebooks.ipynb` – Demonstrates downloading, filtering, and replaying a few example notebooks step by step (cell by cell)
 
 
 ## Getting Started
