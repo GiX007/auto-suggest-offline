@@ -13,6 +13,7 @@ For each operation, it saves the following to:
     - op_seq.json      → upstream operations
     - data.csv         → input dataframe for the operator
 
+The maximum execution time per cell is 5 minutes.
 Each replayed notebook is isolated and produces one output folder per operator call.
 
 """
@@ -52,6 +53,42 @@ main_ops = ['groupby', 'merge', 'melt', 'pivot', 'pivot_table']
 
 
 # === UTILITY FUNCTIONS ===
+import threading
+
+class ExecutionTimeout(Exception):
+    """
+    Custom exception raised when a code cell exceeds the maximum execution time.
+    Used to abort notebook replay when a long-running cell hangs or loops indefinitely.
+    """
+    pass
+
+def run_with_timeout(code, env, timeout=300):   # 300 seconds for 5 minutes max execution time per cell
+    """
+    Executes a code snippet in a separate thread and aborts if it exceeds the timeout.
+
+    Args:
+      code (str): Python code to execute
+      env (dict): Execution environment (globals dictionary)
+      timeout (int): Maximum time (in seconds) allowed for execution
+
+    Raises:
+      ExecutionTimeout: If the execution exceeds the allowed timeout
+      Exception: Any exception raised within the executed code
+    """
+    def target():
+        try:
+            exec(code, env)
+        except Exception as e:
+            env['_error'] = e
+
+    thread = threading.Thread(target=target)
+    thread.start()
+    thread.join(timeout)
+    if thread.is_alive():
+        raise ExecutionTimeout
+    if '_error' in env:
+        raise env['_error']
+
 
 @contextlib.contextmanager
 def suppress_output():
@@ -299,6 +336,7 @@ def extract_pivot_params(line):
 
 # === MAIN REPLAY LOOP ===
 
+
 for operator in os.listdir(PREPARED_DIR):
 
     print(f"\nReplaying notebooks for {operator} operator...\n")
@@ -322,16 +360,21 @@ for operator in os.listdir(PREPARED_DIR):
         try:
             with open(nb_path, 'r', encoding='utf-8') as f:
                 nb = nbformat.read(f, as_version=4)
+                skip_notebook = False
         except Exception as e:
             # print(f"Failed to open {nb_file}: {e}")
             continue
 
         execution_env = {}
+        synthetic_groupby_idx = 0
         dataflow_graph = {}
         var_hash_map = {}
         output_map = {}
 
         for idx, cell in enumerate(nb.cells):
+            if skip_notebook:
+                break
+
             if cell.cell_type != 'code':
                 continue
 
@@ -346,8 +389,12 @@ for operator in os.listdir(PREPARED_DIR):
                     child.parent = node
 
             try:
-                with suppress_output():
-                    exec(code, execution_env)
+                try:
+                    run_with_timeout(code, execution_env, timeout=300)
+                except ExecutionTimeout:
+                    print(f"\nSkipping notebook {nb_file}: Cell {idx} exceeded 5 min timeout.")
+                    skip_notebook = True
+                    break
             except ImportError as e:
                 missing_pkg = str(e).split("'")[1]
                 if try_import_or_install(missing_pkg):
@@ -383,7 +430,7 @@ for operator in os.listdir(PREPARED_DIR):
                 if name in execution_env and isinstance(execution_env[name], pd.DataFrame)
             }
 
-            synthetic_groupby_idx = 0
+
             for node in ast.walk(ast_tree):
                 if isinstance(node, ast.Call):
                     func_name = node.func.attr if isinstance(node.func, ast.Attribute) else (
@@ -462,6 +509,9 @@ for operator in os.listdir(PREPARED_DIR):
                         params = extract_pivot_params(code)
                         func_name = 'pivot'
 
+                    if skip_notebook:
+                        continue  # skip saving results and DAGs
+
                     save_dir = os.path.join(OUTPUT_DIR, func_name, f"{folder}_cell{idx}")
                     os.makedirs(save_dir, exist_ok=True)
 
@@ -489,6 +539,7 @@ for operator in os.listdir(PREPARED_DIR):
                             op_dot.node(parent_h[:6], output_map.get(parent_h, parent_h[:6]))
                             op_dot.edge(parent_h[:6], h[:6], label=op)
                             add_node_recursive(parent_h)
+
 
 
                     dag_root = output_hash if 'output_hash' in locals() and output_hash else None
