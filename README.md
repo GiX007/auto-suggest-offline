@@ -15,6 +15,7 @@ Offline component of the Auto-Suggest system for learning pandas operator pipeli
 
   - `tutorials/` – Notebook-based walkthroughs and tests
     - `download_and_replay_notebooks.ipynb` – Demonstrates downloading, filtering, and replaying a few example notebooks step by step (cell by cell)
+    - `toy_recommendation_workflow_simulations.ipynb` – Simulates the full Auto-Suggest recommendation pipeline using toy data. Covers feature extraction, single-operator prediction, RNN/n-gram modeling, and final MLP-based next-operator prediction.
 
 
 ## Getting Started
