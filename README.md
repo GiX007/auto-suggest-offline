@@ -18,6 +18,15 @@ Offline component of the Auto-Suggest system for learning pandas operator pipeli
     - `toy_recommendation_workflow_simulations.ipynb` – Simulates the full Auto-Suggest recommendation pipeline using toy data. Covers feature extraction, single-operator prediction, RNN/n-gram modeling, and final MLP-based next-operator prediction.
 
 
+- `data/` – Supporting data and examples
+  - `examples` - Contains all dummy Jupyter notebooks and corresponding datasets used in the tutorial notebooks
+  - `extracted_data.zip` - Includes 100 replayed samples per operator (groupby, melt, pivot, merge) in the format expected by the system:
+    - `data.csv` (or `left.csv` / `right.csv` for merge) - Input tables for the operator
+    - `param.json` - Parameters used in the operator call
+      
+    Note: Due to GitHub file size limits, this dataset is not included in the repository.
+    If you are interested in accessing it, feel free to contact me and I’ll share it via Google Drive.
+
 ## Getting Started
 
 
