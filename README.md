@@ -27,6 +27,8 @@ Offline component of the Auto-Suggest system for learning pandas operator pipeli
     Note: Due to GitHub file size limits, this dataset is not included in the repository.
     If you are interested in accessing it, feel free to contact me and I’ll share it via Google Drive.
 
+  - `test_data` - Contains unseen `.csv` tables used to verify whether a trained single-operator model (`groupby`, `melt`, `pivot`, `merge`) can correctly predict the appropriate operator parameters on new, unobserved inputs.
+
 ## Getting Started
 
 
