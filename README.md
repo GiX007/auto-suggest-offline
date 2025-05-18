@@ -61,6 +61,10 @@ Offline component of the Auto-Suggest system for learning pandas operations from
 - `workflows/` – Execution flow guides for each operator. It contains operator-specific .txt guides outlining the key steps and function calls for training, evaluation, and recommendation workflows 
    across join, groupby, pivot, and unpivot modules.
 
+- `results/` - Training configurations, evaluation outputs and visualizations
+   - `metrics` – Training configurations, evaluation and literature comparison CSVs
+   - `figures` - Visualizations from training process for ML-based predictors
+
 ## Getting Started
 
 
