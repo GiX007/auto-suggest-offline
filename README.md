@@ -5,6 +5,7 @@ Offline component of the Auto-Suggest system for learning pandas operator pipeli
 
 - `src/` – Core source code
   - `data/` – Scripts for notebook collection, processing, and replay
+    - `sample_loader.py` - Loads individual or batch operator samples from extracted directories (CSV and param.json files)
     - `github_crawler.py` – Crawls GitHub for notebooks using pandas operators
     - `process_random_repos.py` – Filters notebooks and resolves local/remote datasets
     - `prepare_replay_notebooks.py` – Creates replay folders (one notebook + dataset(s))
