@@ -1,5 +1,5 @@
 # auto-suggest-offline
-Offline component of the Auto-Suggest system for learning pandas operator pipelines from real-world Jupyter notebooks.
+Offline component of the Auto-Suggest system for learning pandas operations from real-world Jupyter notebooks.
 
 ## Contents
 
@@ -57,6 +57,9 @@ Offline component of the Auto-Suggest system for learning pandas operator pipeli
   - `join_col_model.pkl` – Join column prediction model
   - `join_type_model.pkl` – Join type classification model
   - `groupby_model.pkl` – Groupby column prediction model
+
+- `workflows/` – Execution flow guides for each operator. It contains operator-specific .txt guides outlining the key steps and function calls for training, evaluation, and recommendation workflows 
+   across join, groupby, pivot, and unpivot modules.
 
 ## Getting Started
 
