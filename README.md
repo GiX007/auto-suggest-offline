@@ -3,6 +3,17 @@ Offline component of the Auto-Suggest system for learning pandas operator pipeli
 
 ## Contents
 
+- `data/` – Supporting data and examples
+  - `examples` - Contains all dummy Jupyter notebooks and corresponding datasets used in the tutorial notebooks
+  - `extracted_data.zip` - Includes 100 replayed samples per operator (groupby, melt, pivot, merge) in the format expected by the system:
+    - `data.csv` (or `left.csv` / `right.csv` for merge) - Input tables for the operator
+    - `param.json` - Parameters used in the operator call
+      
+    **Note**: Due to GitHub file size limits, this dataset is not included in the repository.
+    If you are interested in accessing it, feel free to contact me and I’ll share it via Google Drive.
+
+  - `test_data` - Contains unseen `.csv` tables used to verify whether a trained single-operator model (`groupby`, `melt`, `pivot`, `merge`) can correctly predict the appropriate operator parameters on new, unobserved inputs.
+
 - `src/` – Core source code
   - `data/` – Scripts for notebook collection, processing, and replay
     - `sample_loader.py` - Loads individual or batch operator samples from extracted directories (CSV and param.json files)
@@ -42,17 +53,10 @@ Offline component of the Auto-Suggest system for learning pandas operator pipeli
     - `download_and_replay_notebooks.ipynb` – Demonstrates downloading, filtering, and replaying a few example notebooks step by step (cell by cell)
     - `toy_recommendation_workflow_simulations.ipynb` – Simulates the full Auto-Suggest recommendation pipeline using toy data. Covers feature extraction, single-operator prediction, RNN/n-gram modeling, and final MLP-based next-operator prediction.
 
-
-- `data/` – Supporting data and examples
-  - `examples` - Contains all dummy Jupyter notebooks and corresponding datasets used in the tutorial notebooks
-  - `extracted_data.zip` - Includes 100 replayed samples per operator (groupby, melt, pivot, merge) in the format expected by the system:
-    - `data.csv` (or `left.csv` / `right.csv` for merge) - Input tables for the operator
-    - `param.json` - Parameters used in the operator call
-      
-    **Note**: Due to GitHub file size limits, this dataset is not included in the repository.
-    If you are interested in accessing it, feel free to contact me and I’ll share it via Google Drive.
-
-  - `test_data` - Contains unseen `.csv` tables used to verify whether a trained single-operator model (`groupby`, `melt`, `pivot`, `merge`) can correctly predict the appropriate operator parameters on new, unobserved inputs.
+- `models/` – Trained ML-based models (100 samples per operator)
+  - `join_col_model.pkl` – Join column prediction model
+  - `join_type_model.pkl` – Join type classification model
+  - `groupby_model.pkl` – Groupby column prediction model
 
 ## Getting Started
 
