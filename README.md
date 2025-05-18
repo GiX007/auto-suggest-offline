@@ -14,6 +14,30 @@ Offline component of the Auto-Suggest system for learning pandas operator pipeli
     - `list_archive_contents.py` – Inspects .tgz archives from the Auto-Suggest dataset without extracting them and reports file counts
     - `extract_archives.py` – Extracts a small, unique subset of high-quality operator samples (e.g., 30–100) from the full archive
 
+  - `features/` – Feature extraction process per operator
+    - `join_features.py` – Extracts join key compatibility features (e.g., distinct value ratio, leftness, value overlap, etc)
+    - `groupby_features.py` – Extracts features for identifying groupby candidates (e.g., distinct value counts, column data type, etc)
+    - `pivot_features.py` - Builds affinity matrices between candidate pivot columns
+    - `unpivot_features.py` - Measures compatibility for unpivot group detection 
+   
+  - `models/` – Model logic and operator-specific algorithms
+    - `join_col_model.py` - ML-based join key predictor
+    - `join_type_model.py` - ML-based Join type classifier (inner, left, outer)
+    - `groupby_model.py` - ML-based Groupby classifier (dimension/measures columns)
+    - `pivot_model.py` - Pivot column grouping using AMPT (graph-based partitioning optimization)
+    - `unpivot_model.py` - Unpivot column prediction using CMUT (graph-based partitioning optimization)
+   
+  - `baselines/` – Heuristic baseline implementations for each operator
+    - `join_baselines.py` - Heuristic methods like ML-FK, PowerPivot, Multi, Holistic, Max-Overlap snd Vendors
+    - `groupby_baselines.py` - Heuristic methods like SQL history, Coarse-grained types, Fine-grained types and Min-cardinality
+    - `pivot_baselines.py` - Heuristic methods like Affinity, Type-rules, Min-emptiness and Balanced-split
+    - `unpivot_baselines.py` - Heuristics like Pattern, Column-name, Data-type and Contiguous-type similarities
+   
+  - `utils/` – Shared utilities
+     - `evaluation.py` - Several evaluation utilities for join and group predictions 
+     - `join_recommendation_pipeline.py` - Pipeline to combine join column and join type predictions
+     - `model_utils` - Shared helper functions for saving and loading models
+
   - `tutorials/` – Notebook-based walkthroughs and tests
     - `download_and_replay_notebooks.ipynb` – Demonstrates downloading, filtering, and replaying a few example notebooks step by step (cell by cell)
     - `toy_recommendation_workflow_simulations.ipynb` – Simulates the full Auto-Suggest recommendation pipeline using toy data. Covers feature extraction, single-operator prediction, RNN/n-gram modeling, and final MLP-based next-operator prediction.
