@@ -1,0 +1,6 @@
+method,prec@1,prec@2,ndcg@1,ndcg@2,full-accuracy
+Auto-Suggest,0.80,0.80,0.80,0.80,75%
+SQL-history,0.30,0.60,0.30,0.41,90%
+Coarse-grained-types,0.50,0.50,0.50,0.48,85%
+Fine-grained-types,0.40,0.55,0.40,0.46,85%
+Min-Cardinality,0.50,0.55,0.50,0.49,100%
