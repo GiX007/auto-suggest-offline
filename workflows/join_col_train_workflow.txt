@@ -1,0 +1,71 @@
+JOIN COLUMN PREDICTION WORKFLOW (join_col_train)
+
+PHASE 0: ENTRY POINT
+---------------------
+Function: run_join_prediction(..., mode='train')
+File: src/main.py
+Purpose: Orchestrates the full training pipeline for join column and join type prediction
+
+PHASE 1: LOAD SAMPLES
+----------------------
+1. load_operator_samples(join_dir, 'join')
+   - File: src/data/sample_loader.py
+   - Loads all sample folders from the merge/ directory
+
+2. load_sample(...)
+   - File: src/data/sample_loader.py
+   - Loads:
+     * 'left_table' from left.csv
+     * 'right_table' from right.csv
+     * 'params' from param.json
+
+PHASE 2: PROCESS SAMPLES
+--------------------------
+3. process_join_samples(join_samples)
+   - File: src/features/join_features.py
+   - Extracts and normalizes:
+     * Join keys
+     * Handles 'index' and 'Unnamed: 0'
+     * Adds index column if missing
+   - Output: List of processed join samples
+
+PHASE 3: PREPARE TRAINING DATA
+-------------------------------
+4. prepare_join_training_data(processed_samples)
+   - File: src/models/join_col_model.py
+   - For each sample:
+     * generate_join_candidates(left_table, right_table)
+     * extract_join_column_features(left_table, right_table, left_cols, right_cols)
+     * Label as 1 if matches ground truth, else 0
+   - Output: List[Dict] of features, List[int] of labels
+
+PHASE 4: TRAIN MODEL
+---------------------
+5. train_join_column_model(features_list, labels)
+   - File: src/models/join_col_model.py
+   - Converts to DataFrame
+   - Splits into train/test sets
+   - Trains GradientBoostingRegressor
+   - Computes:
+     * Accuracy
+     * Precision
+     * Precision@k and NDCG@k
+   - Saves:
+     * results/metrics/all_operators_metrics.csv
+     * results/figures/join_column_feature_importance.png
+   - Output: Trained model and feature names
+
+PHASE 5: SAVE MODEL
+---------------------
+6. save_model((model, feature_names), path)
+   - File: src/utils/model_utils.py
+   - Saves trained model to disk (e.g. models/join_column_model.pkl)
+
+
+COMMAND TO RUN
+---------------------
+To execute the full pipeline described above, run the following command:
+
+    python -m src.main --operator join --mode train
+
+---------------------

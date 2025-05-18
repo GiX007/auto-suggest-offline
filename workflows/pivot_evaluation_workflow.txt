@@ -1,0 +1,79 @@
+PIVOT EVALUATION WORKFLOW (pivot_eval)
+
+PHASE 0: ENTRY POINT
+---------------------
+Function: run_pivot_prediction(..., mode='eval')
+File: src/main.py  
+Purpose: Orchestrates evaluation pipeline for pivot table structure prediction
+Note: Same data flow as training, but evaluates model outputs and compares against baselines
+
+PHASE 1: LOAD & PROCESS TEST SAMPLES
+-------------------------------------
+1. load_operator_samples(pivot_dir, 'pivot')
+   - File: src/data/sample_loader.py
+   - Loads all pivot operator samples from the pivot/ directory
+
+2. load_sample(...)
+   - File: src/data/sample_loader.py
+   - Loads:
+     * 'input_table' from data.csv
+     * 'params' from param.json
+
+3. process_pivot_samples(pivot_samples)
+   - File: src/features/pivot_features.py
+   - Extracts:
+     * index_columns (ground truth row indices)
+     * header_columns (ground truth column headers)
+     * values_columns, aggfunc
+   - Filters out invalid/missing configurations
+
+4. Split test set (80/20)
+   - Using train_test_split from sklearn
+   - Ensures generalization on unseen pivot configurations
+
+PHASE 2: EVALUATE PIVOT MODEL (AMPT)
+-------------------------------------
+5. evaluate_pivot_split(test_samples)
+   - File: src/models/pivot_model.py
+   - For each test sample:
+     * identify_dimension_measure_columns(...) (from src/models/pivot_model.py)
+       - Heuristically identifies candidate dimension and measure columns if not provided
+     * build_affinity_matrix(...) → src/features/pivot_features.py
+     * solve_ampt(...) → src/models/pivot_model.py
+       - Uses Stoer-Wagner min-cut to optimize pivot layout
+       - Falls back to greedy_ampt_split(...) if needed
+     * Compares predicted vs ground truth pivot splits
+     * Computes:
+       - full-accuracy (perfectly matched splits)
+       - rand-index (pairwise similarity of assignments)
+     * Saves evaluation to:
+       - results/metrics/pivot_eval_metrics.csv (if training already exists)
+       - or results/metrics/all_operators_metrics.csv
+
+PHASE 3: BASELINES (LITERATURE)
+--------------------------------
+6. evaluate_baselines(test_samples)
+   - File: src/baselines/pivot_baselines.py
+   - Evaluates non-learning heuristics:
+     * PositionHeuristic
+     * RandomSplit
+     * TypeSimilarity
+     * EmptinessHeuristic
+   - Each baseline generates a (index, header) split
+   - Comparison metrics (same as AMPT):
+     * full-accuracy
+     * rand-index
+
+7. generate_pivot_table(...)
+   - File: src/main.py (local function inside run_pivot_prediction)
+   - Generates formatted Table 8 with all evaluation metrics
+   - Saves CSV to:
+     - results/pivot_literature_comparison.csv
+
+COMMAND TO RUN
+---------------------
+To execute the full evaluation pipeline for pivot structure prediction:
+
+    python -m src.main --operator pivot --mode eval
+
+---------------------

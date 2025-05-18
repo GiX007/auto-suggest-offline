@@ -1,0 +1,64 @@
+UNPIVOT RECOMMENDATION WORKFLOW (unpivot_predict)
+
+PHASE 0: ENTRY POINT
+---------------------
+Function: run_unpivot_prediction(..., mode='predict')
+File: src/main.py  
+Purpose: Orchestrates the Unpivot (melt) recommendation pipeline on new tables
+
+PHASE 1: LOAD INPUT TABLE
+--------------------------
+1. pd.read_csv(input_file)
+   - File: src/main.py
+   - Reads user-specified CSV passed via --input_file
+   - Prints:
+     * Table shape
+     * Column names (first 10)
+     * Sample rows
+
+PHASE 2: BUILD COMPATIBILITY MATRIX
+------------------------------------
+2. build_affinity_matrix(table, all_columns)
+   - File: src/features/pivot_features.py
+   - Computes pairwise affinity (compatibility) scores across all columns
+   - Based on:
+     * Emptiness Reduction Ratio
+     * Positional similarity
+     * Data type and name heuristics
+
+PHASE 3: APPLY CMUT ALGORITHM (COLUMN SELECTION)
+-------------------------------------------------
+3. solve_cmut_greedy(affinity_matrix)
+   - File: src/models/unpivot_model.py
+   - Selects columns to unpivot (value_vars) by:
+     * Finding dense clusters of highly compatible columns
+   - Remaining columns become id_vars
+
+PHASE 4: SUGGEST COLUMN NAMES & SAMPLE RESULT
+----------------------------------------------
+4. pd.melt(...)
+   - File: src/main.py
+   - Uses:
+     * value_vars: columns to unpivot
+     * id_vars: columns to keep
+     * var_name: inferred variable name (from shared prefixes/suffixes)
+     * value_name: defaulted to "value"
+
+PHASE 5: DISPLAY UNPIVOT STRUCTURE
+-----------------------------------
+5. print(...)
+   - File: src/main.py
+   - Prints:
+     * Recommended unpivot structure (id_vars, value_vars)
+     * Inferred variable and value column names
+     * Sample unpivot preview (first few rows)
+     * Suggested pandas code snippet using `pd.melt(...)`
+
+COMMAND TO RUN
+---------------------
+To execute the full recommendation workflow on a new table:
+
+    python -m src.main --operator unpivot --mode predict \
+        --input_file data/test_data/unpivot_sample.csv
+
+---------------------

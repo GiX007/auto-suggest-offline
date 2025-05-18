@@ -1,0 +1,80 @@
+GROUPBY EVALUATION WORKFLOW (groupby_eval)
+
+PHASE 0: ENTRY POINT
+---------------------
+Function: run_groupby_prediction(..., mode='eval')
+File: src/main.py
+Purpose: Orchestrates evaluation pipeline for GroupBy column prediction model
+
+PHASE 1: LOAD & PROCESS TEST SAMPLES
+-------------------------------------
+1. load_operator_samples(groupby_dir, 'groupby')
+   - File: src/data/sample_loader.py
+   - Loads all sample folders from the groupby/ directory
+
+2. load_sample(...)
+   - File: src/data/sample_loader.py
+   - Loads:
+     * 'input_table' from data.csv
+     * 'params' from param.json
+
+3. process_groupby_samples(groupby_samples)
+   - File: src/features/groupby_features.py
+   - Extracts:
+     * groupby_columns
+     * agg_columns
+   - Handles nested or missing parameters
+   - Output: List of processed groupby samples
+
+4. Split test set (80/20)
+   - Using train_test_split from sklearn
+   - Ensures generalization on unseen samples
+
+PHASE 2: LOAD TRAINED MODEL
+-----------------------------
+5. load_model("groupby_column_model.pkl")
+   - File: src/utils/model_utils.py
+   - Returns: (model, feature_names)
+
+PHASE 3: EVALUATE GROUPBY MODEL
+---------------------------------
+6. evaluate_groupby_model(model, feature_names, test_samples, k_values)
+   - File: src/utils/evaluation.py
+   - Calls:
+     * predict_groupby_columns(...) (from src/models/groupby_model.py)
+     * Computes:
+       - precision@k
+       - ndcg@k
+       - full-accuracy
+     * Saves metrics to:
+       - results/metrics/groupby_eval_metrics.csv
+
+7. generate_groupby_table(...)
+   - File: src/utils/evaluation.py
+   - Prints Table 6 (literature and vendor comparison)
+
+8. generate_groupby_feature_importance_table(...)
+   - File: src/utils/evaluation.py
+   - Computes and prints Table 7 (feature group importances)
+   - Saves:
+     * Figure: results/figures/groupby_feature_group_importance.png
+
+PHASE 4: BASELINES
+---------------------
+9. evaluate_baselines(test_samples)
+   - File: src/baselines/groupby_baselines.py
+   - Computes metrics for:
+     * SQL-history
+     * Coarse-grained-types
+     * Fine-grained-types
+     * Min-Cardinality
+   - Each baseline returns a list of (column, score) predictions per sample
+   - Scores are used to compute precision@k, ndcg@k, and full-accuracy by comparing to ground truth groupby columns 
+
+COMMAND TO RUN
+---------------------
+To execute the full evaluation pipeline:
+
+    python -m src.main --operator groupby --mode eval
+
+---------------------

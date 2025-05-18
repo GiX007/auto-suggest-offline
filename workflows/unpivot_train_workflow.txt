@@ -1,0 +1,60 @@
+UNPIVOT STRUCTURE PREDICTION WORKFLOW (unpivot_train)
+
+PHASE 0: ENTRY POINT
+---------------------
+Function: run_unpivot_prediction(..., mode='train')
+File: src/main.py  
+Purpose: Orchestrates the unpivot structure prediction process for column selection
+
+PHASE 1: LOAD SAMPLES
+----------------------
+1. load_operator_samples(unpivot_dir, 'unpivot')
+   - File: src/data/sample_loader.py
+   - Loads all sample folders from the melt/ directory
+
+2. load_sample(...)
+   - File: src/data/sample_loader.py
+   - Loads:
+     * 'input_table' from data.csv
+     * 'params' from param.json
+
+PHASE 2: PROCESS SAMPLES
+--------------------------
+3. process_unpivot_samples(unpivot_samples)
+   - File: src/features/unpivot_features.py
+   - Extracts:
+     * value_vars (columns to unpivot)
+     * id_vars (columns to keep)
+   - Handles various parameter formats and filters invalid samples
+   - Output: List of processed unpivot samples
+
+PHASE 3: EVALUATE MODEL ON TEST SET
+------------------------------------
+4. evaluate_unpivot_prediction(unpivot_test)
+   - File: src/models/unpivot_model.py
+   - For each test sample:
+     * build_affinity_matrix(...) (from src/features/pivot_features.py)
+       - Constructs pairwise compatibility (affinity) scores between all columns
+     * solve_cmut_greedy(...) (from src/models/unpivot_model.py)
+       - Applies CMUT greedy algorithm to determine which columns to unpivot
+     * Compares predicted value_vars to ground truth
+     * Computes:
+       - full_accuracy (exact match)
+       - column_precision, column_recall, column_F1
+   - Saves metrics to:
+     * results/metrics/all_operators_metrics.csv
+     * If training row exists, writes to results/metrics/unpivot_eval_metrics.csv
+   - Output: Evaluation metrics dictionary
+
+PHASE 4: (NO TRAINING STEP REQUIRED)
+-------------------------------------
+- The CMUT-based method is a graph algorithm and does not require model fitting
+- Evaluation validates the greedy solution quality
+
+COMMAND TO RUN
+---------------------
+To execute the full unpivot workflow on existing samples:
+
+    python -m src.main --operator unpivot --mode train
+
+---------------------

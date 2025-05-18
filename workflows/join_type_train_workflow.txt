@@ -1,0 +1,70 @@
+JOIN TYPE PREDICTION WORKFLOW (join_type_train)
+
+PHASE 0: ENTRY POINT
+---------------------
+Function: run_join_prediction(..., mode='train')
+File: src/main.py
+Purpose: Orchestrates training pipeline for join column and join type prediction
+
+PHASE 1: LOAD SAMPLES
+----------------------
+1. load_operator_samples(join_dir, 'join')
+   - File: src/data/sample_loader.py
+   - Loads all sample folders from the merge/ directory
+
+2. load_sample(...)
+   - File: src/data/sample_loader.py
+   - Loads:
+     * 'left_table' from left.csv
+     * 'right_table' from right.csv
+     * 'params' from param.json
+
+PHASE 2: PREPROCESS
+--------------------
+3. process_join_samples(join_samples)
+   - File: src/features/join_features.py
+   - Extracts:
+     * Join columns
+     * Join type
+     * Handles edge cases like 'index', 'Unnamed: 0'
+   - Output: List of processed samples with join keys and type
+
+PHASE 3: PREPARE TRAINING DATA
+-------------------------------
+4. prepare_join_type_training_data(processed_samples)
+   - File: src/models/join_type_model.py
+   - For each sample:
+     * extract_join_type_features(left_table, right_table, left_join_keys, right_join_keys)
+     * Include selected join column features (e.g., jaccard_similarity, sortedness)
+     * Label with the join type: 'inner', 'left', 'right', or 'outer'
+   - Output: List[Dict] of features, List[str] of labels
+
+PHASE 4: TRAIN MODEL
+---------------------
+5. train_join_type_model(features_list, labels)
+   - File: src/models/join_type_model.py
+   - Converts features to DataFrame
+   - Encodes labels using LabelEncoder
+   - Trains GradientBoostingRegressor to classify join types
+   - Computes:
+     * Train/Test Accuracy
+     * Per-class Precision/Recall
+     * Confusion matrix
+   - Saves:
+     * Confusion matrix plot → results/figures/join_type_confusion_matrix.png
+     * Feature importance plot → results/figures/join_type_feature_importance.png
+     * Metrics CSV → results/metrics/all_operators_metrics.csv and join_type_metrics.csv
+
+PHASE 5: SAVE MODEL
+---------------------
+6. save_model((model, feature_names, label_encoder), path)
+   - File: src/utils/model_utils.py
+   - Serializes model and supporting metadata to disk
+
+COMMAND TO RUN
+---------------------
+To execute the full pipeline described above, run the following command:
+
+    python -m src.main --operator join --mode train
+
+---------------------
