@@ -1,0 +1,2 @@
+timestamp,operator,samples_evaluated,accuracy,confusion_inner→inner,confusion_left→inner,confusion_outer→inner,confusion_inner→outer,confusion_left→outer,confusion_inner→left,confusion_left→left,confusion_right→inner,confusion_outer→outer
+2025-05-18 11:25:34,join_type_eval,20,0.55,8,2,3,1,1,1,2,1,1
