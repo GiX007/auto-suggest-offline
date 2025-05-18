@@ -63,8 +63,10 @@ Offline component of the Auto-Suggest system for learning pandas operations from
    - `figures` - Visualizations from training process for ML-based predictors
    - `logs/` - Terminal output logs (.txt files) for training, evaluation and recommendation for both recommendation tasks 
 
-- `workflows/` – Execution flow guides for each operator. It contains operator-specific .txt guides outlining the key steps and function calls for training, evaluation, and recommendation workflows 
-   across join, groupby, pivot, and unpivot modules
+- `workflows/` – Execution flow guides for each operator. It contains step-by-step guides for training, evaluation, and recommendation logic per operator
+
+- `docs` - Reference materials
+   - `Auto-Suggest_SIGMOD2020.pdf` - Original research paper describing the Auto-Suggest system (SIGMOD 2020)
 
 
 ## Getting Started
