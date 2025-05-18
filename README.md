@@ -12,7 +12,7 @@ Offline component of the Auto-Suggest system for learning pandas operations from
     **Note**: Due to GitHub file size limits, this dataset is not included in the repository.
     If you are interested in accessing it, feel free to contact me and I’ll share it via Google Drive.
 
-  - `test_data` - Contains unseen `.csv` tables used to verify whether a trained single-operator model (`groupby`, `melt`, `pivot`, `merge`) can correctly predict the appropriate operator parameters on new, unobserved inputs.
+  - `test_data` - Contains unseen `.csv` tables used to verify whether a trained single-operator model (`groupby`, `melt`, `pivot`, `merge`) can correctly predict the appropriate operator parameters on new, unobserved inputs
 
 - `src/` – Core source code
   - `data/` – Scripts for notebook collection, processing, and replay
@@ -51,7 +51,7 @@ Offline component of the Auto-Suggest system for learning pandas operations from
 
   - `tutorials/` – Notebook-based walkthroughs and tests
     - `download_and_replay_notebooks.ipynb` – Demonstrates downloading, filtering, and replaying a few example notebooks step by step (cell by cell)
-    - `toy_recommendation_workflow_simulations.ipynb` – Simulates the full Auto-Suggest recommendation pipeline using toy data. Covers feature extraction, single-operator prediction, RNN/n-gram modeling, and final MLP-based next-operator prediction.
+    - `toy_recommendation_workflow_simulations.ipynb` – Simulates the full Auto-Suggest recommendation pipeline using toy data. Covers feature extraction, single-operator prediction, RNN/n-gram modeling, and final MLP-based next-operator prediction
 
 - `models/` – Trained ML-based models (100 samples per operator)
   - `join_col_model.pkl` – Join column prediction model
@@ -65,7 +65,7 @@ Offline component of the Auto-Suggest system for learning pandas operations from
 - `logs/` - Contains terminal output logs (.txt files) from both Auto-Suggest recommendation tasks (training, evaluation, recommendation)
 
 - `workflows/` – Execution flow guides for each operator. It contains operator-specific .txt guides outlining the key steps and function calls for training, evaluation, and recommendation workflows 
-   across join, groupby, pivot, and unpivot modules.
+   across join, groupby, pivot, and unpivot modules
 
 
 ## Getting Started
@@ -74,9 +74,9 @@ Offline component of the Auto-Suggest system for learning pandas operations from
 ## Notes
 
 - To extract a sufficient number of **well-structured and replayable notebooks**, the pipeline may need to crawl **hundreds of GitHub repositories** per operator.
-- This implementation is currently set to process **only 20 repositories per operator** as a lightweight simulation.
+- This implementation is currently set to process **only 20 repositories per operator** as a lightweight simulation
 - In real-world use, you should:
   - Increase the number of pages crawled in `github_crawler.py`
   - Broaden search queries (e.g., include operator combinations or fallback terms)
   - Tolerate failed extractions due to broken notebooks, missing data files, or complex operator chains
-- You can adjust the crawling and filtering logic in `github_data_collection.py` to scale up and tune output quality.
+- You can adjust the crawling and filtering logic in `github_data_collection.py` to scale up and tune output quality
