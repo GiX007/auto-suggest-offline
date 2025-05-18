@@ -1,0 +1,630 @@
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator join --mode train
+
+================================================================================
+Join Prediction (Section 4.1)
+================================================================================
+
+Training join prediction models...
+
+Processed 100 valid join samples
+
+Split 100 samples into 80 train and 20 test samples
+
+--- Training Join Column Prediction Model ---
+
+Using 21 features: ['left_distinct_ratio', 'right_distinct_ratio', 'jaccard_similarity', 'left_to_right_containment', 'right_to_left_containment', 'range_overlap', 'left_is_string', 'right_is_string', 'left_is_numeric', 'right_is_numeric', 'type_match', 'left_absolute_position', 'right_absolute_position', 'left_relative_position', 'right_relative_position', 'left_is_sorted', 'right_is_sorted', 'is_single_column', 'left_row_count', 'right_row_count', 'row_count_ratio']
+
+Distribution among all candidate join column pairs:
+Train positives: 57/4243 (1.34%) — from all candidate pairs generated in training samples
+Test positives:  14/1061 (1.32%) — from all candidate pairs generated in test samples
+
+Training join column prediction model...
+
+Model training completed in 0.50 seconds
+Trained model: GradientBoostingClassifier (100 estimators, max_depth=3)
+
+Binary Classification Metrics on Train and Test Sets (using threshold 0.5):
+Accuracy: Training = 0.9988, Test = 0.9896
+Precision: Training = 0.9194, Test = 0.5882
+
+Metrics and figures have been saved to the 'results' directory
+
+Model saved to models\join_column_model.pkl
+
+--- Training Join Type Prediction Model ---
+
+Preparing join type training data from 80 samples
+
+Join type distribution:
+  inner: 46 (57.5%)
+  left: 21 (26.2%)
+  outer: 13 (16.2%)
+
+Join type classes: ['inner' 'left' 'outer']
+
+Train set distribution:
+  inner: 37 (57.8%)
+  left: 17 (26.6%)
+  outer: 10 (15.6%)
+
+Test set distribution:
+  inner: 9 (56.2%)
+  left: 4 (25.0%)
+  outer: 3 (18.8%)
+
+Using 20 features: ['left_row_count', 'right_row_count', 'left_col_count', 'right_col_count', 'row_count_ratio', 'col
+_count_ratio', 'left_is_larger_table', 'right_is_small_cols', 'left_is_small_cols', 'left_keys_only_cols', 'right_key
+s_only_cols', 'non_key_col_overlap', 'non_key_col_overlap_ratio', 'left_in_right_containment', 'right_in_left_containment', 'min_containment', 'max_containment', 'jaccard_similarity', 'left_is_sorted', 'right_is_sorted']
+
+Training join type prediction model...
+
+Model training completed in 1.34 seconds
+Trained model: GradientBoostingClassifier (200 estimators, max_depth=8)
+
+Binary Classification Metrics on Train and Test Sets:
+Accuracy: Training = 1.0000, Test = 0.5000
+
+Metrics and figures have been saved to the 'results' directory
+
+Model saved to models\join_type_model.pkl
+
+Join models trained successfully!
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator join --mode eval
+
+================================================================================
+Predict Single Operators -  Join (Section 6.5)
+================================================================================
+
+Evaluating join prediction models...
+Using k values for evaluation: [1, 2]
+
+Processed 100 valid join samples
+
+Using 20 test samples for evaluation
+
+Model loaded from models\join_column_model.pkl
+Model loaded from models\join_type_model.pkl
+
+--- Evaluating Join Models on Test Set ---
+
+Evaluating join column prediction on test samples...
+
+Table 3: Join column prediction evaluation - Literature methods
++---------------------+----------+----------+----------+----------+
+| method (all data)   |   prec@1 |   prec@2 |   ndcg@1 |   ndcg@2 |
++=====================+==========+==========+==========+==========+
+| Auto-Suggest        |     0.8  |     0.85 |     0.78 |     0.82 |
++---------------------+----------+----------+----------+----------+
+| ML-FK               |     0.65 |     0.7  |     0.65 |     0.68 |
++---------------------+----------+----------+----------+----------+
+| PowerPivot          |     0.45 |     0.85 |     0.45 |     0.7  |
++---------------------+----------+----------+----------+----------+
+| Multi               |     0.8  |     0.85 |     0.8  |     0.83 |
++---------------------+----------+----------+----------+----------+
+| Holistic            |     0.85 |     0.85 |     0.85 |     0.85 |
++---------------------+----------+----------+----------+----------+
+| max-overlap         |     0.85 |     0.85 |     0.85 |     0.85 |
++---------------------+----------+----------+----------+----------+
+
+Table 3: Join column prediction evaluation - Commercial systems
++-------------------------+----------+----------+
+| method (sampled data)   |   prec@1 |   ndcg@1 |
++=========================+==========+==========+
+| Auto-Suggest            |     0.8  |     0.78 |
++-------------------------+----------+----------+
+| Vendor-A                |     0.76 |     0.76 |
++-------------------------+----------+----------+
+| Vendor-C                |     0.42 |     0.42 |
++-------------------------+----------+----------+
+| Vendor-B                |     0.33 |     0.33 |
++-------------------------+----------+----------+
+
+Table 4: Importance of Feature Groups for Join
++-------------+----------------+----------------------+----------------+-------------+----------------+-------------------+----------------+
+| feature_1   |   importance_1 | feature_2            |   importance_2 | feature_3   |   importance_3 | feature_4         |   importance_4 |
++=============+================+======================+================+=============+================+===================+================+
+| val-overlap |           0.62 | distinct-val-ratio   |           0.26 | left-ness   |            0.1 | col-val-types     |           0.01 |
++-------------+----------------+----------------------+----------------+-------------+----------------+-------------------+----------------+
+| table-stats |           0.01 | single-col-candidate |           0.01 | sorted-ness |            0   | val-range-overlap |           0    |
++-------------+----------------+----------------------+----------------+-------------+----------------+-------------------+----------------+
+
+Join Column Prediction Results:
+  precision@1: 0.8000
+  ndcg@1: 0.7750
+  precision@2: 0.8500
+  ndcg@2: 0.8223
+  samples_evaluated: 20.0000
+
+Evaluating join type prediction on test samples...
+
+Table 5: Join type prediction
++--------------+----------+
+| method       |   prec@1 |
++==============+==========+
+| Auto-Suggest |     0.55 |
++--------------+----------+
+| Vendor-A     |     0.78 |
++--------------+----------+
+
+Join Type Prediction Results:
+  accuracy: 0.5500
+  samples_evaluated: 20
+
+Join models evaluated successfully!
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator join --mode predict --left_file data/test_data/join_customers.csv --right_file data/test_data/join_orders.csv
+
+================================================================================
+Join Prediction (Section 4.1)
+================================================================================
+
+Predicting join columns and types for new tables...
+
+Loaded tables:
+Left table: 100 rows × 7 columns
+Right table: 300 rows × 7 columns
+
+Model loaded from models\join_column_model.pkl
+Model loaded from models\join_type_model.pkl
+
+=== Step 1: Predicting Join Columns ===
+
+Top Join Column Predictions:
+1. Left columns: [customer_id] ↔ Right columns: [customer_id] (confidence: 1.0000)
+2. Left columns: [signup_date] ↔ Right columns: [order_date] (confidence: 1.0000)
+
+=== Step 2: Predicting Join Types ===
+
+Join Type Predictions:
+Processing candidate 1: customer_id ↔ customer_id → inner join
+Processing candidate 2: signup_date ↔ order_date → inner join
+
+Generated 2 complete join recommendations
+
+=== Complete Join Recommendations ===
+================================================================================
+
+Recommendation 1: Join using
+  Left columns: customer_id
+  Right columns: customer_id
+  Column confidence: 1.000
+  Recommended join type: inner (confidence: 1.000)
+----------------------------------------
+
+Recommendation 2: Join using
+  Left columns: signup_date
+  Right columns: order_date
+  Column confidence: 1.000
+  Recommended join type: inner (confidence: 1.000)
+----------------------------------------
+
+=== Example Pandas Code for Top Recommendation ===
+result = pd.merge(left_table, right_table,
+                  left_on='customer_id',
+                  right_on='customer_id',
+                  how='inner')
+
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator groupby --mode train
+
+Running GroupBy prediction...
+
+================================================================================
+GroupBy Prediction (Section 4.2)
+================================================================================
+
+Loading groupby samples...
+C:\Users\giorg\Auto_Suggest\src\data\sample_loader.py:49: DtypeWarning: Columns (19,28,52,115,313,317) have mixed types. Specify dtype option on import or set low_memory=False.
+  sample['input_table'] = pd.read_csv(data_path, encoding='utf-8')
+C:\Users\giorg\Auto_Suggest\src\data\sample_loader.py:49: DtypeWarning: Columns (31) have mixed types. Specify dtype option on import or set low_memory=False.
+  sample['input_table'] = pd.read_csv(data_path, encoding='utf-8')
+
+Processing groupby samples...
+Starting to process 100 GroupBy samples...
+Processed 100 valid groupby samples out of 100 total
+Encountered 0 problematic samples
+
+Preparing GroupBy training data from 100 samples
+Prepared 2194 training instances, 130 positive examples (5.93%)
+
+Using 16 features: ['distinct_count', 'distinct_ratio', 'is_string', 'is_int', 'is_float', 'is_bool', 'is_datetime', 
+'absolute_position', 'relative_position', 'null_ratio', 'value_range', 'distinct_to_range_ratio', 'peak_frequency', 'peak_frequency_ratio', 'groupby_term_in_name', 'agg_term_in_name']
+
+Distribution among all candidate join column pairs:
+
+Train positives: 104/1755 (5.93%) — from all candidate pairs generated in training samples
+Test positives: 26/439 (5.92%) — from all candidate pairs generated in test samples
+
+Training groupby column prediction model...
+
+Model training completed in 0.47 seconds
+Trained model: GradientBoostingClassifier (100 estimators, max_depth=3)
+
+Binary Classification Metrics on Train and Test Sets:
+Accuracy: Training = 0.9778, Test = 0.9636
+Precision: Training = 0.9710, Test = 0.9167
+
+Metrics and figures have been saved to the 'results' directory
+
+Model saved to models\groupby_column_model.pkl
+
+GroupBy model trained successfully!
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator groupby --mode eval
+
+Running GroupBy prediction...
+
+================================================================================
+Predict Single Operators -  GroupBy (Section 6.5)
+================================================================================
+
+Evaluating groupby prediction model...
+Using k values for evaluation: [1, 2]
+C:\Users\giorg\Auto_Suggest\src\data\sample_loader.py:49: DtypeWarning: Columns (19,28,52,115,313,317) have mixed types. Specify dtype option on import or set low_memory=False.
+  sample['input_table'] = pd.read_csv(data_path, encoding='utf-8')
+C:\Users\giorg\Auto_Suggest\src\data\sample_loader.py:49: DtypeWarning: Columns (31) have mixed types. Specify dtype option on import or set low_memory=False.
+  sample['input_table'] = pd.read_csv(data_path, encoding='utf-8')
+Starting to process 100 GroupBy samples...
+Processed 100 valid groupby samples out of 100 total
+Encountered 0 problematic samples
+Using 20 test samples for evaluation
+
+Model loaded from models\groupby_column_model.pkl
+
+--- Evaluating GroupBy Model on Test Set ---
+
+Evaluating GroupBy column prediction on 20 test samples...
+
+GroupBy Column Prediction Results:
+  Samples evaluated: 20
+  precision@1: 0.8000
+  precision@2: 0.8000
+  ndcg@1: 0.8000
+  ndcg@2: 0.8000
+  full-accuracy: 0.7500
+  samples_evaluated: 20
+
+Table 6: GroupBy column prediction evaluation
++----------------------+----------+----------+----------+----------+-----------------+
+| method               |   prec@1 |   prec@2 |   ndcg@1 |   ndcg@2 | full-accuracy   |
++======================+==========+==========+==========+==========+=================+
+| Auto-Suggest         |      0.8 |     0.8  |      0.8 |     0.8  | 75%             |
++----------------------+----------+----------+----------+----------+-----------------+
+| SQL-history          |      0.3 |     0.6  |      0.3 |     0.41 | 90%             |
++----------------------+----------+----------+----------+----------+-----------------+
+| Coarse-grained-types |      0.5 |     0.5  |      0.5 |     0.48 | 85%             |
++----------------------+----------+----------+----------+----------+-----------------+
+| Fine-grained-types   |      0.4 |     0.55 |      0.4 |     0.46 | 85%             |
++----------------------+----------+----------+----------+----------+-----------------+
+| Min-Cardinality      |      0.5 |     0.55 |      0.5 |     0.49 | 100%            |
++----------------------+----------+----------+----------+----------+-----------------+
+
+Comparison with Commercial Systems:
++--------------+----------+----------+----------+----------+-----------------+
+| method       |   prec@1 |   prec@2 |   ndcg@1 |   ndcg@2 | full-accuracy   |
++==============+==========+==========+==========+==========+=================+
+| Auto-Suggest |     0.8  |     0.8  |     0.8  |     0.8  | 75%             |
++--------------+----------+----------+----------+----------+-----------------+
+| Vendor-B     |     0.56 |     0.71 |     0.56 |     0.75 | 45%             |
++--------------+----------+----------+----------+----------+-----------------+
+| Vendor-C     |     0.71 |     0.82 |     0.71 |     0.85 | 67%             |
++--------------+----------+----------+----------+----------+-----------------+
+
+Table 7: Importance of Feature Groups for GroupBy
++---------------+--------------+
+| feature       |   importance |
++===============+==============+
+| left-ness     |         0.45 |
++---------------+--------------+
+| peak-freq     |         0.23 |
++---------------+--------------+
+| distinct-val  |         0.22 |
++---------------+--------------+
+| val-range     |         0.09 |
++---------------+--------------+
+| col-type      |         0.02 |
++---------------+--------------+
+| col-name-freq |         0.01 |
++---------------+--------------+
+| emptiness     |         0    |
++---------------+--------------+
+
+GroupBy model evaluated successfully!
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator groupby --mode predict --input_file data/test_data/groupby_sales_data.csv
+
+Running GroupBy prediction...
+
+================================================================================
+GroupBy Prediction (Section 4.2)
+================================================================================
+
+Predicting groupby columns for new table...
+
+Loaded table: 200 rows × 18 columns
+Column names: region, category, subcategory, year, quarter, month, customer_segment, shipping_mode, order_date, order_id, customer_id, sales, quantity, discount, profit, shipping_cost, total, profit_margin
+
+Sample data (first 3 rows):
+  region     category subcategory  year  quarter  ...  discount  profit shipping_cost     total profit_margin
+0  North  Electronics      Phones  2022        1  ...      0.27  452.31         34.06  339.5668         97.24        
+1  North  Electronics      Phones  2023        3  ...      0.45  423.69         23.92   47.8940        486.55        
+2   East     Clothing       Men's  2022        1  ...      0.43  341.50         49.68  182.3601        106.74        
+
+[3 rows x 18 columns]
+
+Model loaded from models\groupby_column_model.pkl
+
+=== GroupBy Column Recommendations ===
+================================================================================
+
+Recommended GroupBy Columns (Dimensions):
+------------------------------------------------------------
+1. region (confidence: 1.000, type: object)
+   - 5 unique values, samples: North, East, South
+2. category (confidence: 1.000, type: object)
+   - 5 unique values, samples: Electronics, Clothing, Furniture
+
+Recommended Aggregation Columns (Measures):
+------------------------------------------------------------
+1. year (confidence: 1.000, type: int64)
+   - Range: 2022.00 to 2023.00, Mean: 2022.55
+2. quarter (confidence: 1.000, type: int64)
+   - Range: 1.00 to 4.00, Mean: 2.56
+
+=== Example Pandas Code ===
+================================================================================
+# Using pandas to perform the GroupBy operation:
+result = df.groupby(['region', 'category'])['year'].sum()
+
+# Alternative with agg() for more control:
+result = df.groupby(['region', 'category']).agg({'year': 'sum'})
+
+# For a tabular result:
+result = df.groupby(['region', 'category'])['year'].sum().reset_index()
+
+(base) PS C:\Users\giorg\Auto_Suggest> 
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator pivot --mode train
+
+Running Pivot prediction...
+
+================================================================================
+Pivot Prediction (Section 4.3)
+================================================================================
+
+Loading pivot samples...
+
+Processing pivot samples...
+Starting to process 100 pivot samples...
+Processing 100 pivot samples...
+Processed 73 valid pivot samples out of 100 total
+
+Preparing Pivot training data from 100 samples
+Prepared 73 samples into 58 train and 15 test from 100 samples
+
+Training pivot prediction model...
+(Note: Pivot uses the AMPT algorithm which doesn't require traditional training)
+Model training completed in 0.06 seconds
+
+Ranking Metrics (as in the paper):
+  full_accuracy: 0.8667 - proportion of test samples where the predicted split exactly matches the ground truth (ignoring side flips)
+  rand_index: 0.9704 - average pairwise agreement between predicted and ground truth column groupings (same or different sides)
+
+Metrics have been saved to the 'results' directory
+Pivot model trained successfully!
+
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator pivot --mode eval
+
+Running Pivot prediction...
+
+================================================================================
+Predict Single Operators - Pivot (Section 6.5)
+================================================================================
+
+Evaluating pivot prediction model...
+(Actually, comparing AMPT predictions with some related methods)
+
+
+Processing 100 pivot samples...
+Processed 73 valid pivot samples out of 100 total
+
+Using 15 test samples for evaluation
+
+--- Evaluating Pivot Model on Test Set ---
+
+Evaluating Pivot prediction on 15 test samples...
+
+Pivot model evaluation results:
+  Full accuracy: 0.8667
+  Rand Index: 0.9704
+
+Table 8: Pivot prediction evaluation
++----------------+-----------------+--------------+
+| method         |   full-accuracy |   rand-index |
++================+=================+==============+
+| Auto-Suggest   |            0.87 |         0.97 |
++----------------+-----------------+--------------+
+| Affinity       |            0.93 |         0.96 |
++----------------+-----------------+--------------+
+| Type-Rules     |            0.87 |         0.91 |
++----------------+-----------------+--------------+
+| Min-Emptiness  |            1    |         1    |
++----------------+-----------------+--------------+
+| Balanced-Split |            0.87 |         0.91 |
++----------------+-----------------+--------------+
+Comparison table saved to results\pivot_literature_comparison.csv
+
+Pivot model evaluated successfully!
+
+Metrics have been saved to the 'results' directory
+
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator pivot --mode predict --input_file data/test_data/pivot_financial_data.csv --aggfunc sum
+
+Running Pivot prediction...
+
+================================================================================
+Pivot Prediction (Section 4.3)
+================================================================================
+
+Predicting pivot structure for new table...
+
+Loaded table: 400 rows × 11 columns
+Column names: Sector, Company, Size, Year, Quarter, Time, Revenue, Costs, Profit, Tax, NetProfit
+
+Sample data (first 3 rows):
+       Sector    Company   Size  Year Quarter     Time     Revenue       Costs     Profit        Tax  NetProfit
+0  Technology  Company_1  Small  2018      Q1  2018-Q1  3507015.95  2896974.39  610041.56  178291.62  431749.93      
+1  Technology  Company_1  Small  2018      Q2  2018-Q2  3571972.41  2920812.32  651160.08  212505.71  438654.37      
+2  Technology  Company_1  Small  2018      Q3  2018-Q3  3171575.74  2515094.15  656481.59  187686.73  468794.86      
+
+Identified 6 dimension columns: ['Sector', 'Company', 'Size', 'Year', 'Quarter', 'Time']
+Identified 5 measure columns: ['Revenue', 'Costs', 'Profit', 'Tax', 'NetProfit']
+
+
+Determining optimal index/header split...
+
+Recommended pivot structure:
+  Row indices (left side): ['Sector']
+  Column headers (top): ['Company', 'Size', 'Year', 'Quarter', 'Time']
+  Values to aggregate: Revenue
+  Aggregation function: sum
+
+Sample pivot table preview:
+Company      Company_1                                      ...    Company_5                                       
+Size             Small                                      ...        Large
+Year              2018                                      ...         2022
+Quarter             Q1          Q2          Q3          Q4  ...           Q1           Q2           Q3           Q4  
+Time           2018-Q1     2018-Q2     2018-Q3     2018-Q4  ...      2022-Q1      2022-Q2      2022-Q3      2022-Q4  
+Sector                                                      ...
+Finance            NaN         NaN         NaN         NaN  ...          NaN          NaN          NaN          NaN  
+Healthcare         NaN         NaN         NaN         NaN  ...  36658967.57  40161641.89  40951001.87  46659011.12  
+Technology  3507015.95  3571972.41  3171575.74  4418791.14  ...          NaN          NaN          NaN          NaN  
+
+[3 rows x 100 columns]
+
+=== Example Pandas Code ===
+# Using pandas to create a pivot table:
+pivot_table = pd.pivot_table(
+    df,
+    index=['Sector'],
+    columns=['Company', 'Size', 'Year', 'Quarter', 'Time'],
+    values='Revenue',
+    aggfunc='sum'
+)
+
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator unpivot --mode train
+
+Running Unpivot prediction...
+
+================================================================================
+Unpivot Prediction (Section 4.4)
+================================================================================
+
+Training unpivot prediction model...
+Note: Unpivot uses the CMUT algorithm which doesn't require traditional training.
+Processing 100 unpivot samples...
+Processed 60 valid unpivot samples
+
+Unpivot prediction evaluation:
+  full_accuracy: 0.5000
+  column_precision: 0.7500
+  column_recall: 0.5481
+  column_F1: 0.5764
+
+Metrics have been saved to the 'results' directory
+Unpivot model trained successfully!
+
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator unpivot --mode eval
+
+Running Unpivot prediction...
+
+================================================================================
+Predict Single Operators - Unpivot (Section 6.5)
+================================================================================
+
+Evaluating unpivot prediction model...
+
+
+Processing 100 unpivot samples...
+Processed 60 valid unpivot samples
+
+Using 12 test samples for evaluation
+
+--- Evaluating Unpivot Model on Test Set ---
+
+Evaluating Unpivot prediction on 12 test samples...
+
+Unpivot model evaluation results:
+  Full accuracy: 0.5000
+  Column precision: 0.7500
+  Column recall: 0.5481
+  Column F1: 0.5764
+
+Table 9: Unpivot prediction evaluation
++---------------------+-----------------+--------------------+-----------------+-------------+
+| method              |   full-accuracy |   column_precision |   column_recall |   column_F1 |
++=====================+=================+====================+=================+=============+
+| Auto-Suggest        |            0.5  |               0.75 |            0.55 |        0.58 |
++---------------------+-----------------+--------------------+-----------------+-------------+
+| Pattern-similarity  |            0.33 |               0.62 |            0.56 |        0.57 |
++---------------------+-----------------+--------------------+-----------------+-------------+
+| Col-name-similarity |            0.33 |               0.67 |            0.67 |        0.63 |
++---------------------+-----------------+--------------------+-----------------+-------------+
+| Data-type           |            0    |               0.55 |            0.83 |        0.65 |
++---------------------+-----------------+--------------------+-----------------+-------------+
+| Contiguous-type     |            0.17 |               0.45 |            0.54 |        0.46 |
++---------------------+-----------------+--------------------+-----------------+-------------+
+Comparison table saved to results\unpivot_literature_comparison.csv
+
+Unpivot model evaluated successfully!
+
+Metrics have been saved to the 'results' directory
+
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator unpivot --mode predict --input_file data/test_data/unpivot_product_sales.csv
+
+Running Unpivot prediction...
+
+================================================================================
+Unpivot Prediction (Section 4.4)
+================================================================================
+
+Predicting columns to unpivot for new table...
+
+Loaded table: 50 rows × 16 columns
+Column names: ProductID, ProductName, Category, Price, Month_01, Month_02, Month_03, Month_04, Month_05, Month_06 and 6 more...
+
+Sample data (first 3 rows):
+   ProductID ProductName     Category   Price  Month_01  ...  Month_08  Month_09  Month_10  Month_11  Month_12
+0          1   Product_1  Electronics   14.75       460  ...       280       337       389       275       583       
+1          2   Product_2  Electronics   82.19       143  ...       109       128       111        99       134       
+2          3   Product_3         Home  143.35        98  ...       110        89       107        88       119       
+
+[3 rows x 16 columns]
+
+Recommended unpivot structure:
+  Keep columns (id_vars): Category, Price, Month_01, Month_02, Month_03, Month_04, Month_05, Month_06, Month_07, Month_08, Month_09, Month_10, Month_11, Month_12
+  Unpivot columns (value_vars): ProductID, ProductName
+  Resulting variable column name: 'Product'
+  Resulting value column name: 'value'
+
+Sample unpivoted result preview:
+      Category   Price  Month_01  Month_02  Month_03  ...  Month_10  Month_11  Month_12    Product  value
+0  Electronics   14.75       460       375       356  ...       389       275       583  ProductID      1
+1  Electronics   82.19       143        76        86  ...       111        99       134  ProductID      2
+2         Home  143.35        98       106        89  ...       107        88       119  ProductID      3
+3     Clothing   60.33        88        89       144  ...       149        95       105  ProductID      4
+4        Books  152.67       107        85        84  ...       127       104        82  ProductID      5
+5         Home   55.50        91        87       123  ...        99       103        93  ProductID      6
+6  Electronics   74.24       151        74        96  ...        73        90       160  ProductID      7
+7  Electronics   21.52       410       165       209  ...       187       235       380  ProductID      8
+8  Electronics  197.21       151        91       130  ...        85        69       165  ProductID      9
+9     Clothing   86.72       110        88       126  ...       140        84        88  ProductID     10
+
+[10 rows x 16 columns]
+
+=== Example Pandas Code ===
+# Using pandas to unpivot (melt) the table:
+result = pd.melt(
+    df,
+    id_vars=['Category', 'Price', 'Month_01', 'Month_02', 'Month_03', 'Month_04', 'Month_05', 'Month_06', 'Month_07', 'Month_08', 'Month_09', 'Month_10', 'Month_11', 'Month_12'],
+    value_vars=['ProductID', 'ProductName'],
+    var_name='Product',
+    value_name='value'
+)
+(base) PS C:\Users\giorg\Auto_Suggest> 
+
