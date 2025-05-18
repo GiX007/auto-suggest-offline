@@ -58,12 +58,13 @@ Offline component of the Auto-Suggest system for learning pandas operations from
   - `join_type_model.pkl` – Join type classification model
   - `groupby_model.pkl` – Groupby column prediction model
 
-- `workflows/` – Execution flow guides for each operator. It contains operator-specific .txt guides outlining the key steps and function calls for training, evaluation, and recommendation workflows 
-   across join, groupby, pivot, and unpivot modules.
-
 - `results/` - Training configurations, evaluation outputs and visualizations
    - `metrics` – Training configurations, evaluation and literature comparison CSVs
    - `figures` - Visualizations from training process for ML-based predictors
+
+- `workflows/` – Execution flow guides for each operator. It contains operator-specific .txt guides outlining the key steps and function calls for training, evaluation, and recommendation workflows 
+   across join, groupby, pivot, and unpivot modules.
+
 
 ## Getting Started
 
