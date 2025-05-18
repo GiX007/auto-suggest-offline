@@ -62,6 +62,8 @@ Offline component of the Auto-Suggest system for learning pandas operations from
    - `metrics` – Training configurations, evaluation and literature comparison CSVs
    - `figures` - Visualizations from training process for ML-based predictors
 
+- `logs/` - Contains terminal output logs (.txt files) from both Auto-Suggest recommendation tasks (training, evaluation, recommendation)
+
 - `workflows/` – Execution flow guides for each operator. It contains operator-specific .txt guides outlining the key steps and function calls for training, evaluation, and recommendation workflows 
    across join, groupby, pivot, and unpivot modules.
 
