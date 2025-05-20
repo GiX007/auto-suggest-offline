@@ -18,6 +18,7 @@ Offline component of the Auto-Suggest system for learning pandas operations from
      - `n_gram_training_data.json` – Sequences formatted for N-gram model training
      - `rnn_training_data.json` – Sequences formatted for RNN model training
      - `sequence_statistics.json` – Summary stats (count, length, frequency) over all generated sequences
+  - `generated_combined_data` - Contains data for the combined next-operator prediction model (MLP), integrating RNN history scores and operator-specific confidence scores (groupby, pivot, unpivot, join_col, join_type)
 
 - `src/` – Core source code
   - `data/` – Scripts for notebook collection, processing, and replay
@@ -28,6 +29,7 @@ Offline component of the Auto-Suggest system for learning pandas operations from
     - `replay_notebooks.py` – Executes notebooks and extracts operator metadata
     - `github_data_collection.py` – Runs the full **data manipulation pipeline**: crawl → filter → prepare → replay
     - `generate_op_sequences.py` - Generates synthetic sequences of operator calls for training/evaluating N-gram and RNN models (next-operator prediction components)
+    - `generate_combined_data` - Builds feature vectors for the final MLP model by combining RNN predictions with operator-specific scores (groupby, pivot, unpivot, join)
     - `list_archive_contents.py` – Inspects .tgz archives from the Auto-Suggest dataset without extracting them and reports file counts
     - `extract_archives.py` – Extracts a small, unique subset of high-quality operator samples (e.g., 30–100) from the full archive
 
