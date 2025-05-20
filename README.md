@@ -13,6 +13,11 @@ Offline component of the Auto-Suggest system for learning pandas operations from
     If you are interested in accessing it, feel free to contact me and I’ll share it via Google Drive.
 
   - `test_data` - Contains unseen `.csv` tables used to verify whether a trained single-operator model (`groupby`, `melt`, `pivot`, `merge`) can correctly predict the appropriate operator parameters on new, unobserved inputs
+  - `generated_sequences` - Contains artificially generated operator sequences used for next-operator prediction. Includes:
+     - `all_sequences.json` – Full list of synthetic operator sequences
+     - `n_gram_training_data.json` – Sequences formatted for N-gram model training
+     - `rnn_training_data.json` – Sequences formatted for RNN model training
+     - `sequence_statistics.json` – Summary stats (count, length, frequency) over all generated sequences
 
 - `src/` – Core source code
   - `data/` – Scripts for notebook collection, processing, and replay
@@ -22,6 +27,7 @@ Offline component of the Auto-Suggest system for learning pandas operations from
     - `prepare_replay_notebooks.py` – Creates replay folders (one notebook + dataset(s))
     - `replay_notebooks.py` – Executes notebooks and extracts operator metadata
     - `github_data_collection.py` – Runs the full **data manipulation pipeline**: crawl → filter → prepare → replay
+    - `generate_op_sequences.py` - Generates synthetic sequences of operator calls for training/evaluating N-gram and RNN models (next-operator prediction components)
     - `list_archive_contents.py` – Inspects .tgz archives from the Auto-Suggest dataset without extracting them and reports file counts
     - `extract_archives.py` – Extracts a small, unique subset of high-quality operator samples (e.g., 30–100) from the full archive
 
