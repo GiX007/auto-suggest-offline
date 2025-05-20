@@ -1,0 +1,140 @@
+{
+  "total_sequences": 1000,
+  "avg_sequence_length": 6.466,
+  "min_sequence_length": 3,
+  "max_sequence_length": 10,
+  "operator_counts": {
+    "dropna": 590,
+    "fillna": 1042,
+    "concat": 557,
+    "merge": 1322,
+    "melt": 111,
+    "pivot": 429,
+    "pivot_table": 24,
+    "groupby": 1471,
+    "json_normalize": 58,
+    "apply": 862
+  },
+  "transition_counts": {
+    "dropna": {
+      "dropna": 0,
+      "fillna": 0,
+      "concat": 0,
+      "merge": 116,
+      "melt": 40,
+      "pivot": 125,
+      "pivot_table": 0,
+      "groupby": 203,
+      "json_normalize": 0,
+      "apply": 28
+    },
+    "fillna": {
+      "dropna": 30,
+      "fillna": 0,
+      "concat": 71,
+      "merge": 341,
+      "melt": 0,
+      "pivot": 74,
+      "pivot_table": 0,
+      "groupby": 296,
+      "json_normalize": 0,
+      "apply": 74
+    },
+    "concat": {
+      "dropna": 87,
+      "fillna": 160,
+      "concat": 0,
+      "merge": 43,
+      "melt": 0,
+      "pivot": 0,
+      "pivot_table": 0,
+      "groupby": 132,
+      "json_normalize": 0,
+      "apply": 45
+    },
+    "merge": {
+      "dropna": 143,
+      "fillna": 261,
+      "concat": 49,
+      "merge": 23,
+      "melt": 0,
+      "pivot": 53,
+      "pivot_table": 0,
+      "groupby": 459,
+      "json_normalize": 0,
+      "apply": 140
+    },
+    "melt": {
+      "dropna": 0,
+      "fillna": 42,
+      "concat": 8,
+      "merge": 14,
+      "melt": 0,
+      "pivot": 0,
+      "pivot_table": 0,
+      "groupby": 34,
+      "json_normalize": 0,
+      "apply": 7
+    },
+    "pivot": {
+      "dropna": 0,
+      "fillna": 132,
+      "concat": 28,
+      "merge": 57,
+      "melt": 0,
+      "pivot": 0,
+      "pivot_table": 0,
+      "groupby": 30,
+      "json_normalize": 0,
+      "apply": 123
+    },
+    "pivot_table": {
+      "dropna": 4,
+      "fillna": 7,
+      "concat": 3,
+      "merge": 6,
+      "melt": 0,
+      "pivot": 0,
+      "pivot_table": 0,
+      "groupby": 0,
+      "json_normalize": 0,
+      "apply": 4
+    },
+    "groupby": {
+      "dropna": 0,
+      "fillna": 104,
+      "concat": 243,
+      "merge": 371,
+      "melt": 0,
+      "pivot": 115,
+      "pivot_table": 0,
+      "groupby": 0,
+      "json_normalize": 0,
+      "apply": 377
+    },
+    "json_normalize": {
+      "dropna": 6,
+      "fillna": 47,
+      "concat": 0,
+      "merge": 1,
+      "melt": 0,
+      "pivot": 0,
+      "pivot_table": 0,
+      "groupby": 2,
+      "json_normalize": 0,
+      "apply": 2
+    },
+    "apply": {
+      "dropna": 160,
+      "fillna": 134,
+      "concat": 41,
+      "merge": 179,
+      "melt": 0,
+      "pivot": 0,
+      "pivot_table": 0,
+      "groupby": 192,
+      "json_normalize": 0,
+      "apply": 0
+    }
+  }
+}
