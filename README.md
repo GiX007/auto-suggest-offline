@@ -43,6 +43,7 @@ Offline component of the Auto-Suggest system for learning pandas operations from
     - `groupby_model.py` - ML-based Groupby classifier (dimension/measures columns)
     - `pivot_model.py` - Pivot column grouping using AMPT (graph-based partitioning optimization)
     - `unpivot_model.py` - Unpivot column prediction using CMUT (graph-based partitioning optimization)
+    - `ngram_rnn_models.py` - Defines and runs (train, evaluate, predict) N-gram and RNN next-operator prediction models
    
   - `baselines/` – Heuristic baseline implementations for each operator
     - `join_baselines.py` - Heuristic methods like ML-FK, PowerPivot, Multi, Holistic, Max-Overlap snd Vendors
@@ -63,6 +64,8 @@ Offline component of the Auto-Suggest system for learning pandas operations from
   - `join_col_model.pkl` – Join column prediction model
   - `join_type_model.pkl` – Join type classification model
   - `groupby_model.pkl` – Groupby column prediction model
+  - `ngram_model.json` – N-gram model for next-operator prediction
+  - `rnn_model.keras` – RNN-based next-operator prediction model (with `rnn_model_params.json` for metadata)
 
 - `results/` - Training configurations, evaluation outputs and visualizations
    - `metrics` – Training configurations, evaluation and literature comparison CSVs
