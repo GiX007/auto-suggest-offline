@@ -18,7 +18,7 @@ Offline component of the Auto-Suggest system for learning pandas operations from
      - `n_gram_training_data.json` – Sequences formatted for N-gram model training
      - `rnn_training_data.json` – Sequences formatted for RNN model training
      - `sequence_statistics.json` – Summary stats (count, length, frequency) over all generated sequences
-  - `generated_combined_data` - Contains data for the combined next-operator prediction model (MLP), integrating RNN history scores and operator-specific confidence scores (groupby, pivot, unpivot, join_col, join_type)
+  - `generated_combined_data` - Contains data for the combined next-operator prediction model (MLP)
 
 - `src/` – Core source code
   - `data/` – Scripts for notebook collection, processing, and replay
