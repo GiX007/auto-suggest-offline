@@ -70,7 +70,7 @@ Offline component of the Auto-Suggest system for learning pandas operations from
   - `rnn_model.keras` – RNN-based next-operator prediction model (with `rnn_model_params.json` for metadata)
 
 - `results/` - Training configurations, evaluation outputs and visualizations
-   - `metrics` – Training configurations, evaluation and literature comparison CSVs
+   - `metrics` – Training configurations, evaluation results and comparison with heuristic methods CSVs
    - `figures` - Visualizations from training process for ML-based predictors
    - `logs/` - Terminal output logs (.txt files) for training, evaluation and recommendation for both recommendation tasks 
 
