@@ -1,2 +1,0 @@
-timestamp,operator,samples_evaluated,precision@1,precision@2,ndcg@1,ndcg@2
-2025-05-18 11:20:14,join_column_eval,20,0.8,0.85,0.775,0.8223197315178593
