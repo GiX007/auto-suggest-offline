@@ -1,2 +1,0 @@
-operator,timestamp,num_samples,correct_splits,full_accuracy,rand_index,algorithm,solver
-pivot,2025-05-18 11:28:06,15,13,0.8666666666666667,0.9703703703703703,AMPT,Stoer-Wagner
