@@ -1,2 +1,0 @@
-timestamp,operator,samples_evaluated,precision@1,precision@2,ndcg@1,ndcg@2,full-accuracy
-2025-05-18 11:27:34,groupby_eval,20,0.8,0.8,0.8,0.8,0.75
