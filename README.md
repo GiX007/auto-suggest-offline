@@ -52,12 +52,7 @@ Offline component of the Auto-Suggest system for learning pandas operations from
     - `download_and_replay_notebooks.ipynb` – Demonstrates downloading, filtering, and replaying a few example notebooks step by step (cell by cell)
     - `toy_recommendation_workflow_simulations.ipynb` – Simulates the full Auto-Suggest recommendation pipeline using toy data. Covers feature extraction, single-operator prediction, RNN/n-gram modeling, and final MLP-based next-operator prediction
 
-- `models/` – Trained ML-based models (100 samples per operator)
-  - `join_col_model.pkl` – Join column prediction model
-  - `join_type_model.pkl` – Join type classification model
-  - `groupby_model.pkl` – Groupby column prediction model
-  - `ngram_model.json` – N-gram model for next-operator prediction
-  - `rnn_model.keras` – RNN-based next-operator prediction model (with `rnn_model_params.json` for metadata)
+- `models/` – Contains the trained ML-based models for join, groupby, and next-operator prediction, including both traditional and deep learning approaches
 
 - `results/` - Training configurations, evaluation outputs and visualizations
    - `metrics` – Training configurations, evaluation results and comparison with heuristic methods CSVs
