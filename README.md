@@ -33,12 +33,6 @@ Offline component of the Auto-Suggest system for learning pandas operations from
     - `list_archive_contents.py` – Inspects .tgz archives from the Auto-Suggest dataset without extracting them and reports file counts
     - `extract_archives.py` – Extracts a small, unique subset of high-quality operator samples (e.g., 30–100) from the full archive
 
-  - `features/` – Feature extraction process per operator
-    - `join_features.py` – Extracts join key compatibility features (e.g., distinct value ratio, leftness, value overlap, etc)
-    - `groupby_features.py` – Extracts features for identifying groupby candidates (e.g., distinct value counts, column data type, etc)
-    - `pivot_features.py` - Builds affinity matrices between candidate pivot columns
-    - `unpivot_features.py` - Measures compatibility for unpivot group detection 
-   
   - `models/` – Model logic and operator-specific algorithms
     - `join_col_model.py` - ML-based join key predictor
     - `join_type_model.py` - ML-based Join type classifier (inner, left, outer)
@@ -54,9 +48,7 @@ Offline component of the Auto-Suggest system for learning pandas operations from
     - `unpivot_baselines.py` - Heuristics like Pattern, Column-name, Data-type and Contiguous-type similarities
    
   - `utils/` – Shared utilities
-     - `evaluation.py` - Several evaluation utilities for join and group predictions 
-     - `join_recommendation_pipeline.py` - Pipeline to combine join column and join type predictions
-     - `model_utils` - Shared helper functions for saving and loading models
+     - `model_utils` - Shared helper utilities for model persistence, evaluation, and prediction visualization
 
   - `tutorials/` – Notebook-based walkthroughs and tests
     - `download_and_replay_notebooks.ipynb` – Demonstrates downloading, filtering, and replaying a few example notebooks step by step (cell by cell)
@@ -73,8 +65,6 @@ Offline component of the Auto-Suggest system for learning pandas operations from
    - `metrics` – Training configurations, evaluation results and comparison with heuristic methods CSVs
    - `figures` - Visualizations from training process for ML-based predictors
    - `logs/` - Terminal output logs (.txt files) for training, evaluation and recommendation for both recommendation tasks 
-
-- `workflows/` – Execution flow guides for each operator. It contains step-by-step guides for training, evaluation, and recommendation logic per operator
 
 - `docs` - Reference materials
    - `Auto-Suggest_SIGMOD2020.pdf` - Original research paper describing the Auto-Suggest system (SIGMOD 2020)
