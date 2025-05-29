@@ -1,0 +1,80 @@
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator unpivot --mode train
+
+================================================================================
+Unpivot Prediction (Section 4.4)
+================================================================================
+
+Note: Unpivot operator has no training phase for end-to-end unpivot, but trains the affinity weights model.
+
+Processed 60 valid unpivot samples
+
+Starting affinity weights regression model training...
+
+Model saved to models\unpivot_affinity_weights_model.pkl
+
+Affinity weights regression model trained successfully!
+
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator unpivot --mode eval
+
+================================================================================
+Predict Single Operators - Unpivot (Section 6.5)
+================================================================================
+
+Running unpivot prediction model...
+
+Processed 60 valid unpivot samples
+
+Using 60 test samples for evaluation
+
++=====================+=================+====================+=================+=============+
+| Auto-Suggest        |            0.21 |               0.68 |            0.47 |        0.5  |
++---------------------+-----------------+--------------------+-----------------+-------------+
+| Pattern-similarity  |            0.28 |               0.68 |            0.52 |        0.53 |
++---------------------+-----------------+--------------------+-----------------+-------------+
+| Col-name-similarity |            0.2  |               0.65 |            0.58 |        0.57 |
++---------------------+-----------------+--------------------+-----------------+-------------+
+| Data-type           |            0.27 |               0.6  |            0.74 |        0.64 |
++---------------------+-----------------+--------------------+-----------------+-------------+
+| Contiguous-type     |            0.3  |               0.65 |            0.71 |        0.65 |
++---------------------+-----------------+--------------------+-----------------+-------------+
+
+Unpivot model evaluation results:
+  Full accuracy: 0.2128
+  Column precision: 0.6791
+  Column recall: 0.4674
+  Column F1-score: 0.4961
+
+Metrics have been saved to the 'results' directory
+
+Unpivot model evaluated successfully!
+
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator unpivot --mode predict --input_file data/test_data/unpivot_product_sales.csv
+
+================================================================================
+Unpivot Prediction (Section 4.4)
+================================================================================
+
+Predicting unpivot structure for new table...
+
+Loaded table: 50 rows × 16 columns
+
+Column names: ProductID, ProductName, Category, Price, Month_01, Month_02, Month_03, Month_04, Month_05, Month_06, Month_07, Month_08, Month_09, Month_10, Month_11, Month_12
+
+Model loaded from models/unpivot_affinity_weights_model.pkl
+
+=== Unpivot Structure Recommendation ===
+
+ID columns (id_vars): []
+Value columns (value_vars): ['ProductName', 'Category']
+
+=== Example Pandas Code ===
+# Using pandas to unpivot (melt) the table:
+melted_table = pd.melt(
+    df,
+    id_vars=[],
+    value_vars=['ProductName', 'Category'],
+    var_name='variable',
+    value_name='value'
+)
+
+Affinity graph saved to 'results' directory
