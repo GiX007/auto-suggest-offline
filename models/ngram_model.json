@@ -1,1708 +1,1662 @@
 {
   "n": 3,
   "counts": {
-    "('json_normalize',)": {
-      "fillna": 208,
-      "dropna": 26,
-      "groupby": 12,
-      "merge": 5,
-      "apply": 11
-    },
     "('fillna',)": {
-      "merge": 1063,
-      "groupby": 888,
-      "apply": 212,
-      "concat": 200,
-      "pivot": 266,
-      "dropna": 98
-    },
-    "('json_normalize', 'fillna')": {
-      "merge": 159,
-      "pivot": 5,
-      "groupby": 6,
-      "concat": 2
-    },
-    "('merge',)": {
-      "dropna": 438,
-      "fillna": 774,
-      "apply": 394,
-      "groupby": 1370,
-      "pivot": 124,
-      "concat": 107,
-      "merge": 84
-    },
-    "('fillna', 'merge')": {
-      "dropna": 121,
-      "fillna": 130,
-      "groupby": 423,
-      "pivot": 27,
-      "apply": 69,
-      "concat": 25
-    },
-    "('json_normalize', 'fillna', 'merge')": {
-      "dropna": 32,
-      "groupby": 59,
-      "fillna": 21,
-      "concat": 1,
-      "apply": 5,
-      "pivot": 4
-    },
-    "('merge', 'fillna')": {
-      "groupby": 215,
-      "merge": 164,
-      "concat": 66,
-      "apply": 57,
-      "pivot": 43,
-      "dropna": 19
-    },
-    "('fillna', 'merge', 'fillna')": {
-      "groupby": 25,
-      "pivot": 5,
-      "merge": 45,
-      "concat": 5,
-      "apply": 5,
-      "dropna": 5
-    },
-    "('groupby',)": {
-      "pivot": 334,
-      "apply": 1088,
-      "merge": 1068,
-      "concat": 636,
-      "fillna": 316
-    },
-    "('fillna', 'groupby')": {
-      "pivot": 70,
-      "concat": 117,
-      "apply": 177,
-      "merge": 228,
-      "fillna": 61
-    },
-    "('merge', 'fillna', 'groupby')": {
-      "pivot": 11,
-      "merge": 52,
-      "apply": 54,
-      "concat": 26,
-      "fillna": 16
+      "pivot": 415,
+      "groupby": 1216,
+      "concat": 178,
+      "merge": 1792,
+      "dropna": 183,
+      "apply": 175
     },
     "('pivot',)": {
-      "fillna": 363,
-      "apply": 407,
-      "groupby": 89,
-      "concat": 74,
-      "merge": 155
+      "apply": 421,
+      "groupby": 182,
+      "fillna": 450,
+      "merge": 229,
+      "concat": 74
     },
-    "('groupby', 'pivot')": {
-      "fillna": 76,
-      "apply": 73,
-      "concat": 25,
-      "groupby": 20,
-      "merge": 53
-    },
-    "('fillna', 'groupby', 'pivot')": {
-      "fillna": 12,
+    "('fillna', 'pivot')": {
+      "apply": 211,
+      "fillna": 47,
+      "merge": 64,
       "groupby": 9,
-      "concat": 4,
-      "merge": 10,
-      "apply": 17
+      "concat": 5
     },
     "('apply',)": {
-      "groupby": 535,
-      "fillna": 377,
-      "merge": 530,
-      "dropna": 434,
-      "concat": 94
+      "groupby": 976,
+      "fillna": 404,
+      "merge": 749,
+      "dropna": 480,
+      "concat": 125
     },
     "('pivot', 'apply')": {
-      "groupby": 75,
-      "fillna": 53,
-      "concat": 10,
-      "merge": 99,
-      "dropna": 69
+      "groupby": 217,
+      "fillna": 26,
+      "merge": 50,
+      "concat": 5,
+      "dropna": 39
+    },
+    "('fillna', 'pivot', 'apply')": {
+      "groupby": 172,
+      "merge": 9
+    },
+    "('groupby',)": {
+      "concat": 1205,
+      "fillna": 374,
+      "merge": 1080,
+      "pivot": 439,
+      "apply": 1859
     },
     "('apply', 'groupby')": {
-      "apply": 117,
-      "merge": 135,
-      "concat": 82,
-      "fillna": 18,
-      "pivot": 32
+      "concat": 359,
+      "pivot": 28,
+      "apply": 106,
+      "merge": 123,
+      "fillna": 133
     },
     "('pivot', 'apply', 'groupby')": {
-      "apply": 25,
-      "merge": 22,
-      "concat": 8,
-      "pivot": 5
-    },
-    "('groupby', 'apply')": {
-      "fillna": 130,
-      "dropna": 193,
-      "groupby": 215,
-      "merge": 211,
-      "concat": 40
-    },
-    "('apply', 'groupby', 'apply')": {
-      "fillna": 11,
-      "merge": 14,
-      "dropna": 23,
-      "groupby": 30,
-      "concat": 3
-    },
-    "('dropna',)": {
-      "pivot": 378,
-      "groupby": 636,
-      "merge": 361,
-      "apply": 67,
-      "melt": 129
-    },
-    "('dropna', 'pivot')": {
-      "groupby": 18,
-      "fillna": 163,
-      "merge": 36,
-      "apply": 56,
-      "concat": 6
-    },
-    "('pivot', 'groupby')": {
-      "merge": 19,
-      "concat": 19,
-      "apply": 26,
-      "pivot": 3
-    },
-    "('dropna', 'pivot', 'groupby')": {
-      "merge": 7,
-      "concat": 3,
-      "apply": 2
-    },
-    "('groupby', 'merge')": {
-      "apply": 105,
-      "fillna": 181,
-      "pivot": 49,
-      "dropna": 104,
-      "groupby": 279,
-      "concat": 39
-    },
-    "('pivot', 'groupby', 'merge')": {
-      "apply": 4,
-      "groupby": 1,
-      "fillna": 7
-    },
-    "('merge', 'apply')": {
-      "fillna": 56,
-      "merge": 70,
-      "dropna": 70,
-      "concat": 15,
-      "groupby": 77
-    },
-    "('groupby', 'merge', 'apply')": {
-      "fillna": 18,
-      "groupby": 22,
-      "merge": 16,
-      "concat": 5,
-      "dropna": 15
-    },
-    "('apply', 'fillna')": {
-      "apply": 24,
-      "merge": 104,
-      "concat": 36,
-      "groupby": 78,
-      "dropna": 20,
-      "pivot": 9
-    },
-    "('merge', 'apply', 'fillna')": {
-      "apply": 3,
-      "merge": 16,
-      "groupby": 13,
-      "dropna": 5,
-      "pivot": 3,
-      "concat": 4
-    },
-    "('melt',)": {
-      "fillna": 175,
-      "concat": 33,
-      "groupby": 128,
-      "apply": 20,
-      "merge": 58
-    },
-    "('melt', 'fillna')": {
-      "groupby": 95,
-      "concat": 9,
-      "dropna": 8,
-      "merge": 15,
-      "apply": 6,
-      "pivot": 6
-    },
-    "('melt', 'fillna', 'groupby')": {
-      "concat": 23,
-      "merge": 15,
-      "pivot": 4,
-      "apply": 26,
-      "fillna": 3
+      "concat": 141,
+      "pivot": 1,
+      "merge": 27,
+      "apply": 9
     },
     "('concat',)": {
-      "merge": 131,
-      "apply": 113,
-      "fillna": 507,
-      "dropna": 251,
-      "groupby": 348
+      "dropna": 375,
+      "fillna": 713,
+      "groupby": 523,
+      "apply": 231,
+      "merge": 79
     },
     "('groupby', 'concat')": {
-      "merge": 48,
-      "fillna": 150,
-      "groupby": 124,
-      "dropna": 77,
-      "apply": 51
+      "dropna": 191,
+      "groupby": 331,
+      "fillna": 219,
+      "apply": 153,
+      "merge": 35
     },
-    "('fillna', 'groupby', 'concat')": {
-      "merge": 8,
-      "groupby": 21,
-      "apply": 9,
-      "fillna": 34,
-      "dropna": 9
+    "('apply', 'groupby', 'concat')": {
+      "dropna": 128,
+      "fillna": 127,
+      "apply": 6,
+      "groupby": 10,
+      "merge": 3
     },
-    "('concat', 'merge')": {
-      "apply": 39,
-      "fillna": 17,
-      "groupby": 33,
-      "dropna": 2,
-      "concat": 6,
-      "pivot": 1
+    "('dropna',)": {
+      "melt": 234,
+      "groupby": 1022,
+      "pivot": 399,
+      "merge": 410,
+      "apply": 76
     },
-    "('groupby', 'concat', 'merge')": {
-      "apply": 18,
-      "fillna": 5,
-      "groupby": 9,
-      "concat": 3,
-      "pivot": 1
+    "('concat', 'dropna')": {
+      "melt": 114,
+      "groupby": 91,
+      "pivot": 43,
+      "merge": 31,
+      "apply": 5
     },
-    "('concat', 'merge', 'apply')": {
-      "merge": 9,
-      "groupby": 16,
-      "dropna": 4
-    },
-    "('apply', 'merge')": {
-      "fillna": 62,
-      "groupby": 181,
-      "apply": 51,
-      "dropna": 73,
-      "pivot": 4,
-      "concat": 16
-    },
-    "('merge', 'apply', 'merge')": {
-      "fillna": 12,
-      "groupby": 32,
-      "dropna": 5,
-      "apply": 2,
-      "concat": 1
-    },
-    "('apply', 'merge', 'fillna')": {
-      "merge": 9,
-      "groupby": 15,
-      "dropna": 7,
-      "pivot": 3,
-      "concat": 5,
-      "apply": 2
-    },
-    "('merge', 'fillna', 'merge')": {
-      "groupby": 40,
-      "dropna": 11,
-      "fillna": 24,
-      "apply": 22,
-      "pivot": 6,
-      "concat": 3
-    },
-    "('concat', 'apply')": {
-      "merge": 9,
-      "dropna": 20,
-      "groupby": 25,
-      "concat": 10,
-      "fillna": 16
-    },
-    "('concat', 'apply', 'merge')": {
-      "groupby": 6,
+    "('groupby', 'concat', 'dropna')": {
+      "melt": 90,
+      "merge": 11,
+      "groupby": 31,
       "apply": 1,
-      "fillna": 1
+      "pivot": 8
     },
-    "('dropna', 'groupby')": {
-      "apply": 179,
-      "concat": 74,
-      "merge": 118,
-      "fillna": 45,
-      "pivot": 45
+    "('melt',)": {
+      "concat": 98,
+      "fillna": 230,
+      "merge": 48,
+      "groupby": 102,
+      "apply": 23
     },
-    "('dropna', 'groupby', 'apply')": {
-      "dropna": 38,
+    "('dropna', 'melt')": {
+      "concat": 83,
+      "fillna": 23,
+      "groupby": 43,
+      "merge": 21,
+      "apply": 7
+    },
+    "('concat', 'dropna', 'melt')": {
+      "concat": 67,
+      "groupby": 9,
+      "fillna": 7,
+      "merge": 2,
+      "apply": 1
+    },
+    "('melt', 'concat')": {
+      "fillna": 44,
+      "groupby": 8,
+      "apply": 5,
+      "merge": 2,
+      "dropna": 8
+    },
+    "('dropna', 'melt', 'concat')": {
+      "fillna": 44,
+      "groupby": 6,
+      "apply": 5
+    },
+    "('fillna', 'groupby')": {
+      "fillna": 49,
+      "concat": 448,
+      "merge": 196,
+      "pivot": 44,
+      "apply": 236
+    },
+    "('groupby', 'fillna')": {
+      "concat": 18,
+      "merge": 92,
+      "groupby": 144,
+      "apply": 22,
+      "pivot": 14
+    },
+    "('fillna', 'groupby', 'fillna')": {
+      "concat": 2,
+      "merge": 28,
+      "groupby": 5,
+      "pivot": 1
+    },
+    "('fillna', 'concat')": {
       "groupby": 37,
-      "fillna": 25,
-      "merge": 24,
-      "concat": 2
+      "dropna": 40,
+      "apply": 15,
+      "merge": 11,
+      "fillna": 29
     },
-    "('apply', 'dropna')": {
-      "groupby": 134,
-      "apply": 24,
-      "merge": 78,
-      "pivot": 38,
-      "melt": 23
+    "('groupby', 'fillna', 'concat')": {
+      "groupby": 8,
+      "apply": 3,
+      "dropna": 1
     },
-    "('groupby', 'apply', 'dropna')": {
-      "groupby": 63,
-      "apply": 14,
-      "merge": 29,
-      "pivot": 22,
-      "melt": 1
+    "('merge',)": {
+      "fillna": 1524,
+      "merge": 251,
+      "groupby": 1537,
+      "concat": 65,
+      "dropna": 527,
+      "apply": 468,
+      "pivot": 103
+    },
+    "('groupby', 'merge')": {
+      "fillna": 268,
+      "concat": 20,
+      "dropna": 63,
+      "groupby": 257,
+      "apply": 140,
+      "pivot": 29
     },
     "('concat', 'fillna')": {
-      "merge": 74,
-      "apply": 22,
-      "groupby": 232,
-      "pivot": 10,
-      "concat": 18,
-      "dropna": 21
+      "groupby": 278,
+      "pivot": 100,
+      "merge": 114,
+      "apply": 25,
+      "dropna": 9,
+      "concat": 26
     },
-    "('concat', 'fillna', 'merge')": {
-      "groupby": 22,
-      "fillna": 7,
-      "dropna": 17,
-      "apply": 3,
-      "pivot": 2
+    "('concat', 'fillna', 'groupby')": {
+      "concat": 192,
+      "apply": 21,
+      "fillna": 10,
+      "pivot": 4,
+      "merge": 11
+    },
+    "('fillna', 'groupby', 'concat')": {
+      "groupby": 214,
+      "apply": 119,
+      "fillna": 17,
+      "dropna": 7,
+      "merge": 1
+    },
+    "('concat', 'groupby')": {
+      "pivot": 176,
+      "merge": 93,
+      "apply": 61,
+      "fillna": 23,
+      "concat": 37
+    },
+    "('groupby', 'concat', 'groupby')": {
+      "pivot": 157,
+      "fillna": 13,
+      "merge": 37,
+      "apply": 28,
+      "concat": 11
+    },
+    "('groupby', 'pivot')": {
+      "groupby": 113,
+      "fillna": 75,
+      "apply": 66,
+      "merge": 48,
+      "concat": 21
+    },
+    "('concat', 'groupby', 'pivot')": {
+      "groupby": 106,
+      "merge": 4,
+      "concat": 7,
+      "fillna": 4
+    },
+    "('pivot', 'groupby')": {
+      "apply": 90,
+      "fillna": 13,
+      "merge": 16,
+      "concat": 18,
+      "pivot": 1
+    },
+    "('groupby', 'pivot', 'groupby')": {
+      "apply": 83,
+      "concat": 2
+    },
+    "('merge', 'merge')": {
+      "groupby": 223
     },
     "('merge', 'groupby')": {
-      "merge": 321,
-      "apply": 323,
-      "pivot": 84,
-      "concat": 181,
-      "fillna": 97
+      "apply": 658,
+      "merge": 261,
+      "concat": 119,
+      "pivot": 45,
+      "fillna": 66
+    },
+    "('merge', 'merge', 'groupby')": {
+      "apply": 198
+    },
+    "('groupby', 'apply')": {
+      "groupby": 540,
+      "fillna": 235,
+      "merge": 441,
+      "concat": 66,
+      "dropna": 143
+    },
+    "('merge', 'groupby', 'apply')": {
+      "groupby": 274,
+      "fillna": 120,
+      "merge": 37,
+      "concat": 15,
+      "dropna": 61
+    },
+    "('groupby', 'apply', 'groupby')": {
+      "concat": 184,
+      "apply": 55,
+      "merge": 40,
+      "fillna": 119,
+      "pivot": 16
+    },
+    "('pivot_table',)": {
+      "dropna": 27,
+      "fillna": 40,
+      "apply": 24,
+      "concat": 10,
+      "merge": 14
+    },
+    "('pivot_table', 'dropna')": {
+      "melt": 11,
+      "groupby": 9,
+      "apply": 2
+    },
+    "('pivot_table', 'dropna', 'melt')": {
+      "fillna": 9
+    },
+    "('melt', 'fillna')": {
+      "pivot": 10,
+      "groupby": 170,
+      "concat": 2,
+      "merge": 12,
+      "dropna": 5
+    },
+    "('dropna', 'melt', 'fillna')": {
+      "pivot": 4,
+      "merge": 8,
+      "dropna": 5
+    },
+    "('melt', 'fillna', 'pivot')": {
+      "apply": 8
+    },
+    "('dropna', 'pivot')": {
+      "fillna": 200,
+      "apply": 46,
+      "merge": 47,
+      "groupby": 11,
+      "concat": 11
+    },
+    "('pivot', 'fillna')": {
+      "merge": 265,
+      "groupby": 51,
+      "concat": 18,
+      "dropna": 13,
+      "apply": 5,
+      "pivot": 9
+    },
+    "('dropna', 'pivot', 'fillna')": {
+      "merge": 152,
+      "groupby": 15,
+      "pivot": 2
+    },
+    "('fillna', 'merge')": {
+      "fillna": 405,
+      "groupby": 518,
+      "dropna": 307,
+      "apply": 99,
+      "pivot": 40,
+      "concat": 7
+    },
+    "('pivot', 'fillna', 'merge')": {
+      "fillna": 132,
+      "dropna": 21,
+      "groupby": 45,
+      "pivot": 6,
+      "apply": 13
+    },
+    "('merge', 'fillna')": {
+      "merge": 533,
+      "groupby": 397,
+      "dropna": 131,
+      "pivot": 30,
+      "concat": 41,
+      "apply": 27
+    },
+    "('fillna', 'merge', 'fillna')": {
+      "merge": 117,
+      "groupby": 155,
+      "concat": 12,
+      "dropna": 9,
+      "apply": 7
+    },
+    "('merge', 'fillna', 'merge')": {
+      "groupby": 105,
+      "fillna": 196,
+      "apply": 46,
+      "dropna": 12,
+      "concat": 2,
+      "pivot": 9
     },
     "('fillna', 'merge', 'groupby')": {
+      "apply": 239,
+      "merge": 99,
+      "concat": 30,
+      "fillna": 19,
+      "pivot": 8
+    },
+    "('dropna', 'merge')": {
+      "fillna": 238,
+      "groupby": 45,
+      "apply": 29,
+      "dropna": 15,
+      "pivot": 2,
+      "concat": 2
+    },
+    "('dropna', 'merge', 'fillna')": {
+      "merge": 183,
+      "groupby": 8,
+      "pivot": 4,
+      "concat": 5,
+      "apply": 3
+    },
+    "('groupby', 'concat', 'fillna')": {
+      "pivot": 87,
+      "merge": 31,
+      "groupby": 18,
+      "dropna": 6,
+      "concat": 12,
+      "apply": 5
+    },
+    "('json_normalize',)": {
+      "fillna": 298,
+      "groupby": 11,
+      "dropna": 34,
+      "apply": 10,
+      "merge": 3
+    },
+    "('json_normalize', 'fillna')": {
+      "groupby": 9,
+      "merge": 248,
+      "apply": 3,
+      "concat": 5,
+      "pivot": 1
+    },
+    "('json_normalize', 'fillna', 'groupby')": {
+      "merge": 6,
+      "pivot": 1
+    },
+    "('fillna', 'groupby', 'merge')": {
+      "concat": 9,
+      "fillna": 93,
+      "dropna": 8,
+      "groupby": 18,
+      "apply": 12,
+      "pivot": 1
+    },
+    "('merge', 'concat')": {
+      "groupby": 14,
+      "fillna": 22,
+      "merge": 4,
+      "apply": 2,
+      "dropna": 2
+    },
+    "('groupby', 'merge', 'concat')": {
+      "groupby": 6,
+      "apply": 1,
+      "dropna": 2,
+      "merge": 2
+    },
+    "('merge', 'concat', 'groupby')": {
+      "pivot": 3,
+      "apply": 3,
+      "merge": 3
+    },
+    "('pivot', 'merge')": {
+      "dropna": 11,
+      "groupby": 86,
+      "apply": 34,
+      "fillna": 21,
+      "pivot": 1
+    },
+    "('apply', 'fillna')": {
+      "merge": 162,
+      "concat": 37,
+      "dropna": 7,
+      "pivot": 5,
+      "apply": 39,
+      "groupby": 42
+    },
+    "('groupby', 'apply', 'fillna')": {
+      "merge": 112,
+      "dropna": 3,
+      "pivot": 2,
+      "apply": 27,
+      "groupby": 17,
+      "concat": 6
+    },
+    "('merge', 'dropna')": {
+      "pivot": 41,
+      "groupby": 294,
+      "merge": 31,
+      "apply": 19,
+      "melt": 23
+    },
+    "('groupby', 'merge', 'dropna')": {
+      "pivot": 15,
+      "melt": 4,
+      "merge": 7,
+      "groupby": 12,
+      "apply": 4
+    },
+    "('merge', 'dropna', 'pivot')": {
+      "apply": 14,
+      "fillna": 9,
+      "groupby": 3
+    },
+    "('groupby', 'merge', 'groupby')": {
+      "apply": 79,
+      "merge": 42,
+      "concat": 21,
+      "fillna": 17,
+      "pivot": 12
+    },
+    "('merge', 'fillna', 'groupby')": {
+      "merge": 128,
+      "concat": 152,
+      "pivot": 7,
+      "apply": 25,
+      "fillna": 1
+    },
+    "('groupby', 'merge', 'fillna')": {
       "merge": 118,
-      "apply": 90,
+      "pivot": 12,
+      "apply": 12,
+      "groupby": 22,
+      "concat": 4
+    },
+    "('pivot', 'concat')": {
+      "dropna": 16,
+      "fillna": 17,
+      "groupby": 11,
+      "apply": 6,
+      "merge": 5
+    },
+    "('concat', 'groupby', 'merge')": {
+      "fillna": 23,
+      "apply": 15,
+      "groupby": 24,
+      "dropna": 7,
+      "pivot": 2
+    },
+    "('groupby', 'fillna', 'merge')": {
+      "dropna": 7,
+      "groupby": 32,
+      "apply": 11,
+      "pivot": 8,
+      "fillna": 9
+    },
+    "('fillna', 'merge', 'dropna')": {
+      "groupby": 218,
+      "merge": 13,
+      "pivot": 12,
+      "apply": 10
+    },
+    "('dropna', 'groupby')": {
+      "apply": 446,
+      "merge": 233,
+      "pivot": 37,
+      "concat": 75,
+      "fillna": 25
+    },
+    "('merge', 'dropna', 'groupby')": {
+      "apply": 182,
       "pivot": 18,
-      "concat": 53,
-      "fillna": 43
+      "merge": 20,
+      "concat": 12,
+      "fillna": 6
+    },
+    "('dropna', 'groupby', 'apply')": {
+      "groupby": 19,
+      "merge": 322,
+      "fillna": 1,
+      "dropna": 15,
+      "concat": 5
+    },
+    "('melt', 'concat', 'fillna')": {
+      "merge": 21
+    },
+    "('groupby', 'pivot', 'fillna')": {
+      "groupby": 11,
+      "concat": 5,
+      "dropna": 8,
+      "merge": 27,
+      "apply": 4
+    },
+    "('pivot', 'fillna', 'groupby')": {
+      "pivot": 7,
+      "concat": 10,
+      "merge": 10,
+      "fillna": 2,
+      "apply": 6
+    },
+    "('fillna', 'groupby', 'pivot')": {
+      "apply": 10,
+      "merge": 9,
+      "fillna": 11,
+      "concat": 1
+    },
+    "('groupby', 'pivot', 'apply')": {
+      "fillna": 8,
+      "groupby": 14,
+      "merge": 16,
+      "concat": 2,
+      "dropna": 9
+    },
+    "('pivot', 'apply', 'fillna')": {
+      "concat": 2,
+      "merge": 8,
+      "groupby": 6
+    },
+    "('apply', 'fillna', 'concat')": {
+      "groupby": 7,
+      "dropna": 13,
+      "apply": 6,
+      "fillna": 4
+    },
+    "('fillna', 'concat', 'groupby')": {
+      "apply": 9,
+      "concat": 6,
+      "merge": 6,
+      "fillna": 4
+    },
+    "('fillna', 'pivot', 'fillna')": {
+      "merge": 16,
+      "groupby": 11,
+      "dropna": 5,
+      "pivot": 1,
+      "concat": 1
+    },
+    "('merge', 'groupby', 'concat')": {
+      "groupby": 19,
+      "apply": 12,
+      "fillna": 29,
+      "dropna": 13,
+      "merge": 10
+    },
+    "('concat', 'apply')": {
+      "dropna": 124,
+      "concat": 8,
+      "groupby": 21,
+      "fillna": 13,
+      "merge": 12
+    },
+    "('apply', 'dropna')": {
+      "pivot": 57,
+      "groupby": 177,
+      "apply": 27,
+      "merge": 69,
+      "melt": 32
+    },
+    "('concat', 'apply', 'dropna')": {
+      "pivot": 7,
+      "groupby": 87,
+      "apply": 2,
+      "merge": 1
+    },
+    "('apply', 'dropna', 'pivot')": {
+      "fillna": 15,
+      "merge": 14,
+      "apply": 5,
+      "concat": 3
+    },
+    "('groupby', 'concat', 'apply')": {
+      "concat": 8,
+      "dropna": 106,
+      "fillna": 2,
+      "merge": 2,
+      "groupby": 1
+    },
+    "('json_normalize', 'fillna', 'merge')": {
+      "dropna": 214
+    },
+    "('concat', 'fillna', 'pivot')": {
+      "merge": 60,
+      "fillna": 8
+    },
+    "('apply', 'merge')": {
+      "fillna": 293,
+      "apply": 55,
+      "groupby": 150,
+      "concat": 17,
+      "dropna": 46,
+      "pivot": 1
+    },
+    "('groupby', 'apply', 'merge')": {
+      "fillna": 260,
+      "apply": 18,
+      "concat": 10,
+      "dropna": 15,
+      "groupby": 36,
+      "pivot": 1
+    },
+    "('apply', 'merge', 'fillna')": {
+      "dropna": 122,
+      "merge": 68,
+      "concat": 4,
+      "pivot": 6,
+      "groupby": 18
+    },
+    "('merge', 'dropna', 'merge')": {
+      "groupby": 7,
+      "apply": 3,
+      "fillna": 7,
+      "dropna": 1
+    },
+    "('merge', 'apply')": {
+      "groupby": 69,
+      "dropna": 80,
+      "fillna": 47,
+      "merge": 99,
+      "concat": 11
+    },
+    "('fillna', 'merge', 'apply')": {
+      "groupby": 13,
+      "fillna": 6,
+      "merge": 13,
+      "dropna": 14
+    },
+    "('merge', 'fillna', 'pivot')": {
+      "apply": 9,
+      "groupby": 4,
+      "fillna": 3,
+      "concat": 3,
+      "merge": 3
+    },
+    "('pivot', 'merge', 'groupby')": {
+      "merge": 17,
+      "apply": 20,
+      "concat": 5,
+      "fillna": 2
+    },
+    "('merge', 'groupby', 'merge')": {
+      "groupby": 66,
+      "fillna": 25,
+      "pivot": 12,
+      "apply": 64,
+      "concat": 4,
+      "dropna": 9
+    },
+    "('pivot', 'merge', 'dropna')": {
+      "groupby": 6,
+      "melt": 1,
+      "pivot": 1
+    },
+    "('concat', 'fillna', 'merge')": {
+      "groupby": 27,
+      "fillna": 13,
+      "apply": 10,
+      "dropna": 19,
+      "pivot": 3
+    },
+    "('pivot', 'fillna', 'concat')": {
+      "dropna": 12,
+      "fillna": 3
+    },
+    "('fillna', 'concat', 'dropna')": {
+      "groupby": 14,
+      "pivot": 6,
+      "merge": 4,
+      "melt": 5,
+      "apply": 2
+    },
+    "('apply', 'dropna', 'groupby')": {
+      "merge": 98,
+      "apply": 10,
+      "concat": 18,
+      "pivot": 4,
+      "fillna": 1
+    },
+    "('dropna', 'groupby', 'merge')": {
+      "groupby": 72,
+      "fillna": 63,
+      "dropna": 3,
+      "pivot": 8,
+      "apply": 8,
+      "concat": 4
+    },
+    "('fillna', 'apply')": {
+      "merge": 27,
+      "fillna": 25,
+      "groupby": 30,
+      "dropna": 21,
+      "concat": 2
+    },
+    "('json_normalize', 'fillna', 'apply')": {
+      "merge": 3
+    },
+    "('apply', 'fillna', 'merge')": {
+      "groupby": 91,
+      "fillna": 20,
+      "dropna": 10,
+      "apply": 1
+    },
+    "('fillna', 'dropna')": {
+      "groupby": 113,
+      "apply": 4,
+      "melt": 8,
+      "merge": 10,
+      "pivot": 7
+    },
+    "('merge', 'fillna', 'dropna')": {
+      "groupby": 101,
+      "merge": 2
+    },
+    "('fillna', 'dropna', 'groupby')": {
+      "merge": 78,
+      "concat": 4,
+      "apply": 3
+    },
+    "('melt', 'merge')": {
+      "groupby": 27,
+      "pivot": 4,
+      "fillna": 6,
+      "apply": 2,
+      "dropna": 1
+    },
+    "('melt', 'merge', 'groupby')": {
+      "concat": 9,
+      "merge": 9,
+      "apply": 4
+    },
+    "('melt', 'fillna', 'groupby')": {
+      "apply": 149
+    },
+    "('fillna', 'groupby', 'apply')": {
+      "groupby": 153,
+      "concat": 13,
+      "merge": 15,
+      "dropna": 2,
+      "fillna": 2
+    },
+    "('apply', 'merge', 'apply')": {
+      "dropna": 14,
+      "concat": 7,
+      "groupby": 8,
+      "fillna": 1,
+      "merge": 6
     },
     "('merge', 'apply', 'dropna')": {
       "groupby": 15,
       "merge": 17,
-      "pivot": 8,
-      "apply": 2,
-      "melt": 4
-    },
-    "('apply', 'dropna', 'groupby')": {
-      "concat": 28,
-      "apply": 18,
-      "merge": 21,
-      "pivot": 17,
-      "fillna": 2
-    },
-    "('dropna', 'groupby', 'concat')": {
-      "fillna": 14,
-      "groupby": 18,
-      "apply": 3,
-      "dropna": 11,
-      "merge": 5
-    },
-    "('groupby', 'concat', 'fillna')": {
-      "merge": 41,
-      "pivot": 1,
-      "groupby": 42,
-      "concat": 8,
-      "apply": 9
-    },
-    "('groupby', 'pivot', 'apply')": {
-      "fillna": 9,
-      "merge": 30,
-      "dropna": 6,
-      "groupby": 8
-    },
-    "('pivot', 'apply', 'fillna')": {
-      "apply": 12,
-      "groupby": 8,
-      "merge": 14,
-      "dropna": 3
-    },
-    "('fillna', 'apply')": {
-      "groupby": 46,
-      "dropna": 29,
-      "merge": 38,
-      "fillna": 38
-    },
-    "('apply', 'fillna', 'apply')": {
-      "groupby": 4,
-      "dropna": 7,
-      "merge": 4,
-      "fillna": 2
-    },
-    "('apply', 'fillna', 'merge')": {
-      "groupby": 35,
-      "fillna": 25,
-      "apply": 8,
-      "dropna": 5,
-      "concat": 2
-    },
-    "('pivot', 'fillna')": {
-      "merge": 104,
-      "pivot": 10,
-      "apply": 35,
-      "dropna": 13,
-      "groupby": 80,
-      "concat": 14
-    },
-    "('dropna', 'pivot', 'fillna')": {
-      "merge": 42,
-      "pivot": 3,
-      "groupby": 39,
-      "dropna": 2,
-      "apply": 18,
-      "concat": 9
-    },
-    "('pivot', 'fillna', 'merge')": {
-      "groupby": 45,
-      "apply": 13,
-      "dropna": 12,
-      "fillna": 3,
-      "concat": 4,
-      "pivot": 1
-    },
-    "('merge', 'groupby', 'merge')": {
-      "fillna": 64,
-      "dropna": 22,
-      "groupby": 99,
-      "concat": 11,
-      "apply": 20,
-      "pivot": 10
-    },
-    "('fillna', 'concat')": {
-      "fillna": 26,
-      "dropna": 46,
-      "groupby": 41,
-      "merge": 13,
-      "apply": 23
-    },
-    "('merge', 'fillna', 'concat')": {
-      "fillna": 12,
-      "dropna": 11,
-      "groupby": 19,
-      "apply": 4,
-      "merge": 2
-    },
-    "('fillna', 'concat', 'fillna')": {
-      "apply": 4,
-      "groupby": 11,
-      "merge": 2,
-      "concat": 1,
-      "dropna": 1
-    },
-    "('concat', 'fillna', 'apply')": {
-      "groupby": 4,
-      "merge": 3,
-      "dropna": 6,
-      "fillna": 1
-    },
-    "('fillna', 'apply', 'groupby')": {
-      "apply": 14,
-      "merge": 10,
-      "concat": 6,
-      "pivot": 2
-    },
-    "('fillna', 'pivot')": {
-      "apply": 159,
-      "fillna": 26,
-      "concat": 8,
-      "merge": 10,
-      "groupby": 6
-    },
-    "('fillna', 'pivot', 'apply')": {
-      "concat": 9,
-      "dropna": 29,
-      "groupby": 33,
-      "merge": 34,
-      "fillna": 14
-    },
-    "('apply', 'concat')": {
-      "dropna": 22,
-      "groupby": 19,
-      "merge": 5,
-      "fillna": 13,
-      "apply": 7
-    },
-    "('pivot', 'apply', 'concat')": {
-      "dropna": 5,
-      "groupby": 3
-    },
-    "('concat', 'dropna')": {
-      "groupby": 82,
-      "merge": 29,
-      "melt": 25,
-      "pivot": 44,
-      "apply": 3
-    },
-    "('apply', 'concat', 'dropna')": {
-      "groupby": 7,
-      "merge": 3,
-      "pivot": 3,
-      "melt": 1
-    },
-    "('concat', 'dropna', 'groupby')": {
-      "merge": 15,
-      "apply": 20,
-      "concat": 13,
-      "fillna": 6,
-      "pivot": 3
-    },
-    "('dropna', 'groupby', 'merge')": {
-      "pivot": 12,
-      "groupby": 35,
-      "dropna": 8,
-      "concat": 9,
-      "fillna": 14,
-      "apply": 3
-    },
-    "('merge', 'pivot')": {
-      "apply": 26,
-      "merge": 19,
-      "fillna": 32,
-      "concat": 7
-    },
-    "('groupby', 'merge', 'pivot')": {
-      "apply": 11,
-      "merge": 6,
-      "fillna": 10,
-      "concat": 6
-    },
-    "('merge', 'pivot', 'apply')": {
-      "groupby": 4,
-      "fillna": 10,
-      "dropna": 3
-    },
-    "('pivot', 'apply', 'merge')": {
-      "apply": 10,
-      "groupby": 40,
-      "dropna": 13,
-      "fillna": 7,
-      "concat": 2,
-      "pivot": 2
-    },
-    "('apply', 'merge', 'apply')": {
-      "concat": 3,
-      "groupby": 10,
-      "fillna": 5,
-      "merge": 8,
-      "dropna": 10
-    },
-    "('merge', 'apply', 'concat')": {
-      "dropna": 5,
-      "apply": 3,
-      "fillna": 1
-    },
-    "('groupby', 'apply', 'groupby')": {
-      "apply": 31,
-      "merge": 45,
-      "fillna": 15,
-      "pivot": 9,
-      "concat": 46
-    },
-    "('pivot', 'fillna', 'pivot')": {
-      "apply": 2,
-      "fillna": 1,
-      "concat": 3
-    },
-    "('apply', 'fillna', 'concat')": {
-      "dropna": 10,
-      "groupby": 10,
-      "apply": 7
-    },
-    "('fillna', 'concat', 'dropna')": {
-      "groupby": 17,
-      "pivot": 7,
-      "melt": 4,
-      "merge": 5
-    },
-    "('dropna', 'merge')": {
-      "apply": 28,
-      "dropna": 22,
-      "fillna": 120,
-      "groupby": 81,
-      "pivot": 7,
-      "concat": 5
-    },
-    "('concat', 'dropna', 'merge')": {
-      "apply": 7,
-      "fillna": 3,
-      "groupby": 5,
-      "dropna": 4
-    },
-    "('merge', 'groupby', 'apply')": {
-      "dropna": 69,
-      "merge": 43,
-      "groupby": 69,
-      "fillna": 36,
-      "concat": 15
-    },
-    "('apply', 'merge', 'groupby')": {
-      "apply": 44,
-      "concat": 21,
       "pivot": 16,
-      "merge": 32,
-      "fillna": 21
-    },
-    "('fillna', 'groupby', 'merge')": {
-      "dropna": 17,
-      "groupby": 55,
-      "apply": 19,
-      "concat": 17,
-      "pivot": 16,
-      "fillna": 35
-    },
-    "('merge', 'dropna')": {
-      "pivot": 55,
-      "groupby": 166,
-      "merge": 53,
-      "apply": 13,
-      "melt": 32
-    },
-    "('groupby', 'merge', 'dropna')": {
-      "pivot": 17,
-      "groupby": 25,
-      "merge": 6,
-      "melt": 14,
-      "apply": 8
-    },
-    "('merge', 'dropna', 'pivot')": {
-      "groupby": 6,
-      "merge": 9,
-      "fillna": 10,
-      "apply": 11
-    },
-    "('pivot', 'groupby', 'concat')": {
-      "fillna": 5,
-      "dropna": 6,
-      "groupby": 4
-    },
-    "('groupby', 'apply', 'fillna')": {
-      "groupby": 41,
-      "merge": 28,
-      "concat": 9,
-      "apply": 3,
-      "pivot": 4
-    },
-    "('apply', 'fillna', 'groupby')": {
-      "merge": 23,
-      "concat": 9,
-      "apply": 6,
-      "pivot": 8,
-      "fillna": 5
-    },
-    "('groupby', 'merge', 'groupby')": {
-      "merge": 70,
-      "apply": 68,
-      "pivot": 19,
-      "concat": 21,
-      "fillna": 12
-    },
-    "('dropna', 'apply')": {
-      "groupby": 10,
-      "merge": 14,
-      "fillna": 10,
-      "dropna": 8
-    },
-    "('apply', 'dropna', 'apply')": {
-      "groupby": 4,
-      "merge": 9
-    },
-    "('concat', 'groupby')": {
-      "merge": 56,
-      "apply": 86,
-      "fillna": 35,
-      "concat": 39,
-      "pivot": 26
-    },
-    "('concat', 'groupby', 'merge')": {
-      "groupby": 12,
-      "dropna": 10,
-      "fillna": 12,
-      "apply": 5
-    },
-    "('concat', 'fillna', 'groupby')": {
-      "apply": 45,
-      "merge": 60,
-      "pivot": 13,
-      "concat": 29,
-      "fillna": 26
-    },
-    "('fillna', 'groupby', 'apply')": {
-      "merge": 55,
-      "fillna": 19,
-      "groupby": 20,
-      "dropna": 32,
-      "concat": 1
-    },
-    "('groupby', 'apply', 'merge')": {
-      "fillna": 29,
-      "groupby": 59,
-      "pivot": 2,
-      "apply": 19,
-      "dropna": 27,
-      "concat": 9
-    },
-    "('pivot', 'merge')": {
-      "groupby": 52,
-      "dropna": 24,
-      "concat": 3,
-      "fillna": 8,
-      "apply": 20,
-      "pivot": 1
-    },
-    "('pivot', 'merge', 'groupby')": {
-      "pivot": 6,
-      "apply": 20,
-      "merge": 7,
-      "concat": 3
-    },
-    "('apply', 'groupby', 'merge')": {
-      "groupby": 34,
-      "fillna": 26,
-      "apply": 8,
-      "dropna": 7,
-      "pivot": 8,
-      "concat": 1
-    },
-    "('pivot_table',)": {
-      "concat": 19,
-      "merge": 24,
-      "dropna": 17,
-      "fillna": 18,
-      "apply": 15
-    },
-    "('pivot_table', 'concat')": {
-      "fillna": 5,
-      "merge": 6,
-      "dropna": 6
-    },
-    "('pivot_table', 'concat', 'fillna')": {
-      "groupby": 4
-    },
-    "('melt', 'fillna', 'concat')": {
-      "dropna": 6
-    },
-    "('melt', 'concat')": {
-      "fillna": 13,
-      "merge": 9,
-      "dropna": 4
-    },
-    "('dropna', 'pivot', 'merge')": {
-      "groupby": 14,
-      "dropna": 3,
-      "fillna": 3,
-      "apply": 3,
-      "pivot": 1
-    },
-    "('merge', 'dropna', 'groupby')": {
-      "concat": 18,
-      "apply": 25,
-      "merge": 37,
-      "pivot": 20,
-      "fillna": 17
-    },
-    "('groupby', 'concat', 'groupby')": {
-      "apply": 30,
-      "merge": 14,
-      "fillna": 12,
-      "concat": 21,
-      "pivot": 5
-    },
-    "('groupby', 'fillna')": {
-      "merge": 103,
-      "concat": 15,
-      "groupby": 74,
-      "apply": 17,
-      "pivot": 20,
-      "dropna": 5
-    },
-    "('groupby', 'fillna', 'merge')": {
-      "groupby": 42,
-      "apply": 7,
-      "dropna": 7,
-      "fillna": 10,
-      "concat": 2,
-      "pivot": 3
-    },
-    "('pivot', 'concat')": {
-      "fillna": 21,
-      "groupby": 14,
       "apply": 4,
-      "merge": 5,
-      "dropna": 7
-    },
-    "('groupby', 'pivot', 'concat')": {
-      "fillna": 8,
-      "merge": 4,
-      "groupby": 5
-    },
-    "('pivot', 'concat', 'fillna')": {
-      "concat": 3,
-      "merge": 3,
-      "groupby": 4,
-      "apply": 3
-    },
-    "('concat', 'fillna', 'concat')": {
-      "groupby": 5,
-      "merge": 5,
-      "fillna": 1,
-      "apply": 2
-    },
-    "('merge', 'apply', 'groupby')": {
-      "concat": 11,
-      "fillna": 3,
-      "merge": 19,
-      "apply": 12,
-      "pivot": 8
-    },
-    "('merge', 'groupby', 'concat')": {
-      "dropna": 29,
-      "groupby": 46,
-      "apply": 9,
-      "merge": 6,
-      "fillna": 32
-    },
-    "('groupby', 'concat', 'dropna')": {
-      "groupby": 25,
-      "pivot": 13,
-      "merge": 6,
-      "apply": 3,
-      "melt": 5
-    },
-    "('fillna', 'merge', 'dropna')": {
-      "merge": 25,
-      "groupby": 44,
-      "pivot": 17,
       "melt": 2
-    },
-    "('merge', 'dropna', 'merge')": {
-      "dropna": 6,
-      "groupby": 17,
-      "pivot": 3,
-      "apply": 1,
-      "fillna": 5,
-      "concat": 3
-    },
-    "('groupby', 'merge', 'fillna')": {
-      "groupby": 34,
-      "apply": 23,
-      "merge": 40,
-      "pivot": 13,
-      "concat": 11,
-      "dropna": 1
-    },
-    "('merge', 'fillna', 'pivot')": {
-      "apply": 9,
-      "merge": 9,
-      "groupby": 6,
-      "fillna": 4,
-      "concat": 3
-    },
-    "('pivot_table', 'merge')": {
-      "pivot": 6,
-      "apply": 5,
-      "groupby": 8
-    },
-    "('pivot_table', 'merge', 'pivot')": {
-      "merge": 5
-    },
-    "('merge', 'pivot', 'merge')": {
-      "dropna": 4,
-      "groupby": 6,
-      "fillna": 1
-    },
-    "('groupby', 'apply', 'concat')": {
-      "groupby": 9,
-      "merge": 5,
-      "fillna": 12,
-      "dropna": 2
-    },
-    "('apply', 'concat', 'groupby')": {
-      "fillna": 2,
-      "concat": 6,
-      "merge": 4
-    },
-    "('merge', 'groupby', 'pivot')": {
-      "fillna": 13,
-      "concat": 9,
-      "apply": 16,
-      "groupby": 3,
-      "merge": 16
-    },
-    "('dropna', 'apply', 'merge')": {
-      "fillna": 3,
-      "groupby": 5,
-      "apply": 4
-    },
-    "('dropna', 'merge', 'fillna')": {
-      "dropna": 6,
-      "merge": 27,
-      "concat": 21,
-      "pivot": 12,
-      "groupby": 10,
-      "apply": 9
-    },
-    "('fillna', 'dropna')": {
-      "groupby": 26,
-      "apply": 2,
-      "melt": 10,
-      "pivot": 20,
-      "merge": 19
-    },
-    "('merge', 'fillna', 'dropna')": {
-      "groupby": 11,
-      "melt": 4
-    },
-    "('fillna', 'dropna', 'groupby')": {
-      "apply": 7,
-      "fillna": 4,
-      "concat": 4,
-      "merge": 2
-    },
-    "('pivot_table', 'dropna')": {
-      "merge": 3,
-      "groupby": 4,
-      "pivot": 3,
-      "melt": 3
-    },
-    "('pivot_table', 'dropna', 'merge')": {
-      "groupby": 3
-    },
-    "('dropna', 'merge', 'groupby')": {
-      "apply": 24,
-      "fillna": 13,
-      "concat": 14,
-      "merge": 3
-    },
-    "('pivot_table', 'dropna', 'groupby')": {
-      "fillna": 4
-    },
-    "('dropna', 'groupby', 'fillna')": {
-      "concat": 5,
-      "groupby": 15,
-      "merge": 9,
-      "pivot": 7
-    },
-    "('groupby', 'fillna', 'concat')": {
-      "groupby": 6,
-      "apply": 3,
-      "dropna": 1
-    },
-    "('fillna', 'concat', 'groupby')": {
-      "concat": 4,
-      "fillna": 6,
-      "apply": 8,
-      "merge": 5,
-      "pivot": 1
-    },
-    "('fillna', 'concat', 'merge')": {
-      "apply": 5,
-      "fillna": 4
-    },
-    "('fillna', 'merge', 'pivot')": {
-      "apply": 9,
-      "fillna": 5,
-      "merge": 3
-    },
-    "('apply', 'dropna', 'merge')": {
-      "apply": 7,
-      "fillna": 11,
-      "groupby": 28,
-      "dropna": 4,
-      "pivot": 2
-    },
-    "('dropna', 'merge', 'apply')": {
-      "groupby": 5,
-      "merge": 4,
-      "dropna": 9,
-      "fillna": 1
-    },
-    "('dropna', 'melt')": {
-      "fillna": 24,
-      "groupby": 38,
-      "merge": 28,
-      "concat": 2,
-      "apply": 1
-    },
-    "('concat', 'dropna', 'melt')": {
-      "fillna": 6,
-      "groupby": 4,
-      "merge": 3,
-      "concat": 1,
-      "apply": 1
-    },
-    "('merge', 'pivot', 'fillna')": {
-      "merge": 14,
-      "pivot": 2,
-      "groupby": 5,
-      "apply": 1
-    },
-    "('json_normalize', 'dropna')": {
-      "pivot": 9,
-      "groupby": 10,
-      "melt": 2
-    },
-    "('json_normalize', 'groupby')": {
-      "apply": 10
-    },
-    "('json_normalize', 'groupby', 'apply')": {
-      "groupby": 4,
-      "dropna": 5
     },
     "('concat', 'groupby', 'apply')": {
-      "merge": 21,
       "fillna": 6,
-      "dropna": 14,
-      "groupby": 20
-    },
-    "('merge', 'fillna', 'apply')": {
-      "dropna": 6,
-      "merge": 17,
-      "groupby": 11,
-      "fillna": 7
-    },
-    "('merge', 'concat')": {
-      "groupby": 28,
-      "merge": 9,
-      "dropna": 15,
-      "fillna": 13,
-      "apply": 4
-    },
-    "('groupby', 'merge', 'concat')": {
-      "groupby": 16,
-      "dropna": 2,
-      "apply": 1,
-      "merge": 3
-    },
-    "('concat', 'groupby', 'pivot')": {
-      "apply": 12,
-      "concat": 2,
-      "merge": 4,
-      "fillna": 3
-    },
-    "('fillna', 'apply', 'merge')": {
-      "groupby": 8,
-      "dropna": 9,
-      "concat": 4,
-      "apply": 4
-    },
-    "('groupby', 'pivot', 'fillna')": {
-      "merge": 15,
-      "apply": 10,
-      "dropna": 9,
-      "groupby": 17,
-      "concat": 1
-    },
-    "('fillna', 'merge', 'apply')": {
-      "dropna": 14,
-      "merge": 8,
-      "groupby": 10,
-      "concat": 1,
-      "fillna": 12
-    },
-    "('apply', 'merge', 'dropna')": {
-      "apply": 3,
-      "merge": 14,
-      "groupby": 27,
-      "pivot": 7,
-      "melt": 4
-    },
-    "('merge', 'dropna', 'apply')": {
-      "groupby": 2,
-      "fillna": 6
-    },
-    "('dropna', 'apply', 'groupby')": {
-      "concat": 1,
-      "merge": 4
-    },
-    "('concat', 'dropna', 'pivot')": {
-      "merge": 3,
-      "groupby": 4,
-      "fillna": 16,
-      "apply": 7
-    },
-    "('pivot_table', 'merge', 'apply')": {
-      "groupby": 3
-    },
-    "('apply', 'groupby', 'pivot')": {
-      "merge": 11,
-      "fillna": 8,
+      "merge": 12,
       "groupby": 6,
+      "dropna": 17
+    },
+    "('merge', 'apply', 'fillna')": {
+      "concat": 3,
+      "groupby": 10,
+      "merge": 22,
       "apply": 1
     },
-    "('pivot', 'fillna', 'apply')": {
-      "groupby": 8,
-      "merge": 7,
-      "fillna": 6,
-      "dropna": 1
+    "('pivot', 'groupby', 'apply')": {
+      "groupby": 4,
+      "fillna": 52,
+      "merge": 3
     },
     "('pivot', 'fillna', 'dropna')": {
       "apply": 2,
-      "pivot": 3,
-      "merge": 6
-    },
-    "('fillna', 'dropna', 'apply')": {
-      "merge": 1
-    },
-    "('pivot_table', 'fillna')": {
-      "groupby": 6,
-      "merge": 4,
-      "pivot": 1,
-      "concat": 2
-    },
-    "('pivot_table', 'fillna', 'groupby')": {
-      "merge": 5
-    },
-    "('dropna', 'melt', 'fillna')": {
-      "dropna": 8,
       "merge": 6,
-      "concat": 3
-    },
-    "('melt', 'fillna', 'dropna')": {
-      "melt": 2,
-      "pivot": 4
-    },
-    "('melt', 'groupby')": {
-      "concat": 30,
-      "merge": 29,
-      "pivot": 14,
-      "apply": 20,
-      "fillna": 4
-    },
-    "('dropna', 'melt', 'groupby')": {
-      "concat": 3,
-      "merge": 10,
-      "pivot": 1,
-      "fillna": 4,
-      "apply": 5
-    },
-    "('melt', 'apply')": {
-      "groupby": 10,
-      "concat": 1,
-      "dropna": 4
-    },
-    "('melt', 'apply', 'groupby')": {
-      "apply": 4,
-      "concat": 4
-    },
-    "('dropna', 'groupby', 'pivot')": {
-      "concat": 3,
-      "fillna": 7,
-      "apply": 15,
-      "merge": 5,
-      "groupby": 2
-    },
-    "('json_normalize', 'merge')": {
-      "pivot": 4
-    },
-    "('json_normalize', 'merge', 'pivot')": {
-      "fillna": 3
-    },
-    "('fillna', 'pivot', 'concat')": {
-      "apply": 2,
-      "groupby": 1,
-      "fillna": 2
-    },
-    "('pivot', 'concat', 'apply')": {
-      "dropna": 3
-    },
-    "('concat', 'apply', 'dropna')": {
-      "groupby": 13,
-      "pivot": 1
-    },
-    "('pivot', 'apply', 'dropna')": {
-      "groupby": 12,
-      "melt": 9,
-      "merge": 23,
-      "pivot": 5,
-      "apply": 1
-    },
-    "('merge', 'groupby', 'fillna')": {
-      "groupby": 30,
-      "merge": 29,
-      "apply": 4,
-      "dropna": 4,
-      "pivot": 1
-    },
-    "('groupby', 'fillna', 'groupby')": {
-      "merge": 19,
-      "concat": 14,
-      "apply": 7,
-      "pivot": 9,
-      "fillna": 2
-    },
-    "('json_normalize', 'fillna', 'pivot')": {
-      "fillna": 5
-    },
-    "('fillna', 'pivot', 'fillna')": {
-      "merge": 5,
-      "groupby": 5,
-      "concat": 1,
-      "dropna": 2,
-      "pivot": 1
-    },
-    "('pivot', 'fillna', 'groupby')": {
-      "merge": 20,
-      "apply": 17,
-      "pivot": 5,
-      "concat": 12
-    },
-    "('fillna', 'merge', 'concat')": {
-      "merge": 2,
-      "groupby": 4,
-      "dropna": 4,
-      "fillna": 7
-    },
-    "('merge', 'concat', 'merge')": {
-      "groupby": 3,
-      "concat": 2,
-      "fillna": 1
-    },
-    "('groupby', 'concat', 'apply')": {
-      "groupby": 8,
-      "merge": 1,
-      "concat": 8,
-      "fillna": 9,
-      "dropna": 9
-    },
-    "('concat', 'apply', 'groupby')": {
-      "pivot": 3,
-      "apply": 10,
-      "concat": 1,
-      "merge": 3
-    },
-    "('concat', 'merge', 'fillna')": {
-      "groupby": 8,
-      "concat": 4,
-      "merge": 1
-    },
-    "('apply', 'concat', 'merge')": {
-      "groupby": 3
-    },
-    "('concat', 'merge', 'groupby')": {
-      "apply": 10,
-      "concat": 12,
-      "merge": 1
-    },
-    "('merge', 'merge')": {
-      "groupby": 70
-    },
-    "('merge', 'merge', 'groupby')": {
-      "apply": 13,
-      "concat": 9,
-      "merge": 19,
-      "pivot": 12
-    },
-    "('melt', 'groupby', 'concat')": {
-      "fillna": 14,
-      "merge": 3,
-      "apply": 6
-    },
-    "('fillna', 'pivot', 'groupby')": {
-      "apply": 1,
-      "merge": 2
-    },
-    "('pivot', 'groupby', 'apply')": {
-      "merge": 5,
-      "groupby": 10,
-      "dropna": 1,
-      "fillna": 1
-    },
-    "('pivot', 'concat', 'merge')": {
-      "apply": 1,
-      "groupby": 2
-    },
-    "('pivot', 'concat', 'dropna')": {
-      "pivot": 6
-    },
-    "('fillna', 'dropna', 'pivot')": {
-      "apply": 6,
-      "fillna": 3,
-      "merge": 3,
-      "groupby": 1
-    },
-    "('apply', 'dropna', 'melt')": {
-      "fillna": 10,
-      "merge": 3,
-      "groupby": 4
-    },
-    "('pivot_table', 'merge', 'groupby')": {
-      "pivot": 5
-    },
-    "('melt', 'fillna', 'merge')": {
-      "groupby": 8,
-      "fillna": 1,
-      "pivot": 2,
-      "dropna": 1
-    },
-    "('apply', 'dropna', 'pivot')": {
-      "fillna": 9,
-      "apply": 4,
-      "merge": 10,
-      "concat": 1
-    },
-    "('melt', 'concat', 'fillna')": {
-      "groupby": 9
-    },
-    "('melt', 'merge')": {
-      "pivot": 4,
-      "groupby": 29,
-      "fillna": 12,
-      "apply": 1
-    },
-    "('melt', 'merge', 'pivot')": {
-      "merge": 3
-    },
-    "('melt', 'fillna', 'apply')": {
-      "fillna": 5
-    },
-    "('fillna', 'apply', 'fillna')": {
-      "merge": 10,
-      "concat": 6,
-      "groupby": 2,
-      "dropna": 7,
       "pivot": 2
     },
-    "('groupby', 'pivot', 'groupby')": {
-      "concat": 5,
-      "apply": 8
-    },
-    "('apply', 'groupby', 'fillna')": {
-      "apply": 1,
-      "merge": 1,
-      "groupby": 5,
-      "concat": 4
-    },
-    "('fillna', 'pivot', 'merge')": {
-      "dropna": 4,
-      "fillna": 2
-    },
-    "('pivot', 'merge', 'dropna')": {
-      "groupby": 13,
-      "merge": 3,
-      "melt": 1
-    },
-    "('groupby', 'pivot', 'merge')": {
-      "concat": 3,
-      "groupby": 19,
-      "dropna": 10,
-      "fillna": 2,
-      "apply": 4
-    },
-    "('pivot', 'merge', 'concat')": {
-      "groupby": 2
-    },
-    "('merge', 'concat', 'groupby')": {
-      "merge": 4,
-      "pivot": 2,
-      "concat": 3,
-      "apply": 3,
-      "fillna": 1
-    },
-    "('concat', 'groupby', 'fillna')": {
+    "('dropna', 'apply')": {
       "merge": 18,
-      "groupby": 5,
-      "apply": 3
-    },
-    "('pivot_table', 'apply')": {
-      "merge": 8,
-      "dropna": 1,
+      "groupby": 17,
       "fillna": 3,
-      "concat": 1
+      "concat": 3,
+      "dropna": 9
     },
-    "('json_normalize', 'dropna', 'pivot')": {
-      "concat": 5,
-      "apply": 3
+    "('fillna', 'dropna', 'apply')": {
+      "merge": 1,
+      "groupby": 1
     },
-    "('dropna', 'pivot', 'concat')": {
-      "groupby": 4
-    },
-    "('pivot', 'concat', 'groupby')": {
-      "pivot": 7,
-      "apply": 2
-    },
-    "('melt', 'concat', 'dropna')": {
-      "pivot": 4
-    },
-    "('dropna', 'pivot', 'apply')": {
-      "fillna": 8,
-      "groupby": 12,
-      "concat": 1,
-      "merge": 9,
-      "dropna": 8
-    },
-    "('fillna', 'groupby', 'fillna')": {
-      "merge": 18,
-      "concat": 2,
-      "groupby": 15,
-      "pivot": 3,
-      "apply": 6
-    },
-    "('merge', 'concat', 'dropna')": {
-      "groupby": 5,
-      "melt": 2,
+    "('apply', 'merge', 'concat')": {
+      "fillna": 9,
       "merge": 2
     },
-    "('apply', 'groupby', 'concat')": {
-      "groupby": 13,
-      "dropna": 15,
-      "fillna": 19,
-      "apply": 12
-    },
-    "('concat', 'fillna', 'pivot')": {
-      "fillna": 7
-    },
-    "('fillna', 'dropna', 'merge')": {
-      "fillna": 1,
-      "dropna": 5,
-      "groupby": 3,
-      "apply": 5
-    },
-    "('concat', 'groupby', 'concat')": {
-      "merge": 9,
-      "groupby": 7,
-      "dropna": 2,
-      "fillna": 6
-    },
-    "('apply', 'fillna', 'dropna')": {
+    "('merge', 'concat', 'fillna')": {
       "pivot": 4,
       "merge": 4,
-      "groupby": 3,
-      "melt": 4
+      "groupby": 5,
+      "dropna": 3
     },
-    "('melt', 'merge', 'groupby')": {
-      "concat": 10,
-      "apply": 9,
-      "fillna": 1,
-      "merge": 2
-    },
-    "('json_normalize', 'apply')": {
-      "fillna": 6,
-      "merge": 3
-    },
-    "('json_normalize', 'fillna', 'groupby')": {
-      "merge": 5
-    },
-    "('melt', 'groupby', 'merge')": {
-      "dropna": 12,
-      "apply": 3,
-      "groupby": 6,
-      "fillna": 1,
+    "('apply', 'groupby', 'merge')": {
+      "fillna": 28,
+      "apply": 11,
+      "dropna": 9,
+      "groupby": 32,
+      "pivot": 1,
       "concat": 1
     },
-    "('merge', 'dropna', 'melt')": {
-      "groupby": 11,
-      "merge": 10,
+    "('merge', 'fillna', 'apply')": {
+      "merge": 8,
+      "fillna": 4,
+      "dropna": 4,
+      "groupby": 4
+    },
+    "('fillna', 'apply', 'merge')": {
+      "dropna": 7,
+      "concat": 1,
+      "groupby": 10
+    },
+    "('apply', 'merge', 'dropna')": {
+      "apply": 3,
+      "groupby": 15,
+      "pivot": 6,
+      "merge": 9
+    },
+    "('merge', 'dropna', 'apply')": {
+      "groupby": 7,
+      "dropna": 3,
+      "merge": 3
+    },
+    "('dropna', 'apply', 'groupby')": {
+      "concat": 5,
+      "merge": 4
+    },
+    "('json_normalize', 'groupby')": {
+      "apply": 9
+    },
+    "('json_normalize', 'groupby', 'apply')": {
+      "groupby": 3,
+      "dropna": 3
+    },
+    "('apply', 'groupby', 'apply')": {
+      "dropna": 11,
+      "concat": 12,
+      "groupby": 23,
+      "merge": 7,
+      "fillna": 3
+    },
+    "('groupby', 'apply', 'dropna')": {
+      "groupby": 34,
+      "pivot": 22,
+      "apply": 14,
+      "merge": 23,
+      "melt": 14
+    },
+    "('fillna', 'pivot', 'groupby')": {
+      "fillna": 2,
+      "merge": 5
+    },
+    "('pivot', 'groupby', 'fillna')": {
+      "groupby": 1,
+      "pivot": 6,
+      "merge": 3
+    },
+    "('melt', 'groupby')": {
+      "fillna": 16,
+      "merge": 17,
+      "apply": 27,
+      "concat": 11,
+      "pivot": 10
+    },
+    "('melt', 'groupby', 'fillna')": {
+      "groupby": 4,
+      "merge": 4,
+      "apply": 6
+    },
+    "('groupby', 'fillna', 'groupby')": {
+      "merge": 13,
+      "concat": 76,
+      "pivot": 6,
+      "apply": 9,
       "fillna": 1
     },
-    "('melt', 'groupby', 'pivot')": {
-      "apply": 7,
-      "concat": 3
+    "('fillna', 'apply', 'fillna')": {
+      "dropna": 4,
+      "concat": 6,
+      "groupby": 3,
+      "merge": 6
     },
-    "('dropna', 'apply', 'fillna')": {
+    "('apply', 'fillna', 'dropna')": {
+      "melt": 2,
+      "pivot": 2
+    },
+    "('concat', 'groupby', 'fillna')": {
+      "merge": 8,
+      "apply": 3,
+      "groupby": 6
+    },
+    "('groupby', 'merge', 'apply')": {
+      "dropna": 27,
+      "merge": 40,
+      "groupby": 14,
+      "fillna": 13
+    },
+    "('melt', 'groupby', 'merge')": {
       "dropna": 5,
-      "merge": 3
+      "apply": 2,
+      "fillna": 6
+    },
+    "('merge', 'dropna', 'melt')": {
+      "groupby": 7,
+      "merge": 8,
+      "concat": 2
+    },
+    "('dropna', 'melt', 'groupby')": {
+      "merge": 10,
+      "fillna": 7,
+      "apply": 12,
+      "concat": 2
+    },
+    "('merge', 'pivot')": {
+      "apply": 30,
+      "concat": 2,
+      "merge": 18,
+      "fillna": 21,
+      "groupby": 1
+    },
+    "('fillna', 'merge', 'pivot')": {
+      "apply": 17,
+      "fillna": 8,
+      "merge": 4
+    },
+    "('merge', 'pivot', 'apply')": {
+      "merge": 6,
+      "groupby": 5,
+      "dropna": 7,
+      "fillna": 2
+    },
+    "('pivot', 'apply', 'merge')": {
+      "groupby": 23,
+      "dropna": 3,
+      "apply": 4,
+      "fillna": 6
+    },
+    "('apply', 'merge', 'groupby')": {
+      "apply": 42,
+      "merge": 36,
+      "fillna": 9,
+      "pivot": 8,
+      "concat": 11
+    },
+    "('dropna', 'pivot', 'apply')": {
+      "groupby": 9,
+      "fillna": 5,
+      "dropna": 14,
+      "merge": 2
+    },
+    "('concat', 'merge')": {
+      "dropna": 5,
+      "concat": 2,
+      "apply": 14,
+      "fillna": 11,
+      "pivot": 1,
+      "groupby": 22
+    },
+    "('groupby', 'concat', 'merge')": {
+      "dropna": 4,
+      "apply": 7,
+      "fillna": 9,
+      "pivot": 1,
+      "groupby": 4
+    },
+    "('concat', 'merge', 'dropna')": {
+      "pivot": 2
+    },
+    "('merge', 'apply', 'merge')": {
+      "groupby": 44,
+      "dropna": 4,
+      "fillna": 5,
+      "apply": 10
     },
     "('dropna', 'melt', 'merge')": {
       "groupby": 16,
-      "fillna": 5
+      "apply": 1
     },
-    "('melt', 'merge', 'fillna')": {
-      "merge": 4,
-      "apply": 2,
-      "groupby": 2
-    },
-    "('groupby', 'fillna', 'pivot')": {
-      "apply": 6,
-      "fillna": 7,
-      "concat": 2
-    },
-    "('pivot', 'merge', 'apply')": {
-      "dropna": 7,
-      "fillna": 6,
-      "merge": 1
-    },
-    "('groupby', 'fillna', 'dropna')": {
-      "groupby": 3
-    },
-    "('melt', 'groupby', 'apply')": {
-      "fillna": 6,
-      "concat": 5,
-      "merge": 5
-    },
-    "('pivot_table', 'concat', 'merge')": {
-      "apply": 5
-    },
-    "('dropna', 'merge', 'dropna')": {
-      "groupby": 7,
-      "pivot": 6,
-      "merge": 1
-    },
-    "('concat', 'apply', 'concat')": {
-      "dropna": 7,
-      "groupby": 1
-    },
-    "('fillna', 'dropna', 'melt')": {
-      "merge": 3,
-      "groupby": 4
-    },
-    "('concat', 'fillna', 'dropna')": {
-      "groupby": 9,
-      "merge": 6,
-      "pivot": 2
-    },
-    "('fillna', 'concat', 'apply')": {
-      "fillna": 7,
-      "groupby": 6
-    },
-    "('concat', 'apply', 'fillna')": {
-      "merge": 6,
+    "('pivot_table', 'fillna')": {
+      "pivot": 7,
+      "merge": 13,
+      "concat": 2,
+      "dropna": 5,
+      "groupby": 5,
       "apply": 2
     },
-    "('melt', 'apply', 'dropna')": {
-      "merge": 3
+    "('pivot_table', 'fillna', 'pivot')": {
+      "fillna": 6
     },
-    "('melt', 'concat', 'merge')": {
-      "groupby": 6,
-      "dropna": 1
-    },
-    "('pivot_table', 'dropna', 'melt')": {
-      "fillna": 3
+    "('pivot_table', 'apply')": {
+      "merge": 16,
+      "dropna": 4
     },
     "('pivot_table', 'apply', 'merge')": {
-      "dropna": 7
+      "apply": 9,
+      "fillna": 4
     },
-    "('merge', 'concat', 'fillna')": {
-      "dropna": 5,
-      "merge": 2,
-      "groupby": 1
+    "('apply', 'concat')": {
+      "fillna": 37,
+      "apply": 7,
+      "dropna": 18,
+      "groupby": 23,
+      "merge": 2
     },
-    "('json_normalize', 'apply', 'fillna')": {
-      "groupby": 5
-    },
-    "('json_normalize', 'dropna', 'groupby')": {
-      "concat": 1,
-      "apply": 3,
-      "pivot": 4
-    },
-    "('pivot_table', 'dropna', 'pivot')": {
-      "fillna": 2
-    },
-    "('apply', 'merge', 'concat')": {
-      "fillna": 5,
-      "merge": 2,
-      "dropna": 2,
-      "groupby": 1
-    },
-    "('concat', 'merge', 'concat')": {
-      "dropna": 3,
-      "groupby": 2
-    },
-    "('apply', 'concat', 'fillna')": {
-      "apply": 2,
-      "merge": 5
-    },
-    "('pivot', 'merge', 'fillna')": {
-      "concat": 2,
-      "merge": 1,
-      "groupby": 2
-    },
-    "('groupby', 'fillna', 'apply')": {
-      "merge": 2,
-      "groupby": 7,
+    "('merge', 'apply', 'concat')": {
+      "fillna": 6,
       "dropna": 1
     },
-    "('pivot', 'fillna', 'concat')": {
-      "groupby": 1,
-      "dropna": 7,
-      "fillna": 2
-    },
-    "('fillna', 'apply', 'dropna')": {
-      "merge": 2,
-      "apply": 7,
-      "groupby": 10
-    },
-    "('json_normalize', 'apply', 'merge')": {
-      "groupby": 2
-    },
-    "('apply', 'fillna', 'pivot')": {
-      "apply": 2,
-      "fillna": 1,
-      "merge": 1
-    },
-    "('dropna', 'apply', 'dropna')": {
-      "groupby": 4,
-      "melt": 2
-    },
-    "('pivot_table', 'fillna', 'merge')": {
-      "apply": 3
-    },
-    "('pivot_table', 'concat', 'dropna')": {
-      "pivot": 6
-    },
-    "('dropna', 'merge', 'pivot')": {
-      "concat": 1,
-      "apply": 1,
-      "fillna": 2
-    },
-    "('melt', 'fillna', 'pivot')": {
-      "apply": 5
-    },
-    "('concat', 'dropna', 'apply')": {
-      "groupby": 1
-    },
-    "('dropna', 'merge', 'concat')": {
-      "apply": 3,
-      "fillna": 1
-    },
-    "('merge', 'concat', 'apply')": {
-      "concat": 2
-    },
-    "('apply', 'concat', 'apply')": {
-      "groupby": 4,
-      "merge": 2
-    },
-    "('pivot_table', 'apply', 'fillna')": {
-      "merge": 2
-    },
-    "('melt', 'groupby', 'fillna')": {
-      "merge": 3
-    },
-    "('merge', 'pivot', 'concat')": {
-      "apply": 2,
-      "fillna": 1
-    },
-    "('pivot_table', 'fillna', 'pivot')": {
-      "fillna": 1
-    },
-    "('apply', 'merge', 'pivot')": {
-      "merge": 2
-    },
-    "('json_normalize', 'dropna', 'melt')": {
+    "('apply', 'concat', 'fillna')": {
+      "groupby": 5,
+      "apply": 6,
+      "merge": 11,
       "concat": 1
     },
-    "('dropna', 'melt', 'concat')": {
+    "('concat', 'fillna', 'apply')": {
+      "groupby": 10,
+      "merge": 3,
+      "fillna": 2
+    },
+    "('fillna', 'apply', 'groupby')": {
+      "merge": 10,
+      "concat": 3,
+      "apply": 4
+    },
+    "('groupby', 'apply', 'concat')": {
+      "apply": 4,
+      "fillna": 20,
+      "groupby": 11,
+      "dropna": 7,
+      "merge": 2
+    },
+    "('apply', 'concat', 'apply')": {
+      "dropna": 5
+    },
+    "('apply', 'dropna', 'apply')": {
+      "fillna": 1,
+      "concat": 3,
+      "merge": 10,
+      "groupby": 4
+    },
+    "('merge', 'concat', 'merge')": {
+      "concat": 2
+    },
+    "('dropna', 'groupby', 'concat')": {
+      "fillna": 9,
+      "dropna": 12,
+      "groupby": 24,
+      "merge": 3,
+      "apply": 5
+    },
+    "('pivot', 'concat', 'dropna')": {
+      "pivot": 9,
+      "merge": 1,
+      "apply": 1
+    },
+    "('concat', 'dropna', 'pivot')": {
+      "fillna": 12,
+      "merge": 12,
+      "apply": 5,
+      "concat": 2,
+      "groupby": 2
+    },
+    "('melt', 'groupby', 'apply')": {
+      "fillna": 5,
+      "merge": 5,
+      "groupby": 4,
+      "concat": 7
+    },
+    "('pivot_table', 'concat')": {
+      "fillna": 3,
+      "apply": 2,
+      "dropna": 4
+    },
+    "('pivot_table', 'concat', 'fillna')": {
+      "merge": 3
+    },
+    "('apply', 'groupby', 'fillna')": {
+      "groupby": 91,
+      "merge": 6,
+      "apply": 7,
+      "concat": 1
+    },
+    "('groupby', 'pivot', 'merge')": {
+      "groupby": 20,
+      "apply": 6,
+      "fillna": 5,
+      "dropna": 1
+    },
+    "('fillna', 'merge', 'concat')": {
+      "fillna": 4,
+      "apply": 1
+    },
+    "('pivot_table', 'concat', 'apply')": {
+      "groupby": 1
+    },
+    "('pivot_table', 'fillna', 'merge')": {
+      "fillna": 6,
+      "apply": 1,
+      "groupby": 3
+    },
+    "('concat', 'apply', 'groupby')": {
+      "apply": 5,
+      "fillna": 4,
+      "merge": 5
+    },
+    "('concat', 'dropna', 'groupby')": {
+      "pivot": 11,
+      "apply": 14,
+      "concat": 15,
+      "fillna": 6,
+      "merge": 17
+    },
+    "('dropna', 'groupby', 'pivot')": {
+      "fillna": 9,
+      "apply": 12,
+      "groupby": 1,
+      "merge": 9
+    },
+    "('fillna', 'dropna', 'merge')": {
+      "apply": 5,
       "fillna": 1
     },
-    "('pivot', 'groupby', 'pivot')": {
+    "('dropna', 'merge', 'apply')": {
+      "dropna": 4,
+      "merge": 7,
+      "fillna": 3,
+      "groupby": 3
+    },
+    "('merge', 'apply', 'groupby')": {
+      "concat": 14,
+      "pivot": 8,
+      "merge": 6,
+      "apply": 18,
+      "fillna": 2
+    },
+    "('concat', 'dropna', 'merge')": {
+      "apply": 6,
+      "dropna": 5,
+      "groupby": 8,
+      "pivot": 2,
       "fillna": 1
+    },
+    "('pivot', 'groupby', 'merge')": {
+      "fillna": 7,
+      "groupby": 7
+    },
+    "('groupby', 'merge', 'pivot')": {
+      "apply": 8,
+      "concat": 2,
+      "merge": 9
+    },
+    "('fillna', 'apply', 'dropna')": {
+      "groupby": 9,
+      "apply": 7
+    },
+    "('apply', 'fillna', 'groupby')": {
+      "apply": 12,
+      "merge": 5,
+      "concat": 5,
+      "fillna": 3
+    },
+    "('dropna', 'merge', 'dropna')": {
+      "pivot": 3,
+      "groupby": 5
+    },
+    "('merge', 'fillna', 'concat')": {
+      "apply": 4,
+      "merge": 2,
+      "dropna": 7,
+      "fillna": 9,
+      "groupby": 6
+    },
+    "('fillna', 'concat', 'apply')": {
+      "dropna": 2,
+      "groupby": 4,
+      "fillna": 2
+    },
+    "('dropna', 'merge', 'groupby')": {
+      "pivot": 4,
+      "apply": 7,
+      "merge": 2,
+      "concat": 7,
+      "fillna": 9
+    },
+    "('apply', 'groupby', 'pivot')": {
+      "merge": 7,
+      "apply": 10,
+      "fillna": 4
+    },
+    "('dropna', 'groupby', 'fillna')": {
+      "groupby": 5,
+      "pivot": 7,
+      "concat": 6,
+      "merge": 1
+    },
+    "('melt', 'groupby', 'concat')": {
+      "apply": 7,
+      "dropna": 1
+    },
+    "('fillna', 'pivot', 'merge')": {
+      "groupby": 29,
+      "fillna": 1,
+      "apply": 2
+    },
+    "('concat', 'groupby', 'concat')": {
+      "groupby": 17,
+      "merge": 2,
+      "dropna": 5
+    },
+    "('melt', 'apply')": {
+      "groupby": 7,
+      "dropna": 2,
+      "merge": 9,
+      "concat": 1
+    },
+    "('melt', 'apply', 'groupby')": {
+      "concat": 6
+    },
+    "('apply', 'dropna', 'merge')": {
+      "apply": 15,
+      "dropna": 9,
+      "groupby": 10,
+      "fillna": 12
+    },
+    "('concat', 'apply', 'fillna')": {
+      "apply": 5,
+      "merge": 2,
+      "pivot": 3,
+      "groupby": 1
+    },
+    "('apply', 'fillna', 'apply')": {
+      "groupby": 4,
+      "fillna": 2,
+      "dropna": 2,
+      "merge": 1
+    },
+    "('merge', 'groupby', 'fillna')": {
+      "apply": 6,
+      "groupby": 18,
+      "merge": 19,
+      "concat": 5
+    },
+    "('groupby', 'fillna', 'apply')": {
+      "groupby": 9,
+      "fillna": 3,
+      "merge": 2
     },
     "('pivot_table', 'fillna', 'concat')": {
       "dropna": 1
     },
-    "('json_normalize', 'fillna', 'concat')": {
+    "('groupby', 'fillna', 'pivot')": {
+      "fillna": 11
+    },
+    "('dropna', 'pivot', 'merge')": {
+      "fillna": 8,
+      "dropna": 6,
+      "groupby": 14,
+      "pivot": 1,
+      "apply": 5
+    },
+    "('dropna', 'pivot', 'groupby')": {
+      "concat": 2,
+      "merge": 5
+    },
+    "('pivot', 'groupby', 'concat')": {
+      "fillna": 2,
+      "groupby": 5,
+      "dropna": 7
+    },
+    "('json_normalize', 'dropna')": {
+      "groupby": 12,
+      "pivot": 7,
+      "melt": 10
+    },
+    "('json_normalize', 'dropna', 'groupby')": {
+      "apply": 10
+    },
+    "('apply', 'dropna', 'melt')": {
+      "groupby": 9,
+      "concat": 5,
+      "apply": 2,
+      "fillna": 2,
+      "merge": 4
+    },
+    "('pivot', 'merge', 'apply')": {
+      "dropna": 6,
+      "merge": 5,
+      "fillna": 5,
+      "concat": 2,
+      "groupby": 4
+    },
+    "('pivot_table', 'dropna', 'groupby')": {
+      "fillna": 4,
+      "apply": 3
+    },
+    "('pivot_table', 'apply', 'dropna')": {
+      "merge": 3
+    },
+    "('merge', 'groupby', 'pivot')": {
+      "apply": 11,
+      "fillna": 6,
+      "groupby": 2,
+      "merge": 8
+    },
+    "('concat', 'fillna', 'concat')": {
+      "groupby": 4,
+      "apply": 2,
+      "fillna": 5,
+      "merge": 2,
+      "dropna": 3
+    },
+    "('groupby', 'pivot', 'concat')": {
+      "groupby": 4,
+      "dropna": 6,
+      "fillna": 1,
+      "merge": 4
+    },
+    "('pivot', 'concat', 'groupby')": {
+      "merge": 3,
+      "concat": 3,
+      "pivot": 3
+    },
+    "('pivot', 'apply', 'concat')": {
+      "dropna": 3,
+      "groupby": 1
+    },
+    "('apply', 'concat', 'dropna')": {
+      "merge": 2,
+      "pivot": 2,
+      "groupby": 7,
+      "melt": 1
+    },
+    "('json_normalize', 'dropna', 'pivot')": {
+      "fillna": 2,
+      "apply": 3
+    },
+    "('melt', 'fillna', 'merge')": {
+      "groupby": 4,
+      "apply": 1,
+      "fillna": 1,
+      "dropna": 2
+    },
+    "('concat', 'merge', 'apply')": {
+      "dropna": 6,
+      "groupby": 6
+    },
+    "('melt', 'groupby', 'pivot')": {
+      "apply": 4,
+      "groupby": 4
+    },
+    "('pivot_table', 'fillna', 'dropna')": {
+      "groupby": 5
+    },
+    "('apply', 'concat', 'groupby')": {
+      "concat": 3,
+      "fillna": 2,
+      "merge": 7,
+      "apply": 1
+    },
+    "('concat', 'merge', 'fillna')": {
+      "groupby": 5,
+      "merge": 2
+    },
+    "('merge', 'pivot', 'concat')": {
       "fillna": 1
+    },
+    "('pivot_table', 'concat', 'dropna')": {
+      "pivot": 4
+    },
+    "('json_normalize', 'apply')": {
+      "groupby": 8
+    },
+    "('json_normalize', 'apply', 'groupby')": {
+      "merge": 4,
+      "pivot": 3
+    },
+    "('concat', 'merge', 'groupby')": {
+      "concat": 3,
+      "apply": 7,
+      "pivot": 1,
+      "merge": 4
+    },
+    "('apply', 'fillna', 'pivot')": {
+      "merge": 1,
+      "concat": 2
+    },
+    "('dropna', 'apply', 'dropna')": {
+      "groupby": 3,
+      "melt": 4
+    },
+    "('pivot', 'apply', 'dropna')": {
+      "pivot": 8,
+      "merge": 5,
+      "groupby": 14,
+      "melt": 1
+    },
+    "('json_normalize', 'dropna', 'melt')": {
+      "concat": 8
+    },
+    "('melt', 'concat', 'apply')": {
+      "fillna": 4
+    },
+    "('pivot', 'concat', 'apply')": {
+      "dropna": 5
+    },
+    "('concat', 'apply', 'merge')": {
+      "groupby": 8,
+      "apply": 1
+    },
+    "('fillna', 'concat', 'merge')": {
+      "fillna": 2,
+      "groupby": 1,
+      "apply": 3
+    },
+    "('concat', 'fillna', 'dropna')": {
+      "apply": 2,
+      "groupby": 3,
+      "melt": 2
+    },
+    "('fillna', 'pivot', 'concat')": {
+      "fillna": 3
+    },
+    "('melt', 'apply', 'merge')": {
+      "dropna": 5,
+      "groupby": 2
+    },
+    "('dropna', 'apply', 'merge')": {
+      "apply": 4,
+      "groupby": 6,
+      "dropna": 1,
+      "fillna": 2
+    },
+    "('dropna', 'melt', 'apply')": {
+      "merge": 3,
+      "concat": 1,
+      "groupby": 1
+    },
+    "('pivot_table', 'fillna', 'apply')": {
+      "groupby": 1
+    },
+    "('concat', 'apply', 'concat')": {
+      "dropna": 5,
+      "fillna": 1
+    },
+    "('melt', 'merge', 'pivot')": {
+      "merge": 3
+    },
+    "('merge', 'pivot', 'merge')": {
+      "groupby": 8,
+      "fillna": 1,
+      "apply": 2
+    },
+    "('json_normalize', 'merge')": {
+      "pivot": 3
+    },
+    "('json_normalize', 'merge', 'pivot')": {
+      "fillna": 3
+    },
+    "('merge', 'pivot', 'fillna')": {
+      "pivot": 6,
+      "merge": 8,
+      "groupby": 1
+    },
+    "('pivot_table', 'dropna', 'apply')": {
+      "groupby": 2
+    },
+    "('fillna', 'concat', 'fillna')": {
+      "merge": 9,
+      "groupby": 4,
+      "concat": 2,
+      "apply": 5
+    },
+    "('apply', 'concat', 'merge')": {
+      "groupby": 2
+    },
+    "('pivot', 'concat', 'fillna')": {
+      "groupby": 7,
+      "concat": 2,
+      "merge": 1,
+      "apply": 1
+    },
+    "('dropna', 'pivot', 'concat')": {
+      "groupby": 4,
+      "dropna": 3
+    },
+    "('pivot_table', 'merge')": {
+      "apply": 6,
+      "groupby": 6
+    },
+    "('pivot_table', 'merge', 'apply')": {
+      "groupby": 5
+    },
+    "('json_normalize', 'fillna', 'concat')": {
+      "groupby": 5
+    },
+    "('melt', 'concat', 'groupby')": {
+      "concat": 1,
+      "merge": 3
+    },
+    "('pivot', 'merge', 'fillna')": {
+      "merge": 6,
+      "groupby": 8
+    },
+    "('melt', 'concat', 'dropna')": {
+      "merge": 3,
+      "pivot": 4
+    },
+    "('dropna', 'merge', 'pivot')": {
+      "groupby": 1
+    },
+    "('fillna', 'dropna', 'pivot')": {
+      "groupby": 1,
+      "concat": 1,
+      "apply": 2
+    },
+    "('melt', 'merge', 'fillna')": {
+      "merge": 3,
+      "groupby": 2
+    },
+    "('pivot', 'fillna', 'pivot')": {
+      "fillna": 5
+    },
+    "('pivot', 'groupby', 'pivot')": {
+      "merge": 1
+    },
+    "('dropna', 'merge', 'concat')": {
+      "fillna": 1
+    },
+    "('pivot', 'fillna', 'apply')": {
+      "fillna": 1
+    },
+    "('melt', 'apply', 'dropna')": {
+      "merge": 1
+    },
+    "('melt', 'merge', 'apply')": {
+      "groupby": 1
+    },
+    "('fillna', 'dropna', 'melt')": {
+      "concat": 1,
+      "groupby": 4
+    },
+    "('pivot_table', 'fillna', 'groupby')": {
+      "fillna": 4
+    },
+    "('pivot_table', 'merge', 'groupby')": {
+      "pivot": 5
+    },
+    "('melt', 'fillna', 'dropna')": {
+      "melt": 4
+    },
+    "('melt', 'concat', 'merge')": {
+      "dropna": 1
+    },
+    "('concat', 'dropna', 'apply')": {
+      "fillna": 1
+    },
+    "('melt', 'fillna', 'concat')": {
+      "dropna": 1
+    },
+    "('pivot', 'concat', 'merge')": {
+      "groupby": 3
+    },
+    "('fillna', 'apply', 'concat')": {
+      "groupby": 1
+    },
+    "('json_normalize', 'fillna', 'pivot')": {
+      "fillna": 1
+    },
+    "('dropna', 'apply', 'concat')": {
+      "fillna": 2
+    },
+    "('concat', 'merge', 'concat')": {
+      "groupby": 1
     }
   },
   "vocabulary": [
-    "fillna",
-    "pivot",
-    "apply",
+    "groupby",
     "melt",
-    "json_normalize",
-    "dropna",
-    "concat",
     "pivot_table",
-    "merge",
-    "groupby"
+    "json_normalize",
+    "fillna",
+    "apply",
+    "dropna",
+    "pivot",
+    "concat",
+    "merge"
   ]
 }
