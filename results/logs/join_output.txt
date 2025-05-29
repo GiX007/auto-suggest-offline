@@ -1,0 +1,235 @@
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator join --mode train
+
+================================================================================
+Join Prediction (Section 4.1)
+================================================================================
+
+Training join prediction models...
+
+Processed 80 join samples
+
+Warning: Excluding join types with only 1 sample (singleton classes) from join models training:
+  Excluded classes: ['right']
+
+Split 80 samples into 63 train, 8 validation and 8 test samples
+
+--- Training Join Column Prediction Model ---
+
+Using 21 features:
+['left_distinct_ratio', 'right_distinct_ratio', 'jaccard_similarity', 'left_to_right_containment', 'right_to_left_containment', 'range_overlap', 'left_is_string', 'right_is_string', 'left_is_numeric', 'right_is_numeric', 'type_match', 'left_absolute_position', 'right_absolute_position', 'left_relative_position', 'right_relative_position', 'left_is_sorted', 'right_is_sorted', 'is_single_column', 'left_row_count', 'right_row_count', 'row_count_ratio']
+
+Distribution among all candidate join column pairs:
+Train positives: 57/599 (9.52%) — from all candidate pairs generated in training samples
+Validation positives:  8/77 (10.39%) — from all candidate pairs generated in validation samples
+
+Training join column prediction model...
+
+Model training completed in 0.2 seconds
+Trained model: GradientBoostingClassifier (100 estimators, max_depth=3)
+
+Standard Binary Classification Metrics on Train and Validation Sets:
+Accuracy: Training = 0.9967, Validation = 0.9870
+Precision: Training = 0.9661, Validation = 1.0000
+Recall: Training = 1.0000, Validation = 0.8750
+
+Metrics and figures have been saved to the 'results' directory
+
+Model saved to models\join_column_model.pkl
+
+--- Training Join Type Prediction Model ---
+
+Preparing join type training data from 63 samples
+
+Join type distribution:
+  outer: 13 (20.6%)
+  left: 14 (22.2%)
+  inner: 36 (57.1%)
+
+Preparing join type training data from 8 samples
+
+Join type distribution:
+  outer: 1 (12.5%)
+  inner: 5 (62.5%)
+  left: 2 (25.0%)
+
+Using 20 features:
+['left_row_count', 'right_row_count', 'left_col_count', 'right_col_count', 'row_count_ratio', 'col_count_ratio', 'left_is_larger_
+table', 'right_is_small_cols', 'left_is_small_cols', 'left_keys_only_cols', 'right_keys_only_cols', 'non_key_col_overlap', 'non_k
+ey_col_overlap_ratio', 'left_in_right_containment', 'right_in_left_containment', 'min_containment', 'max_containment', 'jaccard_similarity', 'left_is_sorted', 'right_is_sorted']
+
+Join type classes in training set: ['inner' 'left' 'outer']
+
+Train set distribution:
+  inner: 36 (57.1%)
+  left: 14 (22.2%)
+  outer: 13 (20.6%)
+
+Validation set distribution:
+  inner: 5 (62.5%)
+  left: 2 (25.0%)
+  outer: 1 (12.5%)
+
+Training join type prediction model...
+
+Model training (with hyperparameter tuning) completed in 0.44 seconds
+Trained model: GradientBoostingClassifier (200 estimators, max_depth=5)
+
+Standard Multi-Class Classification Metrics on Train and Validation Sets:
+Accuracy:  Training = 0.8889, Validation = 0.8750
+Precision: Training = 0.8664, Validation = 0.8889
+Recall: Training = 0.9206, Validation = 0.9333
+
+Metrics and figures have been saved to the 'results' directory
+
+Model saved to models\join_type_model.pkl
+
+Join models trained successfully!
+
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator join --mode eval
+
+================================================================================
+Predict Single Operators -  Join (Section 6.5)
+================================================================================
+
+Evaluating join prediction models...
+Using top k = 2 predictions for evaluation
+Using 8 test samples for evaluation
+
+Test data loaded from data\test_data\join_test_samples.pkl
+Model loaded from models\join_column_model.pkl
+Model loaded from models\join_type_model.pkl
+
+--- Evaluating Join Models on Test Set ---
+
+Evaluating join column prediction on test samples...
+
+Training ml-fk prediction model...
+
+Model training completed in 0.01 seconds
+Trained model: RandomForestClassifier (10 estimators)
+
+Model saved to C:/Users/giorg/Auto_Suggest\models\ml_fk_model.pkl
+
+Table: Join Prediction - Literature Comparison
++--------------+----------+----------+----------+----------+
+| method       |   prec@1 |   prec@2 |   ndcg@1 |   ndcg@2 |
++==============+==========+==========+==========+==========+
+| Auto-Suggest |     0.88 |     0.88 |     0.88 |     0.88 |
++--------------+----------+----------+----------+----------+
+| ML-FK        |     0.88 |     0.88 |     0.88 |     0.88 |
++--------------+----------+----------+----------+----------+
+| PowerPivot   |     0.5  |     0.62 |     0.5  |     0.58 |
++--------------+----------+----------+----------+----------+
+| Multi        |     0.25 |     0.88 |     0.25 |     0.64 |
++--------------+----------+----------+----------+----------+
+| Holistic     |     0.38 |     0.88 |     0.38 |     0.69 |
++--------------+----------+----------+----------+----------+
+| max-overlap  |     0.25 |     0.88 |     0.25 |     0.64 |
++--------------+----------+----------+----------+----------+
+
+Table: Join Prediction - Vendor Comparison
++--------------+----------+----------+
+| method       |   prec@1 |   ndcg@1 |
++==============+==========+==========+
+| Auto-Suggest |     0.88 |     0.88 |
++--------------+----------+----------+
+| Vendor-A     |     0.76 |     0.76 |
++--------------+----------+----------+
+| Vendor-C     |     0.42 |     0.42 |
++--------------+----------+----------+
+| Vendor-B     |     0.33 |     0.33 |
++--------------+----------+----------+
+
+Table 4: Importance of Feature Groups for Join
++-------------------+----------------+--------------------+----------------+-------------+----------------+----------------------+----------------+
+| feature_1         |   importance_1 | feature_2          |   importance_2 | feature_3   |   importance_3 | feature_4            
+|   importance_4 |
++===================+================+====================+================+=============+================+======================+================+
+| val-overlap       |           0.93 | distinct-val-ratio |           0.06 | table-stats |           0.01 | left-ness            
+|           0.01 |
++-------------------+----------------+--------------------+----------------+-------------+----------------+----------------------+----------------+
+| val-range-overlap |           0.01 | col-val-types      |           0    | sorted-ness |           0    | single-col-candidate |           0    |
++-------------------+----------------+--------------------+----------------+-------------+----------------+----------------------+----------------+
+
+Join Column Evaluation Results:
+  precision@1: 0.88
+  ndcg@1: 0.88
+  precision@2: 0.88
+  ndcg@2: 0.88
+  samples_evaluated: 8.00
+
+Evaluating join type prediction on test samples...
+
+Table: Join_type Prediction - Literature Comparison
++--------------+----------+
+| method       |   prec@1 |
++==============+==========+
+| Auto-Suggest |     0.5  |
++--------------+----------+
+| Vendor-A     |     0.78 |
++--------------+----------+
+
+Join Type Evaluation Results:
+  test_accuracy: 0.50
+  test_precision: 0.37
+  test_recall: 0.37
+  samples_evaluated: 8
+
+Metrics and figures have been saved to the 'results' directory
+
+Join models evaluated successfully!
+
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator join --mode predict --left_file data/test_data/join_customers.csv --right_file data/test_data/join_orders.csv
+
+================================================================================
+Join Prediction (Section 4.1)
+================================================================================
+
+Predicting join columns and types for new tables...
+
+Loaded tables:
+Left table: 100 rows × 7 columns
+Right table: 300 rows × 7 columns
+
+Model loaded from models\join_column_model.pkl
+Model loaded from models\join_type_model.pkl
+
+=== Step 1: Predicting Join Columns ===
+
+Top Join Column Predictions:
+1. Left columns: [customer_id] ↔ Right columns: [customer_id] (confidence: 0.9823)
+2. Left columns: [customer_id] ↔ Right columns: [order_id] (confidence: 0.0009)
+
+=== Step 2: Predicting Join Types ===
+
+Join Type Predictions:
+Processing candidate 1: customer_id ↔ customer_id → left join
+Processing candidate 2: customer_id ↔ order_id → inner join
+
+Generated 2 complete join recommendations
+
+=== Complete Join Recommendations ===
+================================================================================
+
+Recommendation 1: Join using
+  Left columns: customer_id
+  Right columns: customer_id
+  Column confidence: 0.982
+  Recommended join type: left (confidence: 0.570)
+  Alternative join types: inner
+----------------------------------------
+
+Recommendation 2: Join using
+  Left columns: customer_id
+  Right columns: order_id
+  Column confidence: 0.001
+  Recommended join type: inner (confidence: 0.410)
+  Alternative join types: left, outer
+----------------------------------------
+
+=== Example Pandas Code for Top Recommendation ===
+result = pd.merge(left_table, right_table,
+                  left_on='customer_id',
+                  right_on='customer_id',
+                  how='left')
+
