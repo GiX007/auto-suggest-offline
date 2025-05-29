@@ -14,10 +14,8 @@ Offline component of the Auto-Suggest system for learning pandas operations from
 
   - `test_data` - Contains unseen `.csv` tables used to verify whether a trained single-operator model (`groupby`, `melt`, `pivot`, `merge`) can correctly predict the appropriate operator parameters on new, unobserved inputs. It also contains intermediated .npz files with split test data 
   - `generated_sequences` - Contains artificially generated operator sequences used for next-operator prediction. Includes:
-     - `all_sequences.json` – Full list of synthetic operator sequences
-     - `n_gram_training_data.json` – Sequences formatted for N-gram model training
-     - `rnn_training_data.json` – Sequences formatted for RNN model training
-     - `sequence_statistics.json` – Summary stats (count, length, frequency) over all generated sequences
+     - `sequence_data.json` – Synthetic sequences formatted for both N-gram and RNN models
+     - `sequence_data_statistics.json` – Summary stats (count, length, frequency) over all generated sequences
   - `generated_combined_data` - Contains data for the combined next-operator prediction model (MLP)
 
 - `src/` – Core source code
