@@ -1,0 +1,100 @@
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator pivot --mode train
+
+================================================================================
+Pivot Prediction (Section 4.3)
+================================================================================
+
+Note: Pivot operator has no training phase for end-to-end pivot, but trains the affinity weights model.
+
+Processed 73 valid pivot samples
+
+Starting affinity weights regression model training...
+
+Model saved to models\pivot_affinity_weights_model.pkl
+
+Affinity weights regression model trained successfully!
+
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator pivot --mode eval
+
+================================================================================
+Predict Single Operators - Pivot (Section 6.5)
+================================================================================
+
+Running pivot prediction model...
+
+Processed 73 valid pivot samples
+
+Using 73 test samples for evaluation
+
+--- Evaluating Pivot Model ---
+
+Model loaded from models\pivot_affinity_weights_model.pkl
+
+Total AMPT evaluation time for all pivot samples: 0.59 seconds
+
+Table 8: Pivot Prediction - Baseline Results
++----------------+-----------------+--------------+
+| method         |   full_accuracy |   rand_index |
++================+=================+==============+
+| Auto-Suggest   |            0.9  |         0.98 |
++----------------+-----------------+--------------+
+| Affinity       |            0.9  |         0.94 |
++----------------+-----------------+--------------+
+| Type-Rules     |            0.92 |         0.95 |
++----------------+-----------------+--------------+
+| Min-Emptiness  |            0.96 |         0.97 |
++----------------+-----------------+--------------+
+| Balanced-Split |            0.89 |         0.93 |
++----------------+-----------------+--------------+
+
+Pivot model evaluation results:
+  Full accuracy: 0.9041
+  Rand Index: 0.9783
+
+Metrics have been saved to the 'results' directory
+
+Pivot model evaluated successfully!
+
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator pivot --mode predict --input_file data/test_data/pivot_financial_data.csv
+
+================================================================================
+Pivot Prediction (Section 4.3)
+================================================================================
+
+Predicting pivot structure for new table...
+
+Loaded table: 400 rows × 11 columns
+
+Column names: Sector, Company, Size, Year, Quarter, Time, Revenue, Costs, Profit, Tax, NetProfit
+
+Model loaded from models/groupby_column_model.pkl
+Model loaded from models/pivot_affinity_weights_model.pkl
+
+=== Pivot Structure Recommendation ===
+
+Index columns: ['Sector']
+Header columns: ['Company', 'Size', 'Year', 'Quarter']
+
+Sample pivot table preview (first 3rows):
+Company        Company_1                                                ... Company_9                                              
+Size               Small                                                ...    Medium                                              
+Year                2018             2019             2020              ...      2020             2021             2022            
+Quarter               Q1  Q2  Q3  Q4   Q1  Q2  Q3  Q4   Q1  Q2  Q3  Q4  ...        Q1  Q2  Q3  Q4   Q1  Q2  Q3  Q4   Q1  Q2  Q3  Q4
+Sector                                                                  ...                                                        
+Consumer Goods       NaN NaN NaN NaN  NaN NaN NaN NaN  NaN NaN NaN NaN  ...       NaN NaN NaN NaN  NaN NaN NaN NaN  NaN NaN NaN NaN
+Energy               NaN NaN NaN NaN  NaN NaN NaN NaN  NaN NaN NaN NaN  ...       NaN NaN NaN NaN  NaN NaN NaN NaN  NaN NaN NaN NaN
+Finance              NaN NaN NaN NaN  NaN NaN NaN NaN  NaN NaN NaN NaN  ...       NaN NaN NaN NaN  NaN NaN NaN NaN  NaN NaN NaN NaN
+
+[3 rows x 400 columns]
+
+=== Example Pandas Code ===
+# Using pandas to create a pivot table:
+pivot_table = pd.pivot_table(
+    df,
+    index=['Sector'],
+    columns=['Company', 'Size', 'Year', 'Quarter'],
+    values='Revenue',
+    aggfunc='mean'
+)
+
+Affinity graph saved to 'results' directory
