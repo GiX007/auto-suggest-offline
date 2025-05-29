@@ -1,0 +1,140 @@
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator groupby --mode train
+
+================================================================================
+GroupBy Prediction (Section 4.2)
+================================================================================
+
+Processed 100 valid groupby samples
+Split 100 samples into 80 train, 10 validation, and 10 test samples
+
+--- Training Groupby Prediction Model ---
+
+Using 13 features:
+['gb_distinct_count', 'gb_distinct_ratio', 'gb_is_string', 'gb_is_int', 'gb_is_float', 'gb_is_bool', 'gb_is_datetime', 'gb_absolute_position_mean', 'gb_relative_position_mean', 'gb_null_ratio_mean', 'gb_value_range_mean', 'gb_distinct_to_range_ratio', 'groupby_term_in_name']
+
+Distribution among all candidate training and validation data:
+Train positives: 383/766 (50.00%)
+Validation positives: 69/138 (50.00%)
+
+Training groupby column prediction model...
+
+Model training (with hyperparameter tuning) completed in 0.15 seconds
+Trained model: GradientBoostingClassifier (150 estimators, max_depth=4)
+
+Standard Binary Classification Metrics on Train and Validation Sets:
+Accuracy: Training = 0.8642, Validation = 0.8116
+Precision: Training = 0.8568, Validation = 0.8772
+Recall: Training = 0.8747, Validation = 0.7246
+
+Metrics and figures have been saved to the 'results' directory
+
+Model saved to models\groupby_column_model.pkl
+
+GroupBy model trained successfully!
+
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator groupby --mode eval
+
+================================================================================
+Predict Single Operators -  GroupBy (Section 6.5)
+================================================================================
+
+Evaluating groupby prediction model...
+Using top k = 2 predictions for evaluation
+Using 10 test samples for evaluation
+
+Test data loaded from data\test_data\groupby_test_data.pkl
+Model loaded from models\groupby_column_model.pkl
+
+--- Evaluating GroupBy Model on Test Set ---
+
+Evaluating Groupby column prediction on 10 test samples...
+
+Evaluating baseline methods on test samples...
+
+Table: Groupby Prediction - Literature Comparison
++----------------------+----------+----------+----------+----------+-----------------+
+| method               |   prec@1 |   prec@2 |   ndcg@1 |   ndcg@2 | full-accuracy   |
++======================+==========+==========+==========+==========+=================+
+| Auto-Suggest         |      0.5 |      0.7 |      0.5 |     0.56 | 10%             |
++----------------------+----------+----------+----------+----------+-----------------+
+| SQL-history          |      0.4 |      0.7 |      0.4 |     0.56 | 20%             |
++----------------------+----------+----------+----------+----------+-----------------+
+| Coarse-grained-types |      0.4 |      0.6 |      0.4 |     0.53 | 10%             |
++----------------------+----------+----------+----------+----------+-----------------+
+| Fine-grained-types   |      0.6 |      0.8 |      0.6 |     0.69 | 10%             |
++----------------------+----------+----------+----------+----------+-----------------+
+| Min-Cardinality      |      0.6 |      0.6 |      0.6 |     0.6  | 10%             |
++----------------------+----------+----------+----------+----------+-----------------+
+
+Table: Groupby Prediction - Vendor Comparison
++--------------+----------+----------+
+| method       |   prec@1 |   ndcg@1 |
++==============+==========+==========+
+| Auto-Suggest |     0.5  |     0.5  |
++--------------+----------+----------+
+| Vendor-B     |     0.56 |     0.56 |
++--------------+----------+----------+
+| Vendor-C     |     0.71 |     0.71 |
++--------------+----------+----------+
+
+Table 7: Importance of Feature Groups for GroupBy
++---------------+--------------+
+| feature       |   importance |
++===============+==============+
+| left-ness     |         0.75 |
++---------------+--------------+
+| distinct-val  |         0.25 |
++---------------+--------------+
+| col-type      |         0    |
++---------------+--------------+
+| col-name-freq |         0    |
++---------------+--------------+
+| val-range     |         0    |
++---------------+--------------+
+| emptiness     |         0    |
++---------------+--------------+
+
+Metrics and figures have been saved to the 'results' directory
+
+Groupby Evaluation Results:
+  precision@1: 0.50
+  ndcg@1: 0.50
+  precision@2: 0.70
+  ndcg@2: 0.56
+  full-accuracy: 0.10
+  samples_evaluated: 10.00
+
+Metrics and figures have been saved to 'results' directory
+
+GroupBy model evaluated successfully!
+
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.main --operator groupby --mode predict --input_file data/test_data/groupby_sales_data.csv
+
+================================================================================
+GroupBy Prediction (Section 4.2)
+================================================================================
+
+Predicting groupby columns for a new table...
+
+Loaded table: 200 rows x 18 columns
+
+Table's columns: Index(['region', 'category', 'subcategory', 'year', 'quarter', 'month',
+       'customer_segment', 'shipping_mode', 'order_date', 'order_id',
+       'customer_id', 'sales', 'quantity', 'discount', 'profit',
+       'shipping_cost', 'total', 'profit_margin'],
+      dtype='object')
+
+Model loaded from models\groupby_column_model.pkl
+
+=== Top-k GroupBy Column Recommendations ===
+================================================================================
+1. GroupBy Column: region (confidence: 0.828)
+   - Unique values: 5, samples: North, East, South
+2. GroupBy Column: category (confidence: 0.828)
+   - Unique values: 5, samples: Electronics, Clothing, Furniture
+
+=== Example Pandas Code ===
+================================================================================
+# Using pandas to perform the GroupBy operation:
+result = df.groupby('region')['year'].sum()
+
