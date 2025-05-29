@@ -1,0 +1,6 @@
+method,full_accuracy,rand_index
+Auto-Suggest,0.90,0.98
+Affinity,0.90,0.94
+Type-Rules,0.92,0.95
+Min-Emptiness,0.96,0.97
+Balanced-Split,0.89,0.93

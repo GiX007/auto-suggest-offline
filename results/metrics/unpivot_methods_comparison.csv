@@ -1,0 +1,6 @@
+method,full_accuracy,column_precision,column_recall,column_f1
+Auto-Suggest,0.21,0.68,0.47,0.50
+Pattern-similarity,0.28,0.68,0.52,0.53
+Col-name-similarity,0.20,0.65,0.58,0.57
+Data-type,0.27,0.60,0.74,0.64
+Contiguous-type,0.30,0.65,0.71,0.65
