@@ -916,6 +916,10 @@ def predict_column_groupby_scores(model, feature_names, input_table):
         # print(feature_names)
 
         # Predict groupby-likelihood score
+
+        # Fix: Replace NaNs in feature_vector (for next_operation_predictor case)
+        feature_vector = np.nan_to_num(feature_vector, nan=0.0)
+        
         # For each sample, we have as many predictions as its columns
         score = model.predict_proba([feature_vector])[0][1]  # probability for class "1" (groupby)
 
