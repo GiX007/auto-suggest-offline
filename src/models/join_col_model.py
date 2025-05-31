@@ -912,7 +912,7 @@ def evaluate_join_column_model(model, feature_names, test_samples, top_k):
         Dictionary of evaluation metrics
     """
     # Dynamically and locally imports to avoid circuits
-    from src.utils.model_utils import generate_feature_importance_table, generate_prediction_table
+    from src.utils.model_utils import generate_feature_importance_table, generate_prediction_table, numpy_to_list
     from src.baselines.join_baselines import evaluate_baselines
 
     k_values = list(range(1, top_k + 1))
