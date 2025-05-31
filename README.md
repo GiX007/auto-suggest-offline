@@ -4,12 +4,12 @@ Offline component of the Auto-Suggest system for learning pandas operations from
 ## Contents
 
 - `data/` – Supporting data and examples
-  - `examples` - Contains all dummy Jupyter notebooks and corresponding datasets used in the tutorial notebooks
+  - `examples/` - Contains all dummy Jupyter notebooks and corresponding datasets used in the tutorial notebooks
   - `extracted_data.zip` - Includes 100 replayed samples per operator (groupby, melt, pivot, merge) in the format expected by the system:
     - `data.csv` (or `left.csv` / `right.csv` for merge) - Input tables for the operator
     - `param.json` - Parameters used in the operator call
-  - `generated_data` - Contains combined data, operator sequences, and related statistics for training and evaluating next operator prediction models
-  - `test_data` - Contains unseen .csv tables and pre-split train/validation/test sets for join, groupby, and the final combined operator model
+  - `generated_data/` - Contains combined data, operator sequences, and related statistics for training and evaluating next operator prediction models
+  - `test_data/` - Contains unseen .csv tables and pre-split train/validation/test sets for join, groupby, and the final combined operator model
  
   **Note**: Due to GitHub file size limits, this dataset is not included in the repository. If you are interested in accessing it, feel free to contact me and I’ll 
   share it via Google Drive. We have only uploaded the examples and test ```.csv``` files.
@@ -51,8 +51,8 @@ Offline component of the Auto-Suggest system for learning pandas operations from
 - `models/` – Contains the trained ML-based models for join, groupby, and next-operator prediction, including both traditional and deep learning approaches. This also includes sequence models (RNN and N-gram) for next-operator prediction and affinity regression models for pivot/unpivot tasks.
 
 - `results/` - Training configurations, evaluation outputs and visualizations
-   - `metrics` – Training configurations, evaluation results and comparison with heuristic methods CSVs
-   - `figures` - Visualizations from training process for ML-based predictors
+   - `metrics/` – Training configurations, evaluation results and comparison with heuristic methods CSVs
+   - `figures/` - Visualizations from training process for ML-based predictors
    - `logs/` - Terminal output logs (.txt files) for training, evaluation and recommendation for both recommendation tasks 
 
 - `docs` - Reference materials
