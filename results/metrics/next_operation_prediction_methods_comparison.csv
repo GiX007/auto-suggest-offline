@@ -1,0 +1,6 @@
+method,precision,recall
+Auto-Suggest,0.680,0.910
+RNN,0.600,0.730
+N-gram,0.470,0.720
+Single-Operators,0.280,0.470
+Random,0.190,0.320
