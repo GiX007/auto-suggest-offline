@@ -149,7 +149,7 @@ def generate_prediction_table(auto_suggest_metrics, k_values, save_dir="results/
 
     # Save to CSV
     df = pd.DataFrame(rows, columns=headers)
-    df.to_csv(os.path.join(save_dir, f"{operator_name}_literature_comparison.csv"), index=False)
+    df.to_csv(os.path.join(save_dir, f"{operator_name}_methods_comparison.csv"), index=False)
 
     # ----- Part 2: Vendor Comparison (only for join and groupby if k=1) -----
     # Note: Vendor Comparison is NOT needed for Join Type (Table 5) because vendors are included in the same table
