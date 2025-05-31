@@ -813,7 +813,6 @@ def create_init_files():
     # Note: We only create __init__.py in package directories, not in the root directory
     dirs_needing_init = [
         "src/data",
-        "src/features",
         "src/models",
         "src/utils",
         "src/baselines"  # Added baselines directory
