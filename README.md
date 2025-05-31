@@ -48,7 +48,7 @@ Offline component of the Auto-Suggest system for learning pandas operations from
     - `download_and_replay_notebooks.ipynb` – Demonstrates downloading, filtering, and replaying a few example notebooks step by step (cell by cell)
     - `toy_recommendation_workflow_simulations.ipynb` – Simulates the full Auto-Suggest recommendation pipeline using toy data. Covers feature extraction, single-operator prediction, RNN/n-gram modeling, and final MLP-based next-operator prediction
 
-- `models/` – Contains the trained ML-based models for join, groupby, and next-operator prediction, including both traditional and deep learning approaches
+- `models/` – Contains the trained ML-based models for join, groupby, and next-operator prediction, including both traditional and deep learning approaches. This also includes sequence models (RNN and N-gram) for next-operator prediction and affinity regression models for pivot/unpivot tasks.
 
 - `results/` - Training configurations, evaluation outputs and visualizations
    - `metrics` – Training configurations, evaluation results and comparison with heuristic methods CSVs
@@ -57,6 +57,7 @@ Offline component of the Auto-Suggest system for learning pandas operations from
 
 - `docs` - Reference materials
    - `Auto-Suggest_SIGMOD2020.pdf` - Original research paper describing the Auto-Suggest system (SIGMOD 2020)
+   - `auto_suggest_soft_implementation.pdf` - A minimal implementation and simulation of the Auto-Suggest system on a small dataset, providing validation and insights on the core ideas
 
 
 ## Getting Started
