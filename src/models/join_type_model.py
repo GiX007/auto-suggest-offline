@@ -554,7 +554,7 @@ def evaluate_join_type_model(model, feature_names, label_encoder, test_samples):
         Dictionary of evaluation metrics
     """
     # Dynamic local Import to avoid a loop (circular import)
-    from src.utils.model_utils import generate_prediction_table
+    from src.utils.model_utils import generate_prediction_table, numpy_to_list
 
     total = 0
     total_test_positives = 0
