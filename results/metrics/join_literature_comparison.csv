@@ -1,7 +1,0 @@
-method,prec@1,prec@2,ndcg@1,ndcg@2
-Auto-Suggest,0.88,0.88,0.88,0.88
-ML-FK,0.88,0.88,0.88,0.88
-PowerPivot,0.50,0.62,0.50,0.58
-Multi,0.25,0.88,0.25,0.64
-Holistic,0.38,0.88,0.38,0.69
-max-overlap,0.25,0.88,0.25,0.64
