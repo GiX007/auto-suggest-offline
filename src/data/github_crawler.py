@@ -109,7 +109,8 @@ def clone_repositories(results: list, operator_name: str, project_dir: str) -> N
             print(f"Already exists: {repo_name}")
 
 
-if __name__ == "__main__":
+def main():
+    """ Main function to crawl GitHub notebooks for each operator. """
     overall_start = time.time()
 
     for operator in operators:
@@ -136,3 +137,8 @@ if __name__ == "__main__":
         except Exception as e:
             print(f"{operator}: [error] {e}")
     print()
+
+
+if __name__ == "__main__":
+    main()
+    
