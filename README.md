@@ -8,15 +8,11 @@ Offline component of the Auto-Suggest system for learning pandas operations from
   - `extracted_data.zip` - Includes 100 replayed samples per operator (groupby, melt, pivot, merge) in the format expected by the system:
     - `data.csv` (or `left.csv` / `right.csv` for merge) - Input tables for the operator
     - `param.json` - Parameters used in the operator call
-      
-    **Note**: Due to GitHub file size limits, this dataset is not included in the repository.
-    If you are interested in accessing it, feel free to contact me and I’ll share it via Google Drive.
-
-  - `test_data` - Contains unseen `.csv` tables used to verify whether a trained single-operator model (`groupby`, `melt`, `pivot`, `merge`) can correctly predict the appropriate operator parameters on new, unobserved inputs. It also contains intermediated .npz files with split test data 
-  - `generated_sequences` - Contains artificially generated operator sequences used for next-operator prediction. Includes:
-     - `sequence_data.json` – Synthetic sequences formatted for both N-gram and RNN models
-     - `sequence_data_statistics.json` – Summary stats (count, length, frequency) over all generated sequences
-  - `generated_combined_data` - Contains data for the combined next-operator prediction model (MLP)
+  - `generated_data` - Contains combined data, operator sequences, and related statistics for training and evaluating next operator prediction models
+  - `test_data` - Contains unseen .csv tables and pre-split train/validation/test sets for join, groupby, and the final combined operator model
+ 
+  **Note**: Due to GitHub file size limits, this dataset is not included in the repository. If you are interested in accessing it, feel free to contact me and I’ll 
+  share it via Google Drive. We have only uploaded the examples and test ```.csv``` files.
 
 - `src/` – Core source code
   - `data/` – Scripts for notebook collection, processing, and replay
