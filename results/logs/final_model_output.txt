@@ -1,0 +1,130 @@
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.models.next_operation_predictor --mode train
+
+RNN model loaded from C:\Users\giorg\Auto_Suggest\models
+Model loaded from C:\Users\giorg\Auto_Suggest\models\join_column_model.pkl
+Model loaded from C:\Users\giorg\Auto_Suggest\models\join_type_model.pkl
+Model loaded from C:\Users\giorg\Auto_Suggest\models\groupby_column_model.pkl
+Model loaded from C:\Users\giorg\Auto_Suggest\models\pivot_affinity_weights_model.pkl
+Model loaded from C:\Users\giorg\Auto_Suggest\models\unpivot_affinity_weights_model.pkl
+
+================================================================================
+Train Mode: Next Operation Prediction
+================================================================================
+
+Loaded combined data: 371 examples
+
+Building final MLP model input vectors by combining operator scores and RNN probabilities...
+
+Training the final model...
+
+Model training completed in 35.6 seconds
+Trained model: MLPClassifier with (128,) hidden layers and 500 iterations
+
+Training vs Test Metrics:
+Accuracy: Train = 0.7196, Test = 0.6800
+Precision (macro): Train = 0.7112, Test = 0.6645
+Recall (macro): Train = 0.7127, Test = 0.6707
+F1-score (macro): Train = 0.7117, Test = 0.6631
+
+Final model saved to 'models' directory
+
+Final model trained successfully!
+
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.models.next_operation_predictor --mode eval
+
+RNN model loaded from C:\Users\giorg\Auto_Suggest\models
+Model loaded from C:\Users\giorg\Auto_Suggest\models\join_column_model.pkl
+Model loaded from C:\Users\giorg\Auto_Suggest\models\join_type_model.pkl
+Model loaded from C:\Users\giorg\Auto_Suggest\models\groupby_column_model.pkl
+Model loaded from C:\Users\giorg\Auto_Suggest\models\pivot_affinity_weights_model.pkl
+Model loaded from C:\Users\giorg\Auto_Suggest\models\unpivot_affinity_weights_model.pkl
+
+================================================================================
+Evaluation Mode: Next Operation Prediction
+================================================================================
+
+Table 10: Operator Distribution in Data Flows
++----------------+---------+----------------+
+| operator       |   count |   percentage % |
++================+=========+================+
+| groupby        |    1725 |          22.68 |
++----------------+---------+----------------+
+| merge          |    1586 |          20.85 |
++----------------+---------+----------------+
+| fillna         |    1259 |          16.55 |
++----------------+---------+----------------+
+| apply          |    1095 |          14.4  |
++----------------+---------+----------------+
+| concat         |     648 |           8.52 |
++----------------+---------+----------------+
+| dropna         |     630 |           8.28 |
++----------------+---------+----------------+
+| pivot          |     455 |           5.98 |
++----------------+---------+----------------+
+| melt           |     128 |           1.68 |
++----------------+---------+----------------+
+| json_normalize |      56 |           0.74 |
++----------------+---------+----------------+
+| pivot_table    |      23 |           0.3  |
++----------------+---------+----------------+
+
+Table 11: Precision and Recall for Next Operator Prediction
++------------------+-------------+----------+
+| method           |   precision |   recall |
++==================+=============+==========+
+| Auto-Suggest     |        0.68 |     0.91 |
++------------------+-------------+----------+
+| RNN              |        0.6  |     0.73 |
++------------------+-------------+----------+
+| N-gram           |        0.47 |     0.72 |
++------------------+-------------+----------+
+| Single-Operators |        0.28 |     0.47 |
++------------------+-------------+----------+
+| Random           |        0.19 |     0.32 |
++------------------+-------------+----------+
+
+Metrics have been saved to the 'results' directory
+
+(base) PS C:\Users\giorg\Auto_Suggest> python -m src.models.next_operation_predictor --mode predict --input_file data/test_data/unpivot_product_sales.csv --history "dropna, merge, pivot"   
+
+RNN model loaded from C:\Users\giorg\Auto_Suggest\models
+Model loaded from C:\Users\giorg\Auto_Suggest\models\join_column_model.pkl
+Model loaded from C:\Users\giorg\Auto_Suggest\models\join_type_model.pkl
+Model loaded from C:\Users\giorg\Auto_Suggest\models\groupby_column_model.pkl
+Model loaded from C:\Users\giorg\Auto_Suggest\models\pivot_affinity_weights_model.pkl
+Model loaded from C:\Users\giorg\Auto_Suggest\models\unpivot_affinity_weights_model.pkl
+
+================================================================================
+Predict Mode: Next Operation Prediction
+================================================================================
+
+Predicting next operation for a sample...
+Loaded table shape: (50, 16)
+Top 3 rows:
+    ProductID ProductName     Category   Price  Month_01  Month_02  Month_03  Month_04  Month_05  Month_06  Month_07  Month_08  Month_09  Month_10  Month_11  Month_12
+0          1   Product_1  Electronics   14.75       460       375       356       280       275       227       351       280       337       389       275       583
+1          2   Product_2  Electronics   82.19       143        76        86       106        87       111        73       109       128       111        99       134
+2          3   Product_3         Home  143.35        98       106        89        99       101        98        88       110        89       107        88       119
+Final feature vector (MLP input): [[-0.54914301 -0.57765826 -1.19964258 -0.8736121  -0.58619318 -0.98538172]]
+
+All predicted probabilities:
+groupby: 0.2761
+melt: 0.3940
+merge: 0.0045
+pivot: 0.3254
+
+Predicted next operator: melt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
