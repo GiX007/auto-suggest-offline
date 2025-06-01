@@ -1,0 +1,92 @@
+Auto-Suggest: Run the following in sequence:
+
+# Crawl, Download, Replay GitHub notebooks 
+python -m src.data.github_crawler 
+python -m src.data.process_random_repos
+python -m src.data.replay_notebooks
+
+# Examines the archive files without extracting them 
+python src/data/list_archive_contents
+
+# Extracts a small dataset (e.g. 100 samples per operator for predicting task 1)
+python src/data/extract_archives_small
+
+
+# Train\Eval\Predict All Operator Models at Once: 
+
+python -m src.main --operator all --mode all
+
+
+# To Train, Evaluate and Predict for Each Operator Separately:
+
+# Train join models
+python -m src.main --operator join --mode train
+
+# Evaluate join models (after they've been trained)
+python -m src.main --operator join --mode eval
+
+# Predict on new unseen data 
+python -m src.main --operator join --mode predict --left_file data/test_data/join_customers.csv --right_file data/test_data/join_orders.csv
+
+# Train groupby model
+python -m src.main --operator groupby --mode train
+
+# Evaluate groupby model
+python -m src.main --operator groupby --mode eval
+
+# Predict on new unseen data
+python -m src.main --operator groupby --mode predict --input_file data/test_data/groupby_sales_data.csv
+
+# Run/Evaluate pivot model
+python -m src.main --operator pivot --mode train (affinity weights regression model)
+python -m src.main --operator pivot --mode eval
+
+# Predict on new unseen data
+python -m src.main --operator pivot --mode predict --input_file data/test_data/pivot_financial_data.csv
+
+or (because default aggfunc=mean)
+
+python -m src.main --operator pivot --mode predict --input_file data/test_data/pivot_financial_data.csv --aggfunc sum
+
+# Run/Evaluate unpivot model
+python -m src.main --operator unpivot --mode train (affinity weights regression model)
+python -m src.main --operator unpivot --mode eval
+
+# Predict on new unseen data
+python -m src.main --operator unpivot --mode predict --input_file data/test_data/unpivot_product_sales.csv
+python -m src.main --operator unpivot --mode predict --input_file data/test_data/unpivot_regional_metrics.csv
+
+
+# Generate data (synthetic sequences and combined data for MLP)
+python -m src.data.generate_data
+
+
+# Train/Eval/Predict N-gram or RNN all at once 
+python -m src.models.ngram_rnn_models --model ngram --mode all
+python -m src.models.ngram_rnn_models --model rnn --mode all
+
+
+# Train, Evaluate and Predict with N-gram model
+python -m src.models.ngram_rnn_models --model ngram train
+python -m src.models.ngram_rnn_models --model ngram eval
+python -m src.models.ngram_rnn_models --model ngram predict
+
+# Train, Evaluate and Predict with RNN model
+python -m src.models.ngram_rnn_models --model rnn train
+python -m src.models.ngram_rnn_models --model rnn eval
+python -m src.models.ngram_rnn_models --model rnn predict
+
+
+# Train\Eval\Predict Next Operator all at once
+python -m src.models.next_operation_predictor --mode all
+
+
+# Train the final model
+python -m src.models.next_operation_predictor --mode train
+
+# Evaluate MLP model
+python -m src.models.next_operation_predictor --mode eval
+
+# Predict with the final Auto-Suggest model
+python -m src.models.next_operation_predictor --mode predict --input_file data/test_data/unpivot_product_sales.csv --history "dropna, merge, pivot"
+
