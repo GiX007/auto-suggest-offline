@@ -18,12 +18,10 @@ Offline component of the Auto-Suggest system for learning pandas operations from
   - `data/` – Scripts for notebook collection, processing, and replay
     - `sample_loader.py` - Loads individual or batch operator samples from extracted directories (CSV and param.json files)
     - `github_crawler.py` – Crawls GitHub for notebooks using pandas operators
-    - `process_random_repos.py` – Filters notebooks and resolves local/remote datasets
-    - `prepare_replay_notebooks.py` – Creates replay folders (one notebook + dataset(s))
+    - `process_random_repos.py` – Filters notebooks, resolves local/remote datasets, and prepares isolated replay folders (one notebook + dataset(s))
     - `replay_notebooks.py` – Executes notebooks and extracts operator metadata
     - `github_data_collection.py` – Runs the full **data manipulation pipeline**: crawl → filter → prepare → replay
-    - `generate_op_sequences.py` - Generates synthetic sequences of operator calls for training/evaluating N-gram and RNN models (next-operator prediction components)
-    - `generate_combined_data` - Builds feature vectors for the final MLP model by combining RNN predictions with operator-specific scores (groupby, pivot, unpivot, join)
+    - `generate_data.py` – Generates synthetic operator sequences, prepares datasets for N-gram/RNN/MLP models, and computes statistics
     - `list_archive_contents.py` – Inspects .tgz archives from the Auto-Suggest dataset without extracting them and reports file counts
     - `extract_archives.py` – Extracts a small, unique subset of high-quality operator samples (e.g., 30–100) from the full archive
 
