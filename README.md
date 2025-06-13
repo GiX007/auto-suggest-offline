@@ -33,6 +33,13 @@ The pipeline combines these phases into a fully reproducible workflow for learni
    - `Auto-Suggest_SIGMOD2020.pdf` - Original research paper describing the Auto-Suggest system (SIGMOD 2020)
    - `auto_suggest_soft_implementation.pdf` - A minimal implementation and simulation of the Auto-Suggest system on a small dataset, providing validation and insights on the core ideas
 
+- `models/` – Contains the trained ML-based models for join, groupby, and next-operator prediction, including both traditional and deep learning approaches. This also includes sequence models (RNN and N-gram) for next-operator prediction and affinity regression models for pivot/unpivot tasks.
+
+- `results/` - Training configurations, evaluation outputs and visualizations
+   - `metrics/` – Training configurations, evaluation results and comparison with heuristic methods CSVs
+   - `figures/` - Visualizations from training process for ML-based predictors
+   - `logs/` - Terminal output logs (.txt files) for training, evaluation and recommendation for both recommendation tasks 
+
 - `src/` – Core source code
   - `data/` – Scripts for notebook collection, processing, and replay
     - `sample_loader.py` - Loads individual or batch operator samples from extracted directories (CSV and param.json files)
@@ -67,13 +74,6 @@ The pipeline combines these phases into a fully reproducible workflow for learni
 
   - `main.py` - Main driver script for the first recommendation task implementation (single-operator prediction). Provides functions for training, evaluating, and predicting each operator, along with command-line support and overall workflow orchestration.
   - `auto_suggest.py` - Runs everything
-
-- `models/` – Contains the trained ML-based models for join, groupby, and next-operator prediction, including both traditional and deep learning approaches. This also includes sequence models (RNN and N-gram) for next-operator prediction and affinity regression models for pivot/unpivot tasks.
-
-- `results/` - Training configurations, evaluation outputs and visualizations
-   - `metrics/` – Training configurations, evaluation results and comparison with heuristic methods CSVs
-   - `figures/` - Visualizations from training process for ML-based predictors
-   - `logs/` - Terminal output logs (.txt files) for training, evaluation and recommendation for both recommendation tasks 
 
 
 ## Getting Started
