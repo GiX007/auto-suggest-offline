@@ -31,7 +31,7 @@ The pipeline combines these phases into a fully reproducible workflow for learni
 
 - `docs` - Reference materials
    - `Auto-Suggest_SIGMOD2020.pdf` - Original research paper describing the Auto-Suggest system (SIGMOD 2020)
-   - `auto_suggest_soft_implementation.pdf` - A minimal implementation and simulation of the Auto-Suggest system on a small dataset, providing validation and insights on the core ideas
+   - `auto_suggest_soft_implementation.pdf` - A report of this soft implementation of Auto-Suggest offline system on a small dataset, providing validation and insights on the core ideas
 
 - `models/` – Contains the trained ML-based models for join, groupby, and next-operator prediction, including both traditional and deep learning approaches. This also includes sequence models (RNN and N-gram) for next-operator prediction and affinity regression models for pivot/unpivot tasks.
 
