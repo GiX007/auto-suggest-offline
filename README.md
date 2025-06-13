@@ -29,6 +29,10 @@ The pipeline combines these phases into a fully reproducible workflow for learni
   **Note**: Due to GitHub file size limits, this dataset is not included in the repository. If you are interested in accessing it, feel free to contact me and I’ll 
   share it via Google Drive. We have only uploaded the examples and test ```.csv``` files.
 
+- `docs` - Reference materials
+   - `Auto-Suggest_SIGMOD2020.pdf` - Original research paper describing the Auto-Suggest system (SIGMOD 2020)
+   - `auto_suggest_soft_implementation.pdf` - A minimal implementation and simulation of the Auto-Suggest system on a small dataset, providing validation and insights on the core ideas
+
 - `src/` – Core source code
   - `data/` – Scripts for notebook collection, processing, and replay
     - `sample_loader.py` - Loads individual or batch operator samples from extracted directories (CSV and param.json files)
@@ -71,9 +75,6 @@ The pipeline combines these phases into a fully reproducible workflow for learni
    - `figures/` - Visualizations from training process for ML-based predictors
    - `logs/` - Terminal output logs (.txt files) for training, evaluation and recommendation for both recommendation tasks 
 
-- `docs` - Reference materials
-   - `Auto-Suggest_SIGMOD2020.pdf` - Original research paper describing the Auto-Suggest system (SIGMOD 2020)
-   - `auto_suggest_soft_implementation.pdf` - A minimal implementation and simulation of the Auto-Suggest system on a small dataset, providing validation and insights on the core ideas
 
 ## Getting Started
 
