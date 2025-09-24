@@ -46,7 +46,7 @@ The pipeline combines these phases into a fully reproducible workflow for learni
     - `sample_loader.py` - Loads individual or batch operator samples from extracted directories (CSV and param.json files)
     - `github_crawler.py` – Crawls GitHub for notebooks using pandas operators
     - `process_random_repos.py` – Filters notebooks, resolves local/remote datasets, and prepares isolated replay folders (one notebook + dataset(s))
-    - `replay_notebooks.py` – Executes notebooks and extracts operator metadata
+    - `replay_notebooks.py` – Executes notebooks and extracts operator metadata (currently **not fully functional**, planned for future improvements)
     - `list_archive_contents.py` – Inspects .tgz archives from the Auto-Suggest dataset without extracting them and reports file counts
     - `extract_archives.py` – Extracts a small, unique subset of high-quality operator samples (e.g., 30–100) from the full archive
     - `generate_data.py` – Generates synthetic operator sequences, prepares datasets for N-gram/RNN/MLP models, and computes statistics
